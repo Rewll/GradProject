@@ -6,14 +6,14 @@ using UnityEngine;
 
 public class audioManager : MonoBehaviour
 {
-    public geluid[] geluidLaag0;
-    public geluid[] geluidLaag1;
+    public PROTO_geluid[] geluidLaag0;
+    public PROTO_geluid[] geluidLaag1;
 
     public static audioManager instance;
 
-    void geluidsLaagInit(geluid[] geluidLijst)
+    void geluidsLaagInit(PROTO_geluid[] geluidLijst)
     {
-        foreach (geluid g in geluidLijst)
+        foreach (PROTO_geluid g in geluidLijst)
         {
             g.source = gameObject.AddComponent<AudioSource>();
             g.source.clip = g.geluidsClip;
@@ -41,9 +41,9 @@ public class audioManager : MonoBehaviour
         geluidsLaagInit(geluidLaag1);
     }
 
-    public geluid vindGeluid(int geluidsLaag, int geluidsIndex)
+    public PROTO_geluid vindGeluid(int geluidsLaag, int geluidsIndex)
     {
-        geluid[] geluidLijst;
+        PROTO_geluid[] geluidLijst;
         if (geluidsLaag == 0)
         {
             geluidLijst = geluidLaag0;
@@ -57,7 +57,7 @@ public class audioManager : MonoBehaviour
             Debug.LogWarning("Geluidslaag: " + geluidsLaag + " niet gevonden!");
             return null;
         }
-        geluid g = geluidLijst[geluidsIndex];
+        PROTO_geluid g = geluidLijst[geluidsIndex];
 
         if (g == null)
         {
@@ -77,7 +77,7 @@ public class audioManager : MonoBehaviour
 
     public void stopAlleGeluidenInLaag(int geluidsLaag)
     {
-        geluid[] lijstOmUitTeZoeken = null;
+        PROTO_geluid[] lijstOmUitTeZoeken = null;
 
         switch (geluidsLaag)
         {
@@ -89,7 +89,7 @@ public class audioManager : MonoBehaviour
                 break;
         }
 
-        foreach (geluid g in lijstOmUitTeZoeken)
+        foreach (PROTO_geluid g in lijstOmUitTeZoeken)
         {
             if (g.source.isPlaying)
             {
@@ -100,24 +100,24 @@ public class audioManager : MonoBehaviour
 
     public void Speel(int geluidsLaag, int geluidsIndex)
     {
-        geluid g = vindGeluid(geluidsLaag, geluidsIndex);
+        PROTO_geluid g = vindGeluid(geluidsLaag, geluidsIndex);
         g.source.Play();
     }
 
     public void StopSpelen(int geluidsLaag, int geluidsIndex)
     {
-        geluid g = vindGeluid(geluidsLaag, geluidsIndex);
+        PROTO_geluid g = vindGeluid(geluidsLaag, geluidsIndex);
         g.source.Stop();
     }
 
     public float getAfspeelTijd(int geluidsLaag, int geluidsIndex)
     {
-        geluid g = vindGeluid(geluidsLaag, geluidsIndex);
+        PROTO_geluid g = vindGeluid(geluidsLaag, geluidsIndex);
         return g.source.time;       
     }
     public float getClipLength(int geluidsLaag, int geluidsIndex)
     {
-        geluid g = vindGeluid(geluidsLaag, geluidsIndex);
+        PROTO_geluid g = vindGeluid(geluidsLaag, geluidsIndex);
         return g.geluidsClip.length;
     }
 }
