@@ -7,6 +7,7 @@ public class PROTO_Camera : MonoBehaviour
 {
     public Renderer fotoRenderer;
     public RenderTexture rendText;
+    public Material mat;
     Texture2D destinationText;
     bool fotoAanHetMaken;
     
@@ -23,10 +24,16 @@ public class PROTO_Camera : MonoBehaviour
         RenderTexture.active = rendText;
         int width = rendText.width;
         int height = rendText.height;
-        Texture2D fotoTexture = new Texture2D(width, height, TextureFormat.ARGB32, true);
+        Texture2D fotoTexture = new Texture2D(width, height, TextureFormat.r8, true);
         Rect rect = new Rect(0, 0, width, height);
         fotoTexture.ReadPixels(rect, 0, 0);
         fotoTexture.Apply();
-        fotoRenderer.material.mainTexture = fotoTexture;
+        mat.mainTexture = fotoTexture;
+    }
+
+    void OnApplicationQuit()
+    {
+        Debug.Log("hoi");
+        mat = fotoRenderer.material;
     }
 }
