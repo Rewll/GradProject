@@ -7,6 +7,7 @@ public class PROTO_playerController : MonoBehaviour
     float xAxis;
     float zAxis;
     public float speed;
+    public bool lopenEnabled;
     public bool magLopen;
     [Space]
     [Header("Kijk dingen")]
@@ -25,9 +26,12 @@ public class PROTO_playerController : MonoBehaviour
 
     void Update()
     {
-        if (magLopen)
+        if (lopenEnabled)
         {
-            spelerBeweging();
+            if (magLopen)
+            {
+                spelerBeweging();
+            }
         }
         if (magKijken && !cameraModus)
         {
