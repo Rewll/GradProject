@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using DG.Tweening;
 
 public class gamemanager : MonoBehaviour
 {
-    public GameObject tutorialTekst1;
-    public GameObject tutorialTekst2;
+    public TMP_Text tutorialTekst1;
+    public TMP_Text tutorialTekst2;
+    public Image fadeVlak;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
