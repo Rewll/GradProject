@@ -7,6 +7,7 @@ public class tutorialbedoeling : MonoBehaviour
     public GameObject tutorialText1;
     public GameObject tutorialText2;
     public GameObject tutorialText3;
+    public GameObject zwartVlak;
     public GameObject knop;
     bool algebeurd = false;
 
@@ -15,10 +16,15 @@ public class tutorialbedoeling : MonoBehaviour
         tutorialText1.SetActive(true);
         tutorialText2.SetActive(false);
         tutorialText2.SetActive(false);
+        
     }
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            zwartVlak.SetActive(false);
+        }
         if ((Input.GetAxis("Mouse X") > 0 || Input.GetAxis("Mouse Y") > 0) && !algebeurd)
         {
             algebeurd = true;
