@@ -10,7 +10,6 @@ public class PROTO_playerModeManager : MonoBehaviour
     public bool inCameraMode;
     public UnityEvent onCameraMode;
     public UnityEvent onLoopMode;
-    public UnityEvent onKijkModus;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -62,11 +61,5 @@ public class PROTO_playerModeManager : MonoBehaviour
         playercontRef.cameraModus = false;
     }
 
-    public void toKijkModus()
-    {
-        if (inCameraMode)
-        {
-
-        }
-    }
+    
 }
