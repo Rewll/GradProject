@@ -28,27 +28,27 @@ public class PROTO_knopGedrag : MonoBehaviour
             if (raycastcheck(knoplayer) && !muisRaakt)
             {
                 geklikt = false;
-                Debug.Log("muis betreed");
+                //Debug.Log("muis betreed");
                 muisRaakt = true;
                 onMouseEnter.Invoke();
             }
 
             if (Input.GetMouseButtonDown(0) && muisRaakt)
             {
-                Debug.Log("op knop geklikt");
+                //Debug.Log("op knop geklikt");
                 geklikt = true;
                 onMouseClick.Invoke();
             }
 
             if (muisRaakt)
             {
-                Debug.Log("muis is eroverheen");
+                //Debug.Log("muis is eroverheen");
                 onMouseOver.Invoke();
             }
 
             if (!raycastcheck(knoplayer) && muisRaakt)
             {
-                Debug.Log("muis verlaat");
+                //Debug.Log("muis verlaat");
                 muisRaakt = false;
                 onMouseExit.Invoke();
                 if (!geklikt)
