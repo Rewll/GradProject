@@ -75,7 +75,7 @@ public class audioManager : MonoBehaviour
         }
     }
 
-    public void stopAlleGeluidenInLaag(int geluidsLaag)
+    public void StopAlleGeluidenInLaag(int geluidsLaag)
     {
         geluid[] lijstOmUitTeZoeken = null;
 
