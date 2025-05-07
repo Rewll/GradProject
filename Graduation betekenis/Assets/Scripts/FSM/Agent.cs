@@ -7,7 +7,7 @@ public class Agent : MonoBehaviour
     private System.Type startState;
     private FSM fsm;
     public enum staten
-    {startStaat}
+    {GameStartState}
 
     public staten huidigeStaat;
 
@@ -15,8 +15,8 @@ public class Agent : MonoBehaviour
     {
         switch (huidigeStaat)
         {
-            case staten.startStaat:
-                startState = typeof(gameStart);
+            case staten.GameStartState:
+                startState = typeof(GameStartState);
                 break;
         }
         fsm = new FSM(startState, GetComponents<BaseState>()); //Starting state, with getcomponentSSS because multiple states are being used
