@@ -11,6 +11,7 @@ public class GameStartState : BaseState
 
     public override void OnEnter()
     {
+        GetComponent<Agent>().huidigeStaat = Agent.staten.GameStartState;
         //Dingen intitalizen enzo
     }
     

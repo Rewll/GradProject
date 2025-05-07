@@ -11,7 +11,7 @@ public class LandschapTutorialState : BaseState
 
     public override void OnEnter()
     {
-       
+        GetComponent<Agent>().huidigeStaat = Agent.staten.LandschapTutorialState;
     }
     
     public override void OnUpdate()

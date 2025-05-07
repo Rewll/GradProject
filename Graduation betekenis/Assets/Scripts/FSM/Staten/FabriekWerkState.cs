@@ -11,7 +11,7 @@ public class FabriekWerkState : BaseState
 
     public override void OnEnter()
     {
-       
+        GetComponent<Agent>().huidigeStaat = Agent.staten.FabriekWerkState;
     }
     
     public override void OnUpdate()

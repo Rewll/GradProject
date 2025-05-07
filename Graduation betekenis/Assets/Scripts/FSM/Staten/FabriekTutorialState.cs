@@ -11,7 +11,7 @@ public class FabriekTutorialState : BaseState
 
     public override void OnEnter()
     {
-       
+        GetComponent<Agent>().huidigeStaat = Agent.staten.FabriekTutorialState;
     }
     
     public override void OnUpdate()

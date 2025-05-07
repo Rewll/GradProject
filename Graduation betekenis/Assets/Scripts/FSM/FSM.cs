@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FSM
 {
-    private Dictionary<System.Type, BaseState> stateDictionary = new Dictionary<System.Type, BaseState>();
+    public Dictionary<System.Type, BaseState> stateDictionary = new Dictionary<System.Type, BaseState>();
     private BaseState currentState;
     public FSM(System.Type startState, params BaseState[] states)
     {

@@ -11,7 +11,7 @@ public class CollageState : BaseState
 
     public override void OnEnter()
     {
-       
+        GetComponent<Agent>().huidigeStaat = Agent.staten.CollageState;
     }
     
     public override void OnUpdate()

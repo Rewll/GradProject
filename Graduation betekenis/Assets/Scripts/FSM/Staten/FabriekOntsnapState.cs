@@ -11,7 +11,7 @@ public class FabriekOntsnapState : BaseState
 
     public override void OnEnter()
     {
-       
+        GetComponent<Agent>().huidigeStaat = Agent.staten.FabriekOntsnapState;
     }
     
     public override void OnUpdate()
