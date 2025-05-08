@@ -9,12 +9,17 @@ public class LandschapState : BaseState
     {
         //Debug.Log("LandschapState OnEnter");
         GetComponent<Agent>().huidigeStaat = Agent.staten.LandschapState;
-        GetComponent<GameManager>().player.GetComponent<PlayerMove>().Teleport(startplek.position);
+        //GetComponent<GameManager>().player.GetComponent<PlayerMove>().Teleport(startplek.position);
     }
     
     public override void OnUpdate()
     {
        
+    }
+    
+    public override void OnFixedUpdate()
+    {
+        
     }
     
     public override void OnExit()

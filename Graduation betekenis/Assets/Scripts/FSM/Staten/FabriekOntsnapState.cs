@@ -19,6 +19,11 @@ public class FabriekOntsnapState : BaseState
        
     }
     
+    public override void OnFixedUpdate()
+    {
+        
+    }
+    
     public override void OnExit()
     {
        

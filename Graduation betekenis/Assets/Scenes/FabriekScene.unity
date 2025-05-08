@@ -60500,6 +60500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aacd4474006ff84b987fa84a1ba7683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerLookRef: {fileID: 8996749059598494749}
   moveSpeed: 7
   groundDrag: 5
   groundCheck: {fileID: 3900337798097792170}
@@ -60535,7 +60536,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286bb5ded31655a4b9cd05a93fb90b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraKnop: 0
+  StartStaat: 0
+  huidigeStaat: 0
+  CameraKnop: 101
 --- !u!81 &8937078450457853537
 AudioListener:
   m_ObjectHideFlags: 0

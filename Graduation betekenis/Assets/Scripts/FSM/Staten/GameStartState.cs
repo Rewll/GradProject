@@ -20,6 +20,11 @@ public class GameStartState : BaseState
         
     }
     
+    public override void OnFixedUpdate()
+    {
+        
+    }
+    
     public override void OnExit()
     {
         

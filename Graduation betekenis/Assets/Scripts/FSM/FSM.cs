@@ -15,6 +15,12 @@ public class FSM
         }
         SwitchState(startState);
     }
+
+    public void OnFixedUpdate()
+    {
+        currentState?.OnFixedUpdate();
+    }
+    
     public void OnUpdate()
     {
         currentState?.OnUpdate();

@@ -1,15 +1,39 @@
+using System;
 using UnityEngine;
 
-public class KameraManager : MonoBehaviour
+public class Kamera : BaseState
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Player playerRef;
+    private void Start()
+    {
+        playerRef = GetComponent<Player>();
+    }
+
+    public override void OnEnter()
+    {
+        Debug.Log("kamera");
+        playerRef.huidigeStaat = playerStates.CameraMode;
+        
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public override void OnUpdate()
+    {
+        Debug.Log("kamera");
+
+        if (Input.GetKeyDown(playerRef.CameraKnop))
+        {
+            owner.SwitchState(typeof(PlayerMove));
+        }
+    }
+    
+    public override void OnFixedUpdate()
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public override void OnExit()
     {
         
     }

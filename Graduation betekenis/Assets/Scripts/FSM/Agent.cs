@@ -51,4 +51,9 @@ public class Agent : MonoBehaviour
     {
         fsm.OnUpdate();
     }
+
+    void FixedUpdate()
+    {
+        fsm.OnFixedUpdate();
+    }
 }

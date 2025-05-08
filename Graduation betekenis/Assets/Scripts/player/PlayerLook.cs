@@ -9,15 +9,9 @@ public class PlayerLook : MonoBehaviour
 
     private float xRotation;
     private float yRotation;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
-
+    
     // Update is called once per frame
-    void Update()
+    public void OnUpdate()
     {
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;

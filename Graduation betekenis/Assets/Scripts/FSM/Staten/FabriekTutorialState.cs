@@ -19,6 +19,11 @@ public class FabriekTutorialState : BaseState
        
     }
     
+    public override void OnFixedUpdate()
+    {
+        
+    }
+    
     public override void OnExit()
     {
        

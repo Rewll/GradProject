@@ -1,8 +1,10 @@
 using System.Transactions;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class PlayerMove : BaseState
 {
+    public PlayerLook PlayerLookRef;
+    [Space]
     [Header("Movement")]
     public float moveSpeed;
     public float groundDrag;
@@ -25,19 +27,28 @@ public class PlayerMove : MonoBehaviour
     private float verticalInput;
     private Vector3 moveDirection;
     private Rigidbody RB;
+    private Player playerRef;
     
     void Start()
     {
+        playerRef = GetComponent<Player>();
         RB = GetComponent<Rigidbody>();
         RB.freezeRotation = true;
         RB.linearDamping = groundDrag;
     }
+    public override void OnEnter()
+    {
+        playerRef.huidigeStaat = playerStates.WalkLookMode;
+        
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
     
-    void Update()
+    public override void OnUpdate()
     {
         // ground check
-        //grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
         grounded = Physics.CheckSphere(groundCheck.position, groundDistance,whatIsGround);
+        PlayerLookRef.OnUpdate();
         MyInput();
         SpeedControl();
 
@@ -46,13 +57,22 @@ public class PlayerMove : MonoBehaviour
             RB.linearDamping = groundDrag;
         else
             RB.linearDamping = 0;*/
+        if (Input.GetKeyDown(playerRef.CameraKnop))
+        {
+            owner.SwitchState(typeof(Kamera));
+        }
     }
-
-    void FixedUpdate()
+    public override void OnFixedUpdate()
     {
         MovePlayer();
         Gravity();
     }
+    
+    public override void OnExit()
+    {
+        
+    }
+
     
     void MyInput()
     {

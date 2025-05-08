@@ -19,6 +19,11 @@ public class FabriekWerkState : BaseState
        
     }
     
+    public override void OnFixedUpdate()
+    {
+        
+    }
+    
     public override void OnExit()
     {
        
