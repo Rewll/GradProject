@@ -5,15 +5,11 @@ using UnityEngine;
 public class LandschapState : BaseState
 {
     public Transform startplek;
-    private void Start()
-    {
-        
-    }
-
     public override void OnEnter()
     {
+        //Debug.Log("LandschapState OnEnter");
         GetComponent<Agent>().huidigeStaat = Agent.staten.LandschapState;
-        GetComponent<GameManager>().player.transform.position = startplek.position;
+        GetComponent<GameManager>().player.GetComponent<PlayerMove>().Teleport(startplek.position);
     }
     
     public override void OnUpdate()
