@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Kamera : BaseState
@@ -8,7 +10,11 @@ public class Kamera : BaseState
     private Player playerRef;
     [Header("Kamera variables")]
     public RenderTexture rendText;
-    [Space] public RawImage latestPicture;
+    [Space] 
+    public RawImage latestPicture;
+    public List<Texture2D> pictureTextures = new List<Texture2D>();
+    
+    public PictureDisplay picDisplayRef;
     
     private void Start()
     {
@@ -60,7 +66,15 @@ public class Kamera : BaseState
     {
         SetGameObjects(false);
     }
-
+    
+    public void SetGameObjects(bool status)
+    {
+        foreach (GameObject kameraGObject in playerRef.kameraModeGameObjects)
+        {
+            kameraGObject.SetActive(status);
+        }
+    }
+    
     public void MakePicture()
     {
         StartCoroutine(PictureRoutine());
@@ -77,13 +91,7 @@ public class Kamera : BaseState
         fotoTexture.ReadPixels(rect, 0, 0);
         fotoTexture.Apply();
         latestPicture.texture = fotoTexture;
-    }
-
-    public void SetGameObjects(bool status)
-    {
-        foreach (GameObject kameraGObject in playerRef.kameraModeGameObjects)
-        {
-            kameraGObject.SetActive(status);
-        }
+        pictureTextures.Add(fotoTexture);
+        picDisplayRef.MakePictureGameObject(fotoTexture);
     }
 }
