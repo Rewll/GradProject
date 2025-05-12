@@ -11,7 +11,7 @@ public class Kamera : BaseState
 
     public override void OnEnter()
     {
-        Debug.Log("kamera");
+        //Debug.Log("kamera");
         playerRef.huidigeStaat = playerStates.CameraMode;
         
         Cursor.visible = true;
@@ -20,7 +20,7 @@ public class Kamera : BaseState
 
     public override void OnUpdate()
     {
-        Debug.Log("kamera");
+        //Debug.Log("kamera");
 
         if (Input.GetKeyDown(playerRef.CameraKnop))
         {
@@ -34,6 +34,11 @@ public class Kamera : BaseState
     }
     
     public override void OnExit()
+    {
+        
+    }
+
+    public void EnableCamera()
     {
         
     }
