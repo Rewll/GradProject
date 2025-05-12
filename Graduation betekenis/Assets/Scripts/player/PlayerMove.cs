@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerMove : BaseState
 {
-    public PlayerLook PlayerLookRef;
+    //public PlayerLook PlayerLookRef;
     [Space]
     [Header("Movement")]
     public float moveSpeed;
@@ -22,7 +22,6 @@ public class PlayerMove : BaseState
     public float gravityScale = 1.0f;
     float globalGravity = -9.81f;
     
-    
     private float horizontalInput;
     private float verticalInput;
     private Vector3 moveDirection;
@@ -35,6 +34,7 @@ public class PlayerMove : BaseState
         RB = GetComponent<Rigidbody>();
         RB.freezeRotation = true;
         RB.linearDamping = groundDrag;
+        playerRef.kameraDisabledMesh.SetActive(false);
     }
     public override void OnEnter()
     {
@@ -42,13 +42,15 @@ public class PlayerMove : BaseState
         
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        
+        playerRef.kameraDisabledMesh.SetActive(true);
     }
     
     public override void OnUpdate()
     {
         // ground check
         grounded = Physics.CheckSphere(groundCheck.position, groundDistance,whatIsGround);
-        PlayerLookRef.OnUpdate();
+        playerRef.playerLookRef.OnUpdate();
         MyInput();
         SpeedControl();
 
@@ -70,7 +72,7 @@ public class PlayerMove : BaseState
     
     public override void OnExit()
     {
-        
+        playerRef.kameraDisabledMesh.SetActive(false);
     }
 
     

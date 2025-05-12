@@ -16,6 +16,14 @@ public class Player : MonoBehaviour
     [Space]
     [Header("Player Wide Variables:")]
     public KeyCode CameraKnop;
+    [Space]
+    [Header("References")]
+    public PlayerLook playerLookRef;
+    [Space]
+    public GameObject kameraDisabledMesh;
+    public GameObject kamerUseMesh;
+    public GameObject pictureScreen;
+    public List<GameObject> kameraModeGameObjects = new List<GameObject>();
     
     private void Start()
     {
