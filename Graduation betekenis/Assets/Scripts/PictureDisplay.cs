@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using TMPro;
 
 public class PictureDisplay : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class PictureDisplay : MonoBehaviour
     public int pageMax;
     [Space] public GameObject nextButton;
     public GameObject previousButton;
+    public TMP_Text pageNumberText;
 
     private void Start()
     {
@@ -44,7 +46,6 @@ public class PictureDisplay : MonoBehaviour
     {
         picturesViewScreen.SetActive(true);
         PictureAlign();
-        SetPageButtons();
     }
 
     void PictureAlign()
@@ -73,7 +74,6 @@ public class PictureDisplay : MonoBehaviour
         }
 
         SetPageButtons();
-
     }
 
     void SetPageButtons()
@@ -91,10 +91,21 @@ public class PictureDisplay : MonoBehaviour
         {
             previousButton.SetActive(false);
         }
-        else if (currentPageNumber < pageAmount)
+        else if (currentPageNumber <= pageAmount)
         {
             previousButton.SetActive(true);
         }
+
+        if (pageAmount > 1)
+        {
+            pageNumberText.gameObject.SetActive(true);
+        }
+        else
+        {
+            pageNumberText.gameObject.SetActive(false);
+        }
+        string pageNumberFormatted = currentPageNumber.ToString() + "/" + pageAmount.ToString();
+        pageNumberText.text = pageNumberFormatted;
     }
 
 public void NextPage()
