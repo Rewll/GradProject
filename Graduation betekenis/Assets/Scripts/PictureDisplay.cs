@@ -9,6 +9,7 @@ using TMPro;
 public class PictureDisplay : MonoBehaviour
 {
     public GameObject displayPicturePrefab;
+    public PictureStorage picStorageRef;
     [Space]
     public GameObject picturesViewScreen;
     public GameObject picturesDisplayParent;
@@ -108,7 +109,7 @@ public class PictureDisplay : MonoBehaviour
         pageNumberText.text = pageNumberFormatted;
     }
 
-public void NextPage()
+    public void NextPage()
     {
         currentPageNumber++;
         PictureAlign();
@@ -118,5 +119,14 @@ public void NextPage()
     {
         currentPageNumber--;
         PictureAlign();
+    }
+
+    public void SavePictures()
+    {
+        foreach (GameObject pictureObject in pictures)
+        {
+            Texture texture = pictureObject.GetComponent<RawImage>().texture;
+            picStorageRef.picturesStored.Add(texture);
+        }
     }
 }
