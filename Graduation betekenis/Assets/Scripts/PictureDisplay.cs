@@ -8,12 +8,14 @@ using UnityEngine.UI;
 public class PictureDisplay : MonoBehaviour
 {
     public GameObject displayPicturePrefab;
+    [Space]
     public GameObject picturesViewScreen;
     public GameObject picturesDisplayParent;
-    [Space] public List<RawImage> picturePlaceHolders = new List<RawImage>();
-    [Space] public List<GameObject> pictures = new List<GameObject>();
+    [Space]
+    public List<RawImage> picturePlaceHolders = new List<RawImage>();
+    public List<GameObject> pictures = new List<GameObject>();
     List<GameObject> picturesInGrid = new List<GameObject>();
-    [Space] [Space] public float picturesPerPage;
+    [Space] public float picturesPerPage;
     [Space] [SerializeField] int pageAmount;
     public int currentPageNumber;
     public int pageMin;
@@ -34,8 +36,7 @@ public class PictureDisplay : MonoBehaviour
         GameObject newDisplayPicture = Instantiate(displayPicturePrefab);
         newDisplayPicture.name = (pictures.Count + 1).ToString();
         newDisplayPicture.GetComponent<RawImage>().texture = texture;
-        newDisplayPicture.GetComponent<RectTransform>()
-            .SetParent(picturesDisplayParent.GetComponent<RectTransform>(), false);
+        newDisplayPicture.GetComponent<RectTransform>().SetParent(picturesDisplayParent.GetComponent<RectTransform>(), false);
         pictures.Add(newDisplayPicture);
     }
 

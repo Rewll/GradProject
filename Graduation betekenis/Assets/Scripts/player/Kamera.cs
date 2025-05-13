@@ -15,6 +15,8 @@ public class Kamera : BaseState
     public List<Texture2D> pictureTextures = new List<Texture2D>();
     
     public PictureDisplay picDisplayRef;
+    [Space] 
+    public PictureSave pictureStorage;
     
     private void Start()
     {
@@ -92,6 +94,7 @@ public class Kamera : BaseState
         fotoTexture.Apply();
         latestPicture.texture = fotoTexture;
         pictureTextures.Add(fotoTexture);
+        pictureStorage.pictures.Add(fotoTexture);
         picDisplayRef.MakePictureGameObject(fotoTexture);
     }
 }

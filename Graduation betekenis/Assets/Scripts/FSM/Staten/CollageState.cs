@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CollageState : BaseState
 {
@@ -16,6 +17,7 @@ public class CollageState : BaseState
     public override void OnEnter()
     {
         _agent.huidigeStaat = Agent.staten.CollageState;
+        SceneManager.LoadScene("CollageScene");
     }
     
     public override void OnUpdate()

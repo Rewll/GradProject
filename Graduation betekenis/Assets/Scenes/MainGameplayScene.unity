@@ -64826,6 +64826,7 @@ MonoBehaviour:
   latestPicture: {fileID: 1674413344}
   pictureTextures: []
   picDisplayRef: {fileID: 1924628523}
+  pictureStorage: {fileID: 11400000, guid: 59eafcec09b7fde4891dfa7c1553bddf, type: 2}
 --- !u!114 &8543838662985082309
 MonoBehaviour:
   m_ObjectHideFlags: 0
