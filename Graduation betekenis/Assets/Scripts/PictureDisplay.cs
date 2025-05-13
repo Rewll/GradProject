@@ -7,20 +7,18 @@ using UnityEngine.UI;
 
 public class PictureDisplay : MonoBehaviour
 {
-    public List<GameObject> pictures = new List<GameObject>();
-    [Space]
     public GameObject displayPicturePrefab;
     public GameObject picturesViewScreen;
     public GameObject picturesDisplayParent;
-    [Space]
-    public List<RawImage> picturePlaceHolders = new List<RawImage>();
-    [Space] 
-    public float picturesPerPage;
-    [Space]
-    [SerializeField] int pageAmount;
+    [Space] public List<RawImage> picturePlaceHolders = new List<RawImage>();
+    [Space] public List<GameObject> pictures = new List<GameObject>();
+    List<GameObject> picturesInGrid = new List<GameObject>();
+    [Space] [Space] public float picturesPerPage;
+    [Space] [SerializeField] int pageAmount;
     public int currentPageNumber;
-    [Space] 
-    public GameObject nextButton;
+    public int pageMin;
+    public int pageMax;
+    [Space] public GameObject nextButton;
     public GameObject previousButton;
 
     private void Start()
@@ -34,40 +32,52 @@ public class PictureDisplay : MonoBehaviour
     public void MakePictureGameObject(Texture2D texture)
     {
         GameObject newDisplayPicture = Instantiate(displayPicturePrefab);
+        newDisplayPicture.name = (pictures.Count + 1).ToString();
         newDisplayPicture.GetComponent<RawImage>().texture = texture;
-        newDisplayPicture.GetComponent<RectTransform>().SetParent(picturesDisplayParent.GetComponent<RectTransform>(), false);
+        newDisplayPicture.GetComponent<RectTransform>()
+            .SetParent(picturesDisplayParent.GetComponent<RectTransform>(), false);
         pictures.Add(newDisplayPicture);
     }
-    
+
     public void ShowPictures()
     {
         picturesViewScreen.SetActive(true);
         PictureAlign();
+        SetPageButtons();
     }
-    
+
     void PictureAlign()
     {
-        pageAmount = Mathf.CeilToInt(pictures.Count / picturesPerPage) ;
+        pageAmount = Mathf.CeilToInt(pictures.Count / picturesPerPage);
+        pageMin = (currentPageNumber * (int)picturesPerPage) - (int)picturesPerPage;
+        pageMax = pageMin + (int)picturesPerPage;
+        picturesInGrid.Clear();
         for (int i = 0; i < pictures.Count; i++)
         {
-            RawImage picture = pictures[i].GetComponent<RawImage>();
-            
-            if (i > (picturesPerPage * currentPageNumber) )
+            GameObject picture = pictures[i];
+            if (i >= pageMin && i < pageMax )
             {
-                picture.enabled = false;
-            }
-            else if (i < (picturesPerPage * currentPageNumber))
-            {
-                picture.enabled = false;
+                picturesInGrid.Add(picture);
             }
             else
             {
-                picture.enabled = true;
-                picture.GetComponent<RectTransform>().anchoredPosition = picturePlaceHolders[i].GetComponent<RectTransform>().anchoredPosition;
+                picture.SetActive(false);
             }
-            
         }
-        if (currentPageNumber == pageAmount)
+
+        for (int i = 0; i < picturesInGrid.Count; i++)
+        {
+            picturesInGrid[i].SetActive(true);
+            picturesInGrid[i].GetComponent<RectTransform>().anchoredPosition = picturePlaceHolders[i].GetComponent<RectTransform>().anchoredPosition;
+        }
+
+        SetPageButtons();
+
+    }
+
+    void SetPageButtons()
+    {
+        if (currentPageNumber >= pageAmount)
         {
             nextButton.SetActive(false);
         }
@@ -76,17 +86,17 @@ public class PictureDisplay : MonoBehaviour
             nextButton.SetActive(true);
         }
 
-        if (currentPageNumber == 0)
+        if (currentPageNumber <= 1)
         {
             previousButton.SetActive(false);
         }
-        else if (currentPageNumber > pageAmount)
+        else if (currentPageNumber < pageAmount)
         {
             previousButton.SetActive(true);
         }
     }
 
-    public void NextPage()
+public void NextPage()
     {
         currentPageNumber++;
         PictureAlign();

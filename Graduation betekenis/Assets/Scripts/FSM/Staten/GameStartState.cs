@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class GameStartState : BaseState
 {
+    private Agent _agent;
+    private GameManager _gameManagerRef;
+
     private void Start()
     {
-        
+        _agent = GetComponent<Agent>();
+        _gameManagerRef = GetComponent<GameManager>();
     }
 
     public override void OnEnter()
     {
-        GetComponent<Agent>().huidigeStaat = Agent.staten.GameStartState;
+        _agent.huidigeStaat = Agent.staten.GameStartState;
         //Dingen intitalizen enzo
     }
     

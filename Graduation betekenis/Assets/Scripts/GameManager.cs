@@ -5,14 +5,23 @@ public class GameManager : MonoBehaviour
     public Transform playerStartPos;
     public GameObject player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    
+    public void TeleportPlayer(Vector3 destinationPos)
     {
-        //player.transform.position = playerStartPos.position;
+        player.GetComponent<PlayerMove>().Teleport(destinationPos);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetCursorMode(int mode)
     {
-        
+        if (mode == 0)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked; 
+        }
+        else if (mode == 1)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None; 
+        }
     }
 }

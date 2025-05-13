@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class FabriekWerkState : BaseState
 {
+    private Agent _agent;
+    private GameManager _gameManagerRef;
+
     private void Start()
     {
-        
+        _agent = GetComponent<Agent>();
+        _gameManagerRef = GetComponent<GameManager>();
     }
 
     public override void OnEnter()
     {
-        GetComponent<Agent>().huidigeStaat = Agent.staten.FabriekWerkState;
+        _agent.huidigeStaat = Agent.staten.FabriekWerkState;
     }
     
     public override void OnUpdate()

@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class LandschapState : BaseState
 {
+    private Agent _agent;
+    private GameManager _gameManagerRef;
+    
     public Transform startplek;
+
+    private void Awake()
+    {
+        _agent = GetComponent<Agent>();
+        _gameManagerRef = GetComponent<GameManager>();
+    }
+
     public override void OnEnter()
     {
         //Debug.Log("LandschapState OnEnter");
-        GetComponent<Agent>().huidigeStaat = Agent.staten.LandschapState;
-        //GetComponent<GameManager>().player.GetComponent<PlayerMove>().Teleport(startplek.position);
+        _agent.huidigeStaat = Agent.staten.LandschapState;
+        _gameManagerRef.TeleportPlayer(startplek.position);
     }
     
     public override void OnUpdate()
@@ -26,4 +36,10 @@ public class LandschapState : BaseState
     {
        
     }
+
+    public void StartCollageFase()
+    {
+        owner.SwitchState(typeof(CollageState));
+    }
+    
 }

@@ -19,6 +19,11 @@ public class #SCRIPTNAME# : BaseState
        #NOTRIM#
     }
     
+    public override void OnFixedUpdate()
+    {
+        #NOTRIM#
+    }
+    
     public override void OnExit()
     {
        #NOTRIM#

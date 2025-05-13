@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class FabriekOntsnapState : BaseState
 {
-    private void Start()
+    private Agent _agent;
+    private GameManager _gameManagerRef;
+
+    private void Awake()
     {
-        
+        _agent = GetComponent<Agent>();
+        _gameManagerRef = GetComponent<GameManager>();
     }
 
     public override void OnEnter()
     {
-        GetComponent<Agent>().huidigeStaat = Agent.staten.FabriekOntsnapState;
+        _agent.huidigeStaat = Agent.staten.FabriekOntsnapState;
     }
     
     public override void OnUpdate()

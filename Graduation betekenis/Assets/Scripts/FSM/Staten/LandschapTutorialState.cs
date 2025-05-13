@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class LandschapTutorialState : BaseState
 {
-    private void Start()
+    private Agent _agent;
+    private GameManager _gameManagerRef;
+
+    private void Awake()
     {
-        
+        _agent = GetComponent<Agent>();
+        _gameManagerRef = GetComponent<GameManager>();
     }
 
     public override void OnEnter()
     {
-        GetComponent<Agent>().huidigeStaat = Agent.staten.LandschapTutorialState;
+        _agent.huidigeStaat = Agent.staten.LandschapTutorialState;
     }
     
     public override void OnUpdate()

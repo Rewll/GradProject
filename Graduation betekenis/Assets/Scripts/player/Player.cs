@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public enum playerStates {WalkLookMode, CameraMode}
+public enum playerStates {WalkLookMode, CameraMode, SleepMode}
 
 public class Player : MonoBehaviour
 {
@@ -34,6 +34,9 @@ public class Player : MonoBehaviour
                 break;
             case playerStates.CameraMode:
                 startState = typeof(Kamera);
+                break;
+            case playerStates.SleepMode:
+                startState = typeof(PlayerSleepMode);
                 break;
         }
         huidigeStaat = StartStaat;

@@ -2,20 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FabriekTutorialState : BaseState
+public class PlayerSleepMode : BaseState
 {
-    private Agent _agent;
-    private GameManager _gameManagerRef;
+    private Player _playerRef;
 
-    private void Awake()
+    void Awake()
     {
-        _agent = GetComponent<Agent>();
-        _gameManagerRef = GetComponent<GameManager>();
+        _playerRef = GetComponent<Player>();
     }
 
     public override void OnEnter()
     {
-        _agent.huidigeStaat = Agent.staten.FabriekTutorialState;
+       
     }
     
     public override void OnUpdate()
@@ -25,7 +23,7 @@ public class FabriekTutorialState : BaseState
     
     public override void OnFixedUpdate()
     {
-        
+
     }
     
     public override void OnExit()

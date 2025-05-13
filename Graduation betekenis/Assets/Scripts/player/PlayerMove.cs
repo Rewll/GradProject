@@ -12,7 +12,6 @@ public class PlayerMove : BaseState
     [Header("Ground Check")]
     public Transform groundCheck;
     public float groundDistance = 0.4f;
-    public float playerHeight;
     public LayerMask whatIsGround;
     public bool grounded;
     
@@ -20,37 +19,38 @@ public class PlayerMove : BaseState
     [Space]
     [Header("Gravity")]
     public float gravityScale = 1.0f;
-    float globalGravity = -9.81f;
     
-    private float horizontalInput;
-    private float verticalInput;
-    private Vector3 moveDirection;
-    private Rigidbody RB;
-    private Player playerRef;
+    private static float _globalGravity = -9.81f;
     
-    void Start()
+    private float _horizontalInput;
+    private float _verticalInput;
+    private Vector3 _moveDirection;
+    private Rigidbody _RB;
+    private Player _playerRef;
+    
+    void Awake()
     {
-        playerRef = GetComponent<Player>();
-        RB = GetComponent<Rigidbody>();
-        RB.freezeRotation = true;
-        RB.linearDamping = groundDrag;
-        playerRef.kameraDisabledMesh.SetActive(false);
+        _playerRef = GetComponent<Player>();
+        _RB = GetComponent<Rigidbody>();
+        _RB.freezeRotation = true;
+        _RB.linearDamping = groundDrag;
+        _playerRef.kameraDisabledMesh.SetActive(false);
     }
     public override void OnEnter()
     {
-        playerRef.huidigeStaat = playerStates.WalkLookMode;
+        _playerRef.huidigeStaat = playerStates.WalkLookMode;
         
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         
-        playerRef.kameraDisabledMesh.SetActive(true);
+        _playerRef.kameraDisabledMesh.SetActive(true);
     }
     
     public override void OnUpdate()
     {
         // ground check
         grounded = Physics.CheckSphere(groundCheck.position, groundDistance,whatIsGround);
-        playerRef.playerLookRef.OnUpdate();
+        _playerRef.playerLookRef.OnUpdate();
         MyInput();
         SpeedControl();
 
@@ -59,7 +59,7 @@ public class PlayerMove : BaseState
             RB.linearDamping = groundDrag;
         else
             RB.linearDamping = 0;*/
-        if (Input.GetKeyDown(playerRef.CameraKnop))
+        if (Input.GetKeyDown(_playerRef.CameraKnop))
         {
             owner.SwitchState(typeof(Kamera));
         }
@@ -72,31 +72,31 @@ public class PlayerMove : BaseState
     
     public override void OnExit()
     {
-        playerRef.kameraDisabledMesh.SetActive(false);
+        _playerRef.kameraDisabledMesh.SetActive(false);
     }
 
     
     void MyInput()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        _horizontalInput = Input.GetAxisRaw("Horizontal");
+        _verticalInput = Input.GetAxisRaw("Vertical");
     }
 
     void MovePlayer()
     {
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-        RB.AddForce(moveDirection.normalized * (moveSpeed * 10f), ForceMode.Force);
+        _moveDirection = orientation.forward * _verticalInput + orientation.right * _horizontalInput;
+        _RB.AddForce(_moveDirection.normalized * (moveSpeed * 10f), ForceMode.Force);
     }
     
     void SpeedControl()
     {
-        Vector3 flatVel = new Vector3(RB.linearVelocity.x, 0f, RB.linearVelocity.z);
+        Vector3 flatVel = new Vector3(_RB.linearVelocity.x, 0f, _RB.linearVelocity.z);
 
         // limit velocity if needed
         if(flatVel.magnitude > moveSpeed)
         {
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
-            RB.linearVelocity = new Vector3(limitedVel.x, RB.linearVelocity.y, limitedVel.z);
+            _RB.linearVelocity = new Vector3(limitedVel.x, _RB.linearVelocity.y, limitedVel.z);
         }
     }
 
@@ -104,13 +104,13 @@ public class PlayerMove : BaseState
     {
         if (!grounded)
         {
-            Vector3 gravity = globalGravity * gravityScale * Vector3.up;
-            RB.AddForce(gravity, ForceMode.Acceleration);
+            Vector3 gravity = _globalGravity * gravityScale * Vector3.up;
+            _RB.AddForce(gravity, ForceMode.Acceleration);
         }
     }
 
     public void Teleport(Vector3 destinationPos)
     {
-        RB.position = destinationPos;
+        _RB.position = destinationPos;
     }
 }
