@@ -8,6 +8,8 @@ public class CollageInitState : BaseState
     private CollageManager _colManagerRef;
     
     public PictureStorage picStorageRef;
+    [Space]
+    public List<GameObject> Screens = new List<GameObject>();
     private void Awake()
     {
         _collageAgentRef = GetComponent<CollageAgent>();
@@ -16,6 +18,10 @@ public class CollageInitState : BaseState
 
     public override void OnEnter()
     {
+        foreach (GameObject screen in Screens)
+        {
+            screen.SetActive(false);
+        }
         _collageAgentRef.huidigeStaat = CollageAgent.Collagestaten.CollageInitState;
         picStorageRef = FindFirstObjectByType(typeof(PictureStorage)) as PictureStorage;
         if (picStorageRef)

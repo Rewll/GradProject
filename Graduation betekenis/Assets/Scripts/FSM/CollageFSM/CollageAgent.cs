@@ -6,7 +6,7 @@ public class CollageAgent : MonoBehaviour
     private System.Type startState;
     public enum Collagestaten {CollageInitState, CherryPickState, CollageCreateState}
 
-    public Collagestaten StartStaat;
+    Collagestaten StartStaat;
     public Collagestaten huidigeStaat;
     
     void Start()

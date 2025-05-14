@@ -11,21 +11,21 @@ public class CollageCreateState : BaseState
     private CollageAgent _collageAgentRef;
     private CollageManager _colManagerRef;
     
-    [Header("Picture collage select Screen")]
+    [Header("References:")]
+    public GameObject collageCreateScreen;
+    public GameObject nextButton;
+    public GameObject previousButton;
+    public TMP_Text pageNumberText;
+    
+    [Header("Picture Select Panel:")]
     public List<Texture> picturesShowingTextures = new List<Texture>();
     public List<GameObject> picturesShowingPlaces = new List<GameObject>();
-    [Space] 
-    public GameObject collageCreateScreen;
-    [Space] 
+    [Space]
     public float picturesPerPage;
     [SerializeField] int pageAmount;
     public int currentPageNumber;
     public int pageMin;
     public int pageMax;
-    [Space] 
-    public GameObject nextButton;
-    public GameObject previousButton;
-    public TMP_Text pageNumberText;
     
     private void Awake()
     {
