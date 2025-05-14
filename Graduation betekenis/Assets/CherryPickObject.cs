@@ -37,15 +37,15 @@ public class CherryPickObject : MonoBehaviour, IPointerEnterHandler, IPointerExi
     { 
         if (!isClicked)
         {
-            onClick.Invoke();
             isClicked = true;
             selectedBackground.enabled = true;
+            onClick.Invoke();
         }
         else if (isClicked)
         {
-            onSecondClick.Invoke();
             isClicked = false;
             selectedBackground.enabled = false;
+            onSecondClick.Invoke();
         }
     }
 }

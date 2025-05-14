@@ -10,31 +10,26 @@ public class CherryPickState : BaseState
 {
     private CollageAgent _collageAgentRef;
     private CollageManager _colManagerRef;
-    
-    [Header("References:")]
-    public GameObject cherryPickScreen;
+
+    [Header("References:")] public GameObject cherryPickScreen;
     public GameObject nextButton;
     public GameObject previousButton;
     public TMP_Text pageNumberText;
     public TMP_Text selectieTekst;
     public GameObject cherryPickPrefab;
     public GameObject cherryPickParent;
-    
-    [Header("Picture Cherrypick:")]
-    public List<RectTransform> picturesShowingPlaces = new List<RectTransform>();
-    public List <GameObject> pictureCherryObjects = new List<GameObject>();
+    public GameObject teveelFotosScherm;
+
+    [Header("Picture Cherrypick:")] public List<RectTransform> picturesShowingPlaces = new List<RectTransform>();
+    public List<GameObject> pictureCherryObjects = new List<GameObject>();
     public List<GameObject> cherryPickObjectsVisible = new List<GameObject>();
-    [Space]
-    public List<Texture> picturesCherrypicked = new List<Texture>();
-    [Space]
-    public float picturesPerPage;
+    [Space] public float picturesPerPage;
     [SerializeField] int pageAmount;
     public int currentPageNumber;
     public int pageMin;
     public int pageMax;
-    [Space] 
-    public List<int> ints = new List<int>();
-    
+    public int amountOfSelectedPictures;
+
     private void Awake()
     {
         _collageAgentRef = GetComponent<CollageAgent>();
@@ -44,25 +39,25 @@ public class CherryPickState : BaseState
     public override void OnEnter()
     {
         _collageAgentRef.huidigeStaat = CollageAgent.Collagestaten.CherryPickState;
-        
+
         cherryPickScreen.SetActive(true);
         PictureInit();
         PictureAlign();
     }
-    
+
     public override void OnUpdate()
     {
-       
+
     }
-    
+
     public override void OnFixedUpdate()
     {
-        
+
     }
-    
+
     public override void OnExit()
     {
-       
+        cherryPickScreen.SetActive(false);
     }
 
     void PictureInit()
@@ -72,17 +67,21 @@ public class CherryPickState : BaseState
             Texture picture = _colManagerRef.picturesMade[i];
             GameObject newCherryPickObject = Instantiate(cherryPickPrefab);
             CherryPickObject cherryScriptRef = newCherryPickObject.GetComponent<CherryPickObject>();
-            
+
             RectTransform cherryRect = newCherryPickObject.GetComponent<RectTransform>();
-            cherryRect.SetParent(cherryPickParent.GetComponent<RectTransform>());
+            cherryRect.SetParent(cherryPickParent.GetComponent<RectTransform>(), false);
             cherryRect.anchoredPosition = Vector2.zero;
-            newCherryPickObject.SetActive(false);
+            //newCherryPickObject.SetActive(false);
             cherryScriptRef.textureIndex = i;
             cherryScriptRef.pictureTexture = picture;
             cherryScriptRef.pictureImage.texture = cherryScriptRef.pictureTexture;
+            newCherryPickObject.name = "CherryPickObject " + cherryScriptRef.textureIndex;
             pictureCherryObjects.Add(newCherryPickObject);
+            cherryScriptRef.onClick.AddListener(SelectionUpdate);
+            cherryScriptRef.onSecondClick.AddListener(SelectionUpdate);
         }
     }
+
     void PictureAlign()
     {
         pageAmount = Mathf.CeilToInt(_colManagerRef.picturesMade.Count / picturesPerPage);
@@ -91,28 +90,28 @@ public class CherryPickState : BaseState
         cherryPickObjectsVisible.Clear();
         foreach (GameObject obj in pictureCherryObjects)
         {
-            obj.SetActive(false);
+            obj.transform.GetChild(0).gameObject.SetActive(false);
         }
-        
+
         for (int i = 0; i < pictureCherryObjects.Count; i++)
         {
             GameObject cherryPickObject = pictureCherryObjects[i];
-            if (i >= pageMin && i < pageMax )
+            if (i >= pageMin && i < pageMax)
             {
                 cherryPickObjectsVisible.Add(cherryPickObject);
             }
         }
-        
-        for (int i = 0; i < cherryPickObjectsVisible.Count; i++)
+
+        for (int i = 0; i < cherryPickObjectsVisible.Count; i++) //put all visible cherrypick objects at the ricght pos and turned on
         {
             GameObject cherryPickObject = cherryPickObjectsVisible[i];
             cherryPickObject.GetComponent<RectTransform>().anchoredPosition = picturesShowingPlaces[i].anchoredPosition;
-            cherryPickObject.SetActive(true);
+            cherryPickObject.transform.GetChild(0).gameObject.SetActive(true);
         }
 
         SetPageButtons();
     }
-    
+
     void SetPageButtons()
     {
         if (currentPageNumber >= pageAmount)
@@ -141,9 +140,11 @@ public class CherryPickState : BaseState
         {
             pageNumberText.gameObject.SetActive(false);
         }
+
         string pageNumberFormatted = currentPageNumber.ToString() + "/" + pageAmount.ToString();
         pageNumberText.text = pageNumberFormatted;
     }
+
     public void NextPage()
     {
         currentPageNumber++;
@@ -158,19 +159,36 @@ public class CherryPickState : BaseState
 
     public void SelectionCheck()
     {
-        int amountOfSelectedPictures = 0;
+        if (amountOfSelectedPictures > _colManagerRef.amountOfPicturesToCollageWith)
+        {
+            teveelFotosScherm.SetActive(true);
+        }
+        else if (amountOfSelectedPictures <= _colManagerRef.amountOfPicturesToCollageWith)
+        {
+            foreach (GameObject obj in pictureCherryObjects)
+            {
+                if (obj.GetComponent<CherryPickObject>().isClicked)
+                {
+                    _colManagerRef.picturesToCollageWith.Add(obj.GetComponent<CherryPickObject>().pictureTexture);
+                }
+            }
+            owner.SwitchState(typeof(CollageCreateState));
+        }
+    }
+
+    public void SelectionUpdate()
+    {
+        int amount = 0;
         foreach (GameObject obj in pictureCherryObjects)
         {
             if (obj.GetComponent<CherryPickObject>().isClicked)
             {
-                amountOfSelectedPictures++;
+                amount++;
             }
         }
+
+        Debug.Log(amount);
+        amountOfSelectedPictures = amount;
         selectieTekst.text = amountOfSelectedPictures + "/" + _colManagerRef.amountOfPicturesToCollageWith + " geselecteerd";
-        if (amountOfSelectedPictures == _colManagerRef.amountOfPicturesToCollageWith)
-        {
-            //genoeg geselecteerd
-        }
     }
-    
 }
