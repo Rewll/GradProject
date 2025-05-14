@@ -66,10 +66,6 @@ public class CherryPickState : BaseState
 
     void PictureInit()
     {
-        pageAmount = Mathf.CeilToInt(_colManagerRef.picturesMade.Count / picturesPerPage);
-        pageMin = (currentPageNumber * (int)picturesPerPage) - (int)picturesPerPage;
-        pageMax = pageMin + (int)picturesPerPage;
-        
         for (int i = 0; i < _colManagerRef.picturesMade.Count; i++)
         {
             Texture picture = _colManagerRef.picturesMade[i];
@@ -87,14 +83,21 @@ public class CherryPickState : BaseState
     }
     void PictureAlign()
     {
+        pageAmount = Mathf.CeilToInt(_colManagerRef.picturesMade.Count / picturesPerPage);
+        pageMin = (currentPageNumber * (int)picturesPerPage) - (int)picturesPerPage;
+        pageMax = pageMin + (int)picturesPerPage;
         cherryPickObjectsVisible.Clear();
+        foreach (GameObject obj in pictureCherryObjects)
+        {
+            obj.SetActive(false);
+        }
+        
         for (int i = 0; i < pictureCherryObjects.Count; i++)
         {
             GameObject cherryPickObject = pictureCherryObjects[i];
             if (i >= pageMin && i < pageMax )
             {
                 cherryPickObjectsVisible.Add(cherryPickObject);
-                cherryPickObject.SetActive(false);
             }
         }
         
