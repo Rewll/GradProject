@@ -16,6 +16,7 @@ public class CherryPickState : BaseState
     public GameObject nextButton;
     public GameObject previousButton;
     public TMP_Text pageNumberText;
+    public TMP_Text selectieTekst;
     public GameObject cherryPickPrefab;
     public GameObject cherryPickParent;
     
@@ -70,14 +71,15 @@ public class CherryPickState : BaseState
         {
             Texture picture = _colManagerRef.picturesMade[i];
             GameObject newCherryPickObject = Instantiate(cherryPickPrefab);
+            CherryPickObject cherryScriptRef = newCherryPickObject.GetComponent<CherryPickObject>();
+            
             RectTransform cherryRect = newCherryPickObject.GetComponent<RectTransform>();
             cherryRect.SetParent(cherryPickParent.GetComponent<RectTransform>());
             cherryRect.anchoredPosition = Vector2.zero;
             newCherryPickObject.SetActive(false);
-            CherryPickObject cherryScriptRef = newCherryPickObject.GetComponent<CherryPickObject>();
             cherryScriptRef.textureIndex = i;
             cherryScriptRef.pictureTexture = picture;
-            newCherryPickObject.GetComponent<RawImage>().texture = cherryScriptRef.pictureTexture;
+            cherryScriptRef.pictureImage.texture = cherryScriptRef.pictureTexture;
             pictureCherryObjects.Add(newCherryPickObject);
         }
     }
@@ -152,6 +154,23 @@ public class CherryPickState : BaseState
     {
         currentPageNumber--;
         PictureAlign();
+    }
+
+    public void SelectionCheck()
+    {
+        int amountOfSelectedPictures = 0;
+        foreach (GameObject obj in pictureCherryObjects)
+        {
+            if (obj.GetComponent<CherryPickObject>().isClicked)
+            {
+                amountOfSelectedPictures++;
+            }
+        }
+        selectieTekst.text = amountOfSelectedPictures + "/" + _colManagerRef.amountOfPicturesToCollageWith + " geselecteerd";
+        if (amountOfSelectedPictures == _colManagerRef.amountOfPicturesToCollageWith)
+        {
+            //genoeg geselecteerd
+        }
     }
     
 }

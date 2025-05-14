@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,14 +7,21 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class CherryPickObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
+    public RawImage pictureImage;
+    public Image selectedBackground;
+    [Space]
     public int textureIndex;
     public Texture pictureTexture;
     [Space]
     public UnityEvent onClick;
     public UnityEvent onSecondClick;
 
-    private bool _isClicked;
+    public bool isClicked;
 
+    private void Awake()
+    {
+        selectedBackground.enabled = false;
+    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -26,14 +34,18 @@ public class CherryPickObject : MonoBehaviour, IPointerEnterHandler, IPointerExi
     }
 
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
-    {
-        if (!_isClicked)
+    { 
+        if (!isClicked)
         {
             onClick.Invoke();
+            isClicked = true;
+            selectedBackground.enabled = true;
         }
-        else if (_isClicked)
+        else if (isClicked)
         {
             onSecondClick.Invoke();
+            isClicked = false;
+            selectedBackground.enabled = false;
         }
     }
 }
