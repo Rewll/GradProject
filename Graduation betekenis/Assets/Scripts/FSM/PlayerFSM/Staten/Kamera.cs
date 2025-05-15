@@ -8,21 +8,17 @@ using UnityEngine.UI;
 public class Kamera : BaseState
 {
     private Player playerRef;
+    public PictureDisplay picDisplayRef;
+    [Space]
     [Header("Kamera variables")]
     public RenderTexture rendText;
     [Space] 
-    public RawImage latestPicture;
-    public List<Texture2D> pictureTextures = new List<Texture2D>();
+    public RawImage latestPictureShowImage;
     
-    public PictureDisplay picDisplayRef;
-    [Space] 
-    public PictureSave pictureStorage;
-    
-    private void Start()
+    private void Awake()
     {
         playerRef = GetComponent<Player>();
-        SetGameObjects(false);
-
+        SetGameObjects(false);  
     }
 
     public override void OnEnter()
@@ -92,9 +88,8 @@ public class Kamera : BaseState
         Rect rect = new Rect(0, 0, width, height);
         fotoTexture.ReadPixels(rect, 0, 0);
         fotoTexture.Apply();
-        latestPicture.texture = fotoTexture;
-        pictureTextures.Add(fotoTexture);
-        pictureStorage.pictures.Add(fotoTexture);
+        latestPictureShowImage.texture = fotoTexture;
+        //pictureTextures.Add(fotoTexture);
         picDisplayRef.MakePictureGameObject(fotoTexture);
     }
 }

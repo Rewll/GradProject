@@ -19,6 +19,8 @@ public class PlayerMove : BaseState
     [Space]
     [Header("Gravity")]
     public float gravityScale = 1.0f;
+
+    [Space] 
     
     private static float _globalGravity = -9.81f;
     
@@ -48,33 +50,38 @@ public class PlayerMove : BaseState
     
     public override void OnUpdate()
     {
-        // ground check
-        grounded = Physics.CheckSphere(groundCheck.position, groundDistance,whatIsGround);
-        _playerRef.playerLookRef.OnUpdate();
-        MyInput();
-        SpeedControl();
-
-        // handle drag
-        /*if (grounded)
-            RB.linearDamping = groundDrag;
-        else
-            RB.linearDamping = 0;*/
-        if (Input.GetKeyDown(_playerRef.CameraKnop))
+        if (!_playerRef.playerIsFrozen)
         {
-            owner.SwitchState(typeof(Kamera));
+            // ground check
+            grounded = Physics.CheckSphere(groundCheck.position, groundDistance,whatIsGround);
+            _playerRef.playerLookRef.OnUpdate();
+            MyInput();
+            SpeedControl();
+
+            // handle drag
+            /*if (grounded)
+                RB.linearDamping = groundDrag;
+            else
+                RB.linearDamping = 0;*/
+            if (Input.GetKeyDown(_playerRef.CameraKnop))
+            {
+                owner.SwitchState(typeof(Kamera));
+            }
         }
     }
     public override void OnFixedUpdate()
     {
-        MovePlayer();
-        Gravity();
+        if (!_playerRef.playerIsFrozen)
+        {
+            MovePlayer();
+            Gravity();
+        }
     }
     
     public override void OnExit()
     {
         _playerRef.kameraDisabledMesh.SetActive(false);
     }
-
     
     void MyInput()
     {

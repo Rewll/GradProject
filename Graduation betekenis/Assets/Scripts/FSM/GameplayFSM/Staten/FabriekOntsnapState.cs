@@ -16,6 +16,7 @@ public class FabriekOntsnapState : BaseState
     public override void OnEnter()
     {
         _agent.huidigeStaat = Agent.staten.FabriekOntsnapState;
+        _gameManagerRef.SetDeurBeginRuimte(1);
     }
     
     public override void OnUpdate()

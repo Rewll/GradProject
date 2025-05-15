@@ -2,19 +2,18 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
-    public float sensX;
-    public float sensY;
+    public float mouseSensitivity;
 
     public Transform orientaton;
 
-    private float xRotation;
-    private float yRotation;
+    public float xRotation;
+    public float yRotation;
     
     // Update is called once per frame
     public void OnUpdate()
     {
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
         
         yRotation += mouseX;
         xRotation -= mouseY;

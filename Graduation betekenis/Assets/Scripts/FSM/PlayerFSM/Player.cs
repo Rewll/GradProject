@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     public GameObject kamerUseMesh;
     public GameObject pictureScreen;
     public List<GameObject> kameraModeGameObjects = new List<GameObject>();
+    [Space]
+    public bool playerIsFrozen;
     
     private void Start()
     {

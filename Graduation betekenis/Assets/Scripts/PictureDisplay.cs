@@ -26,14 +26,15 @@ public class PictureDisplay : MonoBehaviour
     public GameObject previousButton;
     public TMP_Text pageNumberText;
 
-    private void Start()
+    private void Awake()
     {
         foreach (RawImage placeHolder in picturePlaceHolders)
         {
             placeHolder.color = new Color(placeHolder.color.r, placeHolder.color.g, placeHolder.color.b, 0);
         }
+        picturesViewScreen.SetActive(false);
     }
-
+    
     public void MakePictureGameObject(Texture2D texture)
     {
         GameObject newDisplayPicture = Instantiate(displayPicturePrefab);

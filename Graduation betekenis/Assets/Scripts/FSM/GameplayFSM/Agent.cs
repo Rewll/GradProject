@@ -10,7 +10,7 @@ public class Agent : MonoBehaviour
     private System.Type startState;
     public enum staten
     {GameStartState,
-        FabriekTutorialState, FabriekWerkState, FabriekOntsnapState, 
+        FabriekInitState, FabriekTutorialState, FabriekWerkState, FabriekOntsnapState, 
         LandschapTutorialState, LandschapState, 
         CollageState}
 
