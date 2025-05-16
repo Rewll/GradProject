@@ -40,15 +40,18 @@ public class collageTest : MonoBehaviour
     {
         upperRightCorner = selectionSquare.offsetMax; //up rightd
         lowerLeftCorner = selectionSquare.offsetMin; //lowleft
-        upRight.anchoredPosition = upperRightCorner;
-        lowLeft.anchoredPosition = lowerLeftCorner;
+        //upRight.anchoredPosition = upperRightCorner;
+        //lowLeft.anchoredPosition = lowerLeftCorner;
         if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftControl))
         {
             mousePosition1 = Input.mousePosition;
+            upRight.anchoredPosition = mousePosition1;
+            
         }
-        if (Input.GetMouseButtonDown(1) && Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetMouseButtonUp(0) && Input.GetKey(KeyCode.LeftControl))
         {
             mousePosition2 = Input.mousePosition;
+            lowLeft.anchoredPosition = mousePosition1;
         }
     }
 
