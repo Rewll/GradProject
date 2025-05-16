@@ -11,45 +11,37 @@ public class CollageCreateState : BaseState
     private CollageAgent _collageAgentRef;
     private CollageManager _colManagerRef;
     
-    [Header("References:")]
-    public GameObject collageCreateScreen;
-    public GameObject nextButton;
-    public GameObject previousButton;
-    public TMP_Text pageNumberText;
-    [Space]
-    public GameObject Collage;
     
+    public GameObject Collage;
+    public GameObject collageCreateScreen;
     
     [Header("Picture Select Panel:")]
-    public List<Texture> picturesShowingTextures = new List<Texture>();
+    [HideInInspector] public List<Texture> picturesShowingTextures = new List<Texture>();
     public List<GameObject> picturesToCollageWithObjects = new List<GameObject>();
-    [SerializeField] GameObject selectedPicture;
-    [Space] 
-    public float collageSmallScale;
-    public Vector2 collageSmallPos;
-    public float collageFullScale;
-    public Vector2 collageFullPos;
-    [Space]
-    public float picturesPerPage;
-    [SerializeField] int pageAmount;
-    public int currentPageNumber;
-    public int pageMin;
-    public int pageMax;
+    
+    float picturesPerPage;
+    int pageAmount;
+    int currentPageNumber;
+    int pageMin;
+    int pageMax;
+    
+    GameObject nextButton;
+    GameObject previousButton;
+    TMP_Text pageNumberText;
     
     
     private void Awake()
     {
         _collageAgentRef = GetComponent<CollageAgent>();
         _colManagerRef = GetComponent<CollageManager>();
-        selectedPicture = null;
     }
 
     public override void OnEnter()
     {
         _collageAgentRef.huidigeStaat = CollageAgent.Collagestaten.CollageCreateState;
+        
         collageCreateScreen.SetActive(true);
         SetPicturesToCollageWith();
-        //SetPicturePanel(false);
     }
     
     public override void OnUpdate()
@@ -74,57 +66,6 @@ public class CollageCreateState : BaseState
             picturesToCollageWithObjects[i].GetComponent<RawImage>().texture = _colManagerRef.picturesToCollageWith[i];
         }
     }
-
-    public void ShowPicturesToSelect()
-    {
-        
-    }
-
-    public void ShowCollageFull()
-    {
-        
-    }
-
-    public void SetSelected(GameObject selected)
-    {
-        foreach (GameObject obj in picturesToCollageWithObjects)
-        {
-            if (obj == selected)
-            {
-                selectedPicture = obj;
-                obj.GetComponent<PictureSelectObject>().setSelectedVisual(true);
-            }
-            else
-            {
-                obj.GetComponent<PictureSelectObject>().setSelectedVisual(false);
-            }
-        }
-    }
-
-    public void ResetSelected()
-    {
-        selectedPicture = null;
-        foreach (GameObject obj in picturesToCollageWithObjects)
-        {
-            obj.GetComponent<PictureSelectObject>().setSelectedVisual(false);
-        }
-    }
-    
-    public void SetPicturePanel(bool state)
-    {
-        RectTransform collageRT = Collage.GetComponent<RectTransform>();
-        if (state)
-        {
-            collageRT.localScale = new Vector3(collageSmallScale, collageSmallScale, collageSmallScale);
-            collageRT.anchoredPosition = collageSmallPos;
-        }
-        else if (!state)
-        {
-            collageRT.localScale = new Vector3(collageFullScale, collageFullScale, collageFullScale);
-            collageRT.anchoredPosition = collageFullPos;
-        }
-    }
-    
     
     void PictureAlign()
     {

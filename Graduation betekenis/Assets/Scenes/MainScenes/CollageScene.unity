@@ -202,8 +202,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 239382543}
-        m_TargetAssemblyTypeName: CollageCreateState, Assembly-CSharp
+      - m_Target: {fileID: 1822524768}
+        m_TargetAssemblyTypeName: PictureSelectManager, Assembly-CSharp
         m_MethodName: SetPicturePanel
         m_Mode: 6
         m_Arguments:
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba40652529a10d4f9b70825189cba5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colageCreateStateRef: {fileID: 239382543}
+  pictSelManageRef: {fileID: 1822524768}
   selectionBackground: {fileID: 662273626}
 --- !u!114 &122460810
 MonoBehaviour:
@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.381132, g: 0.381132, b: 0.381132, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -566,7 +566,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 235499526}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1822524768}
+        m_TargetAssemblyTypeName: PictureSelectManager, Assembly-CSharp
+        m_MethodName: AddPictureToCollage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &235499526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -638,11 +650,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2825bcb1599589e49b77b6d96a641b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collageCreateScreen: {fileID: 1822524765}
-  nextButton: {fileID: 1402983572}
-  previousButton: {fileID: 442603937}
-  pageNumberText: {fileID: 949517240}
   Collage: {fileID: 418573934}
+  collageCreateScreen: {fileID: 1822524765}
   picturesShowingTextures: []
   picturesToCollageWithObjects:
   - {fileID: 1211944905}
@@ -650,16 +659,6 @@ MonoBehaviour:
   - {fileID: 1430841083}
   - {fileID: 608124457}
   - {fileID: 122460808}
-  selectedPicture: {fileID: 0}
-  collageSmallScale: 0.2120013
-  collageSmallPos: {x: 181, y: 0}
-  collageFullScale: 0.310165
-  collageFullPos: {x: 0, y: 0}
-  picturesPerPage: 5
-  pageAmount: 0
-  currentPageNumber: 1
-  pageMin: 0
-  pageMax: 0
 --- !u!114 &239382544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1249,7 +1248,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.21200128, y: 0.21200128, z: 0.21200128}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 500885199}
   m_Father: {fileID: 1822524766}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1775,78 +1775,11 @@ RectTransform:
   m_AnchoredPosition: {x: -309, y: 28.000008}
   m_SizeDelta: {x: 167.58795, y: 98.981636}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &500885198
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 500885199}
-  - component: {fileID: 500885201}
-  - component: {fileID: 500885200}
-  m_Layer: 5
-  m_Name: Test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &500885199
+--- !u!224 &500885199 stripped
 RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1578156081978950925, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+  m_PrefabInstance: {fileID: 5199172672643342337}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 500885198}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.14713874, y: 0.14713874, z: 0.14713874}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1915126724}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 806, y: -266}
-  m_SizeDelta: {x: 1920, y: 1080}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &500885200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 500885198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Texture: {fileID: 0}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
---- !u!222 &500885201
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 500885198}
-  m_CullTransparentMesh: 1
 --- !u!1 &567206149
 GameObject:
   m_ObjectHideFlags: 0
@@ -2037,7 +1970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba40652529a10d4f9b70825189cba5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colageCreateStateRef: {fileID: 239382543}
+  pictSelManageRef: {fileID: 1822524768}
   selectionBackground: {fileID: 909353584}
 --- !u!114 &608124459
 MonoBehaviour:
@@ -2052,7 +1985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.381132, g: 0.381132, b: 0.381132, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2998,8 +2931,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 239382543}
-        m_TargetAssemblyTypeName: CollageCreateState, Assembly-CSharp
+      - m_Target: {fileID: 1822524768}
+        m_TargetAssemblyTypeName: PictureSelectManager, Assembly-CSharp
         m_MethodName: SetPicturePanel
         m_Mode: 6
         m_Arguments:
@@ -3014,6 +2947,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1822524768}
+        m_TargetAssemblyTypeName: PictureSelectManager, Assembly-CSharp
+        m_MethodName: ResetSelected
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3859,7 +3804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.381132, g: 0.381132, b: 0.381132, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3885,7 +3830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba40652529a10d4f9b70825189cba5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colageCreateStateRef: {fileID: 239382543}
+  pictSelManageRef: {fileID: 1822524768}
   selectionBackground: {fileID: 1747893255}
 --- !u!1 &1280868119
 GameObject:
@@ -4201,7 +4146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba40652529a10d4f9b70825189cba5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colageCreateStateRef: {fileID: 239382543}
+  pictSelManageRef: {fileID: 1822524768}
   selectionBackground: {fileID: 959431102}
 --- !u!114 &1430841085
 MonoBehaviour:
@@ -4216,7 +4161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.381132, g: 0.381132, b: 0.381132, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4362,7 +4307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba40652529a10d4f9b70825189cba5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colageCreateStateRef: {fileID: 239382543}
+  pictSelManageRef: {fileID: 1822524768}
   selectionBackground: {fileID: 1329039590}
 --- !u!114 &1690074825
 MonoBehaviour:
@@ -4377,7 +4322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.381132, g: 0.381132, b: 0.381132, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4742,6 +4687,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1822524766}
+  - component: {fileID: 1822524768}
+  - component: {fileID: 1822524767}
   m_Layer: 5
   m_Name: CollageCreateScreen
   m_TagString: Untagged
@@ -4772,6 +4719,42 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 1}
   m_SizeDelta: {x: 730.92004, y: 399.359}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1822524767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822524765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c36ad648934440d4ab98712e8cda83d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pictureInCollagePrefab: {fileID: 4914424256771590969, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+  mainCanvas: {fileID: 1819417973}
+  pictureInCollageParent: {fileID: 418573935}
+  pictureStartPos: {x: 183, y: 0}
+  picturesInCollage: []
+--- !u!114 &1822524768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822524765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04c492f01fafa794981388ce9203b64a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managerRef: {fileID: 239382543}
+  editManagerRef: {fileID: 1822524767}
+  collageSmallScale: 0.2120013
+  collageSmallPos: {x: 181, y: 0}
+  collageFullScale: 0.310165
+  collageFullPos: {x: 0, y: 0}
+  selectedPicture: {fileID: 0}
 --- !u!1 &1852906708
 GameObject:
   m_ObjectHideFlags: 0
@@ -4844,7 +4827,6 @@ RectTransform:
   - {fileID: 448778474}
   - {fileID: 1574621383}
   - {fileID: 95061298}
-  - {fileID: 500885199}
   - {fileID: 1402983573}
   - {fileID: 442603938}
   - {fileID: 949517239}
@@ -6079,6 +6061,107 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &5199172672643342337
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 418573935}
+    m_Modifications:
+    - target: {fileID: 1578156081978950925, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578156081978950925, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578156081978950925, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578156081978950925, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578156081978950925, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578156081978950925, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578156081978950925, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578156081978950925, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578156081978950925, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578156081978950925, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578156081978950925, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578156081978950925, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578156081978950925, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578156081978950925, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578156081978950925, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578156081978950925, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -89.6221
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578156081978950925, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -80.1882
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578156081978950925, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578156081978950925, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578156081978950925, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914424256771590969, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+      propertyPath: m_Name
+      value: PictureInCollagePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914424256771590969, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e8c3ea3d3e4ae4a4d96e8a1bc778cdc0, type: 3}
 --- !u!1 &5230768921852722718
 GameObject:
   m_ObjectHideFlags: 0

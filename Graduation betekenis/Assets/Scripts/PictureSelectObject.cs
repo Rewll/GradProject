@@ -7,16 +7,12 @@ using UnityEngine.UI;
 
 public class PictureSelectObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IDragHandler
 {
-    public CollageCreateState colageCreateStateRef;
-    RectTransform RTransform;
+    public PictureSelectManager pictSelManageRef;
     public Image selectionBackground;
-    [Space] 
     
-    private bool _isClicked;
     private void Awake()
     {
-        RTransform = GetComponent<RectTransform>();
-        setSelectedVisual(false);
+        SetSelectedVisual(false);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -36,10 +32,10 @@ public class PictureSelectObject : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        colageCreateStateRef.SetSelected(gameObject);
+        pictSelManageRef.SetSelected(gameObject);
     }
 
-    public void setSelectedVisual(bool isSelected)
+    public void SetSelectedVisual(bool isSelected)
     {
         selectionBackground.enabled = isSelected;
     }
