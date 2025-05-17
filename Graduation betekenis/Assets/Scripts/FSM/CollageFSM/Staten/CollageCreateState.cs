@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class CollageCreateState : BaseState
 {
@@ -12,23 +13,25 @@ public class CollageCreateState : BaseState
     private CollageManager _colManagerRef;
     
     
-    public GameObject Collage;
+    [Header("References:")]
+    public GameObject collage;
     public GameObject collageCreateScreen;
-    
-    [Header("Picture Select Panel:")]
-    [HideInInspector] public List<Texture> picturesShowingTextures = new List<Texture>();
-    public List<GameObject> picturesToCollageWithObjects = new List<GameObject>();
-    
-    float picturesPerPage;
-    int pageAmount;
-    int currentPageNumber;
-    int pageMin;
-    int pageMax;
-    
-    GameObject nextButton;
-    GameObject previousButton;
-    TMP_Text pageNumberText;
-    
+    public GameObject pictureInCollagePrefab;
+    public Canvas mainCanvas;
+    public RectTransform pictureInCollageParent;
+    [Space] 
+    [SerializeField] private List<RectTransform> pictureStartPositions = new List<RectTransform>();
+    public CollageCuttingManager collCutRef;
+
+    [Header("Collage stuff:")] 
+    [SerializeField] private float collageSmallScale;
+    [SerializeField] private Vector2 collageSmallPosition;
+    [SerializeField] private float collageFullScale;
+    [SerializeField] private Vector2 collageFullPosition;
+    [Space]
+    [Header("Picture stuff:")]
+    public List<GameObject> picturesInCollage = new List<GameObject>();
+    public GameObject selectedPicture;
     
     private void Awake()
     {
@@ -46,7 +49,7 @@ public class CollageCreateState : BaseState
     
     public override void OnUpdate()
     {
-       
+
     }
     
     public override void OnFixedUpdate()
@@ -58,78 +61,41 @@ public class CollageCreateState : BaseState
     {
        
     }
-
+    
     void SetPicturesToCollageWith()
     {
         for (int i = 0; i < _colManagerRef.picturesToCollageWith.Count; i++)
         {
-            picturesToCollageWithObjects[i].GetComponent<RawImage>().texture = _colManagerRef.picturesToCollageWith[i];
+            GameObject newPictureInCollage = Instantiate(pictureInCollagePrefab);
+            newPictureInCollage.name = "Picture in collage " + i;
+            RectTransform rt = newPictureInCollage.GetComponent<RectTransform>();
+            RawImage image = rt.GetChild(1).GetComponent<RawImage>();
+            rt.anchoredPosition = pictureStartPositions[i].anchoredPosition;
+            image.texture = _colManagerRef.picturesToCollageWith[i];
+            rt.SetParent(pictureInCollageParent, false);
+            
+            newPictureInCollage.GetComponent<PictureInCollage>().canvas = mainCanvas;
+            picturesInCollage.Add(newPictureInCollage);
         }
     }
-    
-    void PictureAlign()
-    {
-        pageAmount = Mathf.CeilToInt(_colManagerRef.picturesToCollageWith.Count / picturesPerPage);
-        pageMin = (currentPageNumber * (int)picturesPerPage) - (int)picturesPerPage;
-        pageMax = pageMin + (int)picturesPerPage;
-        picturesShowingTextures.Clear();
-        for (int i = 0; i < _colManagerRef.picturesToCollageWith.Count; i++)
-        {
-            Texture picture = _colManagerRef.picturesToCollageWith[i];
-            if (i >= pageMin && i < pageMax )
-            {
-                picturesShowingTextures.Add(picture);
-            }
-        }
-        
-        for (int i = 0; i < picturesShowingTextures.Count; i++)
-        {
-            picturesToCollageWithObjects[i].GetComponent<RawImage>().texture = picturesShowingTextures[i];
-        }
 
-        SetPageButtons();
-    }
-    
-    void SetPageButtons()
+    public void SetFullScreen(bool setState)
     {
-        if (currentPageNumber >= pageAmount)
+        RectTransform collageRT = collage.GetComponent<RectTransform>();
+        if (setState)
         {
-            nextButton.SetActive(false);
+            collageRT.localScale = new Vector3(collageFullScale, collageFullScale, collageFullScale);
+            collageRT.anchoredPosition = collageFullPosition;
         }
-        else if (currentPageNumber < pageAmount)
+        else if (!setState)
         {
-            nextButton.SetActive(true);
+            collageRT.localScale = new Vector3(collageSmallScale, collageSmallScale, collageSmallScale);
+            collageRT.anchoredPosition = collageSmallPosition;
         }
-
-        if (currentPageNumber <= 1)
-        {
-            previousButton.SetActive(false);
-        }
-        else if (currentPageNumber <= pageAmount)
-        {
-            previousButton.SetActive(true);
-        }
-
-        if (pageAmount > 1)
-        {
-            pageNumberText.gameObject.SetActive(true);
-        }
-        else
-        {
-            pageNumberText.gameObject.SetActive(false);
-        }
-        string pageNumberFormatted = currentPageNumber.ToString() + "/" + pageAmount.ToString();
-        pageNumberText.text = pageNumberFormatted;
-    }
-    public void NextPage()
-    {
-        currentPageNumber++;
-        PictureAlign();
     }
 
-    public void PreviousPage()
+    public void PassTextureToCut()
     {
-        currentPageNumber--;
-        PictureAlign();
+        collCutRef.CutInit(EventSystem.current.currentSelectedGameObject.GetComponent<RawImage>().texture);
     }
 }

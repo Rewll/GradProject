@@ -36,7 +36,7 @@ public class CollageInitState : BaseState
             { //if there are lot of pictures, cherrypicking needed
                 owner.SwitchState(typeof(CherryPickState));
             }
-            else if(_colManagerRef.picturesMade.Count < _colManagerRef.amountOfPicturesToCollageWith)
+            else if(_colManagerRef.picturesMade.Count <= _colManagerRef.amountOfPicturesToCollageWith)
             { //if there are less pictures than the amount then no cherrypicking needed
                 foreach (Texture picture in _colManagerRef.picturesMade)
                 {

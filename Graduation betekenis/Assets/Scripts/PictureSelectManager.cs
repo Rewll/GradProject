@@ -11,7 +11,8 @@ public class PictureSelectManager : MonoBehaviour
 {
     [SerializeField] private CollageCreateState managerRef;
     [SerializeField] private CollageEditManager editManagerRef;
-    
+    [SerializeField] private CollageCuttingManager cuttingManagerRef;
+    [Space]
     [SerializeField] private float collageSmallScale;
     [SerializeField] private Vector2 collageSmallPos;
     [SerializeField] private float collageFullScale;
@@ -19,34 +20,13 @@ public class PictureSelectManager : MonoBehaviour
     [Space]
     [SerializeField] GameObject selectedPicture;
     
-    public void SetSelected(GameObject selected)
-    {
-        foreach (GameObject obj in managerRef.picturesToCollageWithObjects)
-        {
-            if (obj == selected)
-            {
-                selectedPicture = obj;
-                obj.GetComponent<PictureSelectObject>().SetSelectedVisual(true);
-            }
-            else
-            {
-                obj.GetComponent<PictureSelectObject>().SetSelectedVisual(false);
-            }
-        }
-    }
 
-    public void ResetSelected()
-    {
-        selectedPicture = null;
-        foreach (GameObject obj in managerRef.picturesToCollageWithObjects)
-        {
-            obj.GetComponent<PictureSelectObject>().SetSelectedVisual(false);
-        }
-    }
+    
+
     
     public void SetPicturePanel(bool state)
     {
-        RectTransform collageRT = managerRef.Collage.GetComponent<RectTransform>();
+        RectTransform collageRT = managerRef.collage.GetComponent<RectTransform>();
         if (state)
         {
             collageRT.localScale = new Vector3(collageSmallScale, collageSmallScale, collageSmallScale);
@@ -65,5 +45,19 @@ public class PictureSelectManager : MonoBehaviour
         {
             editManagerRef.AddPictureToCollage(selectedPicture);
         }
+    }
+
+    public void AddCuttedPicturesToCollage()
+    {
+        foreach (GameObject obj in cuttingManagerRef.cutPieces)
+        {
+            editManagerRef.AddPictureToCollage(obj);
+            obj.GetComponent<RectTransform>().localScale = managerRef.collage.GetComponent<RectTransform>().localScale;
+        }
+    }
+
+    public void PassTextureToCutScreen()
+    {
+        cuttingManagerRef.textureToCutFrom = selectedPicture.GetComponent<RawImage>().texture;
     }
 }

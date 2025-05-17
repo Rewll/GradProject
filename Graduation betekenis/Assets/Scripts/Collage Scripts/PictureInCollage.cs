@@ -6,14 +6,15 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PictureInCollage : MonoBehaviour,IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler , IDragHandler, IScrollHandler,IPointerClickHandler
+public class PictureInCollage : MonoBehaviour, IPointerEnterHandler, 
+                                                IPointerExitHandler, IPointerDownHandler, IPointerUpHandler , IDragHandler, IPointerClickHandler, ISelectHandler, IDeselectHandler
 {
     public Canvas canvas;
     RectTransform RTransform;
     [SerializeField] private float scaleFactor;
     [SerializeField] private float maxScale;
     [SerializeField] private float minScale;
-    
+    public Image SelectionBackgroundImage;
     [SerializeField] private bool isHold;
     private void Awake()
     {
@@ -24,27 +25,43 @@ public class PictureInCollage : MonoBehaviour,IPointerEnterHandler, IPointerExit
     {
        
     }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        Debug.Log(gameObject.name + "OnSelect");
+        SelectionBackgroundImage.enabled = true;
+    }
+    
+    public void OnDeselect(BaseEventData eventData)
+    {
+        Debug.Log(gameObject.name + "OnDeSelect");
+        SelectionBackgroundImage.enabled = false;
+    }
     
     public void OnPointerClick(PointerEventData eventData)
     {
-        
+
     }
     
     public void OnDrag(PointerEventData eventData)
     {
         RTransform.anchoredPosition += eventData.delta / RTransform.parent.localScale /canvas.scaleFactor;
-        
     }
     
     public void OnPointerDown(PointerEventData eventData)
     {
         RTransform.SetAsLastSibling();
         isHold = true;
+        EventSystem.current.SetSelectedGameObject(this.gameObject);
     }
     
     public void OnPointerUp(PointerEventData eventData)
     {
         isHold = false;
+        if (EventSystem.current.currentSelectedGameObject == this.gameObject)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+        }
     }
 
     void ResizePictureInCollage()
@@ -71,13 +88,7 @@ public class PictureInCollage : MonoBehaviour,IPointerEnterHandler, IPointerExit
     {
         
     }
-
     
-    public void OnScroll(PointerEventData eventData)
-    {
-        
-    }
-
     private void Update()
     {
         if (isHold)
@@ -92,4 +103,6 @@ public class PictureInCollage : MonoBehaviour,IPointerEnterHandler, IPointerExit
             }
         }
     }
+
+
 }

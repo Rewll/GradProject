@@ -32,7 +32,7 @@ public class PictureSelectObject : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        pictSelManageRef.SetSelected(gameObject);
+        //pictSelManageRef.SetSelected(gameObject);
     }
 
     public void SetSelectedVisual(bool isSelected)
