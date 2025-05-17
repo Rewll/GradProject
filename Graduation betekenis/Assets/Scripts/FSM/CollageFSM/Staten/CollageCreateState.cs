@@ -2,9 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.Experimental.Rendering;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using TMPro;
 using UnityEngine.EventSystems;
 
 public class CollageCreateState : BaseState
@@ -22,6 +22,7 @@ public class CollageCreateState : BaseState
     [Space] 
     [SerializeField] private List<RectTransform> pictureStartPositions = new List<RectTransform>();
     public CollageCuttingManager collCutRef;
+    public RawImage collagePreview;
 
     [Header("Collage stuff:")] 
     [SerializeField] private float collageSmallScale;
@@ -32,6 +33,7 @@ public class CollageCreateState : BaseState
     [Header("Picture stuff:")]
     public List<GameObject> picturesInCollage = new List<GameObject>();
     public GameObject selectedPicture;
+    
     
     private void Awake()
     {
@@ -97,5 +99,38 @@ public class CollageCreateState : BaseState
     public void PassTextureToCut()
     {
         collCutRef.CutInit(EventSystem.current.currentSelectedGameObject.GetComponent<RawImage>().texture);
+    }
+    
+    public void RenderCollageToTexture()
+    {
+        StartCoroutine(CollageRenderRoutine());
+        
+    }
+
+    IEnumerator CollageRenderRoutine()
+    {
+        yield return new WaitForEndOfFrame(); // waits until frame is done drawing
+        //RenderTexture.active = _colManagerRef.collageRT; //points to RT i want to use
+        _colManagerRef.collageTexture = new Texture2D(1920, 1080, TextureFormat.RGB24, false); //Creates texture for cutout with the rect size
+        Rect sizeRect = new Rect(0 , 0, Screen.width,Screen.height);
+        
+        _colManagerRef.collageTexture.ReadPixels(sizeRect, 0, 0); //reads pixels from the rendertexture to the texture 
+        _colManagerRef.collageTexture.Apply(); //apply
+        
+        collagePreview.texture = _colManagerRef.collageTexture;
+        _colManagerRef.collagePreviewScherm.SetActive(true);
+    }
+    
+    private IEnumerator CoroutineScreenshot()
+    {
+        yield return new WaitForEndOfFrame();
+        _colManagerRef.collageTexture = new Texture2D(1920, 1080, TextureFormat.RGB24, false); //Creates texture for cutout with the rect size
+        //Rect rect = new Rect(0, 0, width, height);
+        //screenShotTexture.ReadPixels(rect, 0, 0); //print rectangle on the texture, 0, 0 post on the texture
+        //screenShotTexture.Apply();
+
+        //byte[] byteArray = screenShotTexture.EncodeToPNG();
+        //System.IO.File.WriteAllBytes("Assets/Resources/Gezichten/Emoji" + plekNummer + ".png", byteArray);
+        //Sprite tempSprite = Sprite.Create(screenShotTexture, rect, new Vector2(0.5f, 0.5f));
     }
 }

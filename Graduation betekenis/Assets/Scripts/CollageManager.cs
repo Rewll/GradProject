@@ -12,5 +12,9 @@ public class CollageManager : MonoBehaviour
     public List<Texture> picturesToCollageWith = new List<Texture>();
     public int amountOfPicturesToCollageWith;
     public Texture testTexture;
+    [Space] 
+    public RenderTexture collageRT;
 
+    public Texture2D collageTexture;
+    public GameObject collagePreviewScherm;
 }
