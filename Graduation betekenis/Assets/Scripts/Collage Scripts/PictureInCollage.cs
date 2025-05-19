@@ -6,10 +6,10 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PictureInCollage : MonoBehaviour, IPointerEnterHandler, 
-                                                IPointerExitHandler, IPointerDownHandler, IPointerUpHandler , IDragHandler, IPointerClickHandler, ISelectHandler, IDeselectHandler
+public class PictureInCollage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler , IDragHandler, IPointerClickHandler
 {
     public Canvas canvas;
+    public CollageCreateState gameManRef;
     RectTransform RTransform;
     [SerializeField] private float scaleFactor;
     [SerializeField] private float maxScale;
@@ -25,18 +25,6 @@ public class PictureInCollage : MonoBehaviour, IPointerEnterHandler,
     {
        
     }
-
-    public void OnSelect(BaseEventData eventData)
-    {
-        Debug.Log(gameObject.name + "OnSelect");
-        SelectionBackgroundImage.enabled = true;
-    }
-    
-    public void OnDeselect(BaseEventData eventData)
-    {
-        Debug.Log(gameObject.name + "OnDeSelect");
-        SelectionBackgroundImage.enabled = false;
-    }
     
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -51,17 +39,19 @@ public class PictureInCollage : MonoBehaviour, IPointerEnterHandler,
     public void OnPointerDown(PointerEventData eventData)
     {
         RTransform.SetAsLastSibling();
-        isHold = true;
-        EventSystem.current.SetSelectedGameObject(this.gameObject);
+        if (gameManRef.selectedPicture != this.gameObject)
+        {
+            gameManRef.SetSelected(this.gameObject);
+        }
+        else
+        {
+            gameManRef.Deselect();
+        }
     }
     
     public void OnPointerUp(PointerEventData eventData)
     {
-        isHold = false;
-        if (EventSystem.current.currentSelectedGameObject == this.gameObject)
-        {
-            EventSystem.current.SetSelectedGameObject(null);
-        }
+
     }
 
     void ResizePictureInCollage()
@@ -91,7 +81,7 @@ public class PictureInCollage : MonoBehaviour, IPointerEnterHandler,
     
     private void Update()
     {
-        if (isHold)
+        if (gameManRef != null && gameManRef.selectedPicture == this.gameObject)
         {
             if (Input.GetKey(KeyCode.LeftControl))
             {
@@ -102,6 +92,18 @@ public class PictureInCollage : MonoBehaviour, IPointerEnterHandler,
                 ResizePictureInCollage();
             }
         }
+    }
+    public void OnSelect()
+    {
+        //Debug.Log(gameObject.name + "OnSelect");
+        SelectionBackgroundImage.enabled = true;
+        
+    }
+    
+    public void OnDeselect()
+    {
+        //Debug.Log(gameObject.name + "OnDeSelect");
+        SelectionBackgroundImage.enabled = false;
     }
 
 

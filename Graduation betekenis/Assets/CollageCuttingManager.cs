@@ -8,10 +8,15 @@ using UnityEngine.UI;
 
 public class CollageCuttingManager : MonoBehaviour
 {
+    public CollageCreateState gameManRef;
     public GameObject cutPiecePrefab;
+    public RectTransform selectionPoint1;
+    public RectTransform selectionPoint2;
+    public RectTransform selectionSquare;
     public RectTransform cutPieceParent;
     public RawImage pictureToCutImage;
-    public List<GameObject> cutPieces = new List<GameObject>();
+    public pictureToCutFrom picScriptRef;
+    public List<GameObject> CutPieceObjects = new List<GameObject>();
     [HideInInspector] public Texture textureToCutFrom;
     RenderTexture cutRT;
     [Space] 
@@ -19,6 +24,10 @@ public class CollageCuttingManager : MonoBehaviour
     [SerializeField] private Vector2 mousePosition2;
     public bool isCutting;
 
+    public Camera cam;
+    public Canvas MainCanvas;
+    public Vector2 mousePosDebug;
+    public bool inImage;
     public void CutInit(Texture texture)
     {
         textureToCutFrom = texture;
@@ -29,30 +38,61 @@ public class CollageCuttingManager : MonoBehaviour
     public void CutClose()
     {
         isCutting = false;
-        cutPieces.Clear();
+        CutPieceObjects.Clear();
     }
 
     private void Update()
     {
         if (isCutting)
         {
-            GetMousePos();
+            if (picScriptRef.mouseOver)
+            {
+                GetMousePos();
+            }
         }
     }
 
     void GetMousePos()
     {
-        if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftControl))
+        mousePosDebug = Input.mousePosition;
+        if (Input.GetMouseButtonDown(0))
         {
             mousePosition1 = Input.mousePosition;
+            selectionPoint1.anchoredPosition = Input.mousePosition / (Vector2)selectionPoint2.parent.localScale /MainCanvas.scaleFactor;
+            float minX = Mathf.Min(selectionPoint1.anchoredPosition.x, selectionPoint2.anchoredPosition.x);
+            float minY = Mathf.Min(selectionPoint1.anchoredPosition.y, selectionPoint2.anchoredPosition.y);
+            //selectionSquare.anchoredPosition = new Vector2(minX,minY);
+            selectionSquare.anchoredPosition = selectionPoint1.anchoredPosition;
         }
-        if (Input.GetMouseButtonUp(0) && Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetMouseButton(0))
+        {
+            selectionPoint2.anchoredPosition = Input.mousePosition / (Vector2)selectionPoint2.parent.localScale /MainCanvas.scaleFactor;
+            
+            selectionSquare.sizeDelta = new Vector2(Math.Abs(selectionPoint1.anchoredPosition.x - selectionPoint2.anchoredPosition.x),
+                                                    Math.Abs(selectionPoint1.anchoredPosition.y - selectionPoint2.anchoredPosition.y));
+        }
+        if (Input.GetMouseButtonUp(0))
         {
             mousePosition2 = Input.mousePosition;
             MakeCut();
         }
     }
 
+    /*bool isInImage()
+    {
+        RectTransform pictureRT = pictureToCutImage.rectTransform;
+        Vector3[] v = new Vector3[4];
+        pictureRT.GetWorldCorners(v);
+        float point1 = v[0].x / pictureRT.localScale.x / MainCanvas.scaleFactor;
+        float point1 = v[0].x / pictureRT.localScale.x / MainCanvas.scaleFactor;
+        
+        if (Input.mousePosition.x < point1 
+            && Input.mousePosition.x > v[1].x)
+        {
+            
+        }
+    }*/
+    
     public void MakeCut()
     {
         StartCoroutine(CuttingRoutine());
@@ -72,13 +112,20 @@ public class CollageCuttingManager : MonoBehaviour
         newCutTexture.Apply(); //apply
         
         GameObject newCutPiece = Instantiate(cutPiecePrefab);
-        RawImage cutPieceImage = newCutPiece.GetComponent<RawImage>();
-        cutPieceImage.rectTransform.SetParent(cutPieceParent, false);
+        newCutPiece.GetComponent<PictureInCollage>().gameManRef = gameManRef;
+        newCutPiece.GetComponent<PictureInCollage>().canvas = MainCanvas;
+        RectTransform RT = newCutPiece.GetComponent<RectTransform>();
+        RawImage cutPieceImage = RT.GetChild(1).GetComponent<RawImage>();
+        RT.SetParent(cutPieceParent, false);
         cutPieceImage.texture = newCutTexture;
         cutPieceImage.SetNativeSize();
         cutPieceImage.rectTransform.localScale = pictureToCutImage.rectTransform.localScale;
-        cutPieceImage.rectTransform.anchoredPosition = Vector2.zero;    
-        cutPieces.Add(newCutPiece);
+        cutPieceImage.rectTransform.anchoredPosition = Vector2.zero; 
+        RT.GetChild(0).GetComponent<RectTransform>().sizeDelta = RT.GetChild(1).GetComponent<RectTransform>().sizeDelta;
+        float scale = RT.GetChild(1).GetComponent<RectTransform>().localScale.x;
+        float newScale = scale + (scale * 0.08f);
+        RT.GetChild(0).GetComponent<RectTransform>().localScale =  new Vector3(newScale,newScale,newScale);
+        CutPieceObjects.Add(newCutPiece);
     }
     
     

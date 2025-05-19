@@ -46,7 +46,6 @@ public class collageTest : MonoBehaviour
         {
             mousePosition1 = Input.mousePosition;
             upRight.anchoredPosition = mousePosition1;
-            
         }
         if (Input.GetMouseButtonUp(0) && Input.GetKey(KeyCode.LeftControl))
         {

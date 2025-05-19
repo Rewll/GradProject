@@ -30,6 +30,11 @@ public class CollageCreateState : BaseState
     [SerializeField] private float collageFullScale;
     [SerializeField] private Vector2 collageFullPosition;
     [Space]
+    private RectTransform collageRT;
+    [SerializeField] private float collageDoneScale;
+    [SerializeField] private Vector2 collageDonePosition;
+    [Space]
+    public List<Button> buttonsThatUseSelect = new List<Button>();
     [Header("Picture stuff:")]
     public List<GameObject> picturesInCollage = new List<GameObject>();
     public GameObject selectedPicture;
@@ -39,6 +44,7 @@ public class CollageCreateState : BaseState
     {
         _collageAgentRef = GetComponent<CollageAgent>();
         _colManagerRef = GetComponent<CollageManager>();
+        collageRT = collage.GetComponent<RectTransform>();
     }
 
     public override void OnEnter()
@@ -46,7 +52,9 @@ public class CollageCreateState : BaseState
         _collageAgentRef.huidigeStaat = CollageAgent.Collagestaten.CollageCreateState;
         
         collageCreateScreen.SetActive(true);
-        SetPicturesToCollageWith();
+        OnDeselectGlobal();
+        SetPicturesToCollageWith(_colManagerRef.picturesToCollageWith);
+        SetPicturesPos(picturesInCollage);
     }
     
     public override void OnUpdate()
@@ -64,26 +72,40 @@ public class CollageCreateState : BaseState
        
     }
     
-    void SetPicturesToCollageWith()
+    void SetPicturesToCollageWith(List<Texture> pictures)
     {
-        for (int i = 0; i < _colManagerRef.picturesToCollageWith.Count; i++)
+        for (int i = 0; i < pictures.Count; i++)
         {
             GameObject newPictureInCollage = Instantiate(pictureInCollagePrefab);
-            newPictureInCollage.name = "Picture in collage " + i;
+            newPictureInCollage.name = "Picture in collage " + picturesInCollage.Count;
             RectTransform rt = newPictureInCollage.GetComponent<RectTransform>();
             RawImage image = rt.GetChild(1).GetComponent<RawImage>();
-            rt.anchoredPosition = pictureStartPositions[i].anchoredPosition;
-            image.texture = _colManagerRef.picturesToCollageWith[i];
+            image.texture = pictures[i];
             rt.SetParent(pictureInCollageParent, false);
-            
+            rt.localScale = new Vector3(0.3f, 0.3f, 0.3f);
             newPictureInCollage.GetComponent<PictureInCollage>().canvas = mainCanvas;
+            newPictureInCollage.GetComponent<PictureInCollage>().gameManRef = this;
             picturesInCollage.Add(newPictureInCollage);
         }
     }
 
+    void SetPicturesPos(List<GameObject> pictures)
+    {
+        for (int i = 0; i < pictures.Count; i++)
+        {
+            RectTransform rt = pictures[i].GetComponent<RectTransform>();
+            rt.anchoredPosition = pictureStartPositions[i].anchoredPosition;
+        }
+    }
+
+    void setCutPiece()
+    {
+        
+    }
+    
     public void SetFullScreen(bool setState)
     {
-        RectTransform collageRT = collage.GetComponent<RectTransform>();
+        
         if (setState)
         {
             collageRT.localScale = new Vector3(collageFullScale, collageFullScale, collageFullScale);
@@ -95,10 +117,79 @@ public class CollageCreateState : BaseState
             collageRT.anchoredPosition = collageSmallPosition;
         }
     }
-
+    
     public void PassTextureToCut()
     {
-        collCutRef.CutInit(EventSystem.current.currentSelectedGameObject.GetComponent<RawImage>().texture);
+        collCutRef.CutInit(selectedPicture.GetComponent<RectTransform>().GetChild(1).GetComponent<RawImage>().texture);
+    }
+
+    public void AddCutsToCollage()
+    {
+        foreach (GameObject obj in collCutRef.CutPieceObjects)
+        {
+            obj.name = "Picture in collage " + picturesInCollage.Count;
+            RectTransform rt = obj.GetComponent<RectTransform>();
+            rt.SetParent(pictureInCollageParent, false);
+            rt.anchoredPosition = Vector2.zero;
+            rt.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+            rt.GetChild(1).localScale = Vector3.one;
+            float scale = rt.GetChild(1).GetComponent<RectTransform>().localScale.x;
+            float newScale = scale + (scale * 0.08f);
+            rt.GetChild(0).localScale = new Vector3(newScale,newScale,newScale);
+            
+            picturesInCollage.Add(obj);
+        }
+    }
+    
+    public void SetSelected(GameObject selected)
+    {
+        OnSelectGlobal();
+        if (selectedPicture != null)
+        {
+            selectedPicture.GetComponent<PictureInCollage>().OnDeselect();
+        }
+        selectedPicture = selected;
+        selectedPicture.GetComponent<PictureInCollage>().OnSelect();
+    }
+
+    public void Deselect()
+    {
+        OnDeselectGlobal();
+        if (selectedPicture != null)
+        {
+            selectedPicture.GetComponent<PictureInCollage>().OnDeselect();
+        }
+        selectedPicture = null;
+    }
+
+    public void OnSelectGlobal()
+    {
+        foreach (Button button in buttonsThatUseSelect)
+        {
+            button.interactable = true;
+        }
+    }
+
+    public void OnDeselectGlobal()
+    {
+        foreach (Button button in buttonsThatUseSelect)
+        {
+            button.interactable = false;
+        }
+    }
+    
+    public void LaadCollageKlaarScherm(bool setState)
+    {
+        if (setState)
+        {
+            collageRT.localScale = new Vector3(collageDoneScale, collageDoneScale, collageDoneScale);
+            collageRT.anchoredPosition = collageDonePosition;
+        }
+        else if (!setState)
+        {
+            collageRT.localScale = new Vector3(collageSmallScale, collageSmallScale, collageSmallScale);
+            collageRT.anchoredPosition = collageSmallPosition;
+        }
     }
     
     public void RenderCollageToTexture()

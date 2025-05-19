@@ -49,11 +49,7 @@ public class PictureSelectManager : MonoBehaviour
 
     public void AddCuttedPicturesToCollage()
     {
-        foreach (GameObject obj in cuttingManagerRef.cutPieces)
-        {
-            editManagerRef.AddPictureToCollage(obj);
-            obj.GetComponent<RectTransform>().localScale = managerRef.collage.GetComponent<RectTransform>().localScale;
-        }
+
     }
 
     public void PassTextureToCutScreen()
