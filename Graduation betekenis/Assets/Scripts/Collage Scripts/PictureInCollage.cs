@@ -38,6 +38,7 @@ public class PictureInCollage : MonoBehaviour, IPointerEnterHandler, IPointerExi
     
     public void OnPointerDown(PointerEventData eventData)
     {
+        isHold = true;
         RTransform.SetAsLastSibling();
         if (gameManRef.selectedPicture != this.gameObject)
         {
@@ -51,7 +52,7 @@ public class PictureInCollage : MonoBehaviour, IPointerEnterHandler, IPointerExi
     
     public void OnPointerUp(PointerEventData eventData)
     {
-
+        isHold = false;
     }
 
     void ResizePictureInCollage()
@@ -81,16 +82,9 @@ public class PictureInCollage : MonoBehaviour, IPointerEnterHandler, IPointerExi
     
     private void Update()
     {
-        if (gameManRef != null && gameManRef.selectedPicture == this.gameObject)
+        if (isHold)
         {
-            if (Input.GetKey(KeyCode.LeftControl))
-            {
-                
-            }
-            else
-            {
-                ResizePictureInCollage();
-            }
+            ResizePictureInCollage();
         }
     }
     public void OnSelect()

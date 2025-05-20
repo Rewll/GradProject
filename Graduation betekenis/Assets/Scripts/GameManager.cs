@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject deurBeginRuimte;
     public Transform deurGeslotenPos;
     public Transform deurOpenPos;
+    public audioManager audioManRef;
     private void Awake()
     {
         _playerRef = player.GetComponent<Player>();

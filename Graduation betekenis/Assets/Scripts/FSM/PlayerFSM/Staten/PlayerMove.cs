@@ -4,24 +4,19 @@ using UnityEngine;
 public class PlayerMove : BaseState
 {
     //public PlayerLook PlayerLookRef;
-    [Space]
-    [Header("Movement")]
-    public float moveSpeed;
+    [Space] [Header("Movement")] public float moveSpeed;
     public float groundDrag;
-    [Space]
-    [Header("Ground Check")]
-    public Transform groundCheck;
+    [Space] [Header("Ground Check")] public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask whatIsGround;
     public bool grounded;
-    
-    public Transform orientation;
-    [Space]
-    [Header("Gravity")]
-    public float gravityScale = 1.0f;
 
+    public Transform orientation;
+    [Space] [Header("Gravity")] 
+    public float gravityScale = 1.0f;
+    [SerializeField] private float underNeathGroundTreshold;
+        
     [Space] 
-    
     private static float _globalGravity = -9.81f;
     
     private float _horizontalInput;
@@ -29,6 +24,7 @@ public class PlayerMove : BaseState
     private Vector3 _moveDirection;
     private Rigidbody _RB;
     private Player _playerRef;
+    Vector3 lastGroundPos;
     
     
     void Awake()
@@ -57,9 +53,15 @@ public class PlayerMove : BaseState
         {
             // ground check
             grounded = Physics.CheckSphere(groundCheck.position, groundDistance,whatIsGround);
+            if (grounded)
+            {
+                lastGroundPos = transform.position;
+            }
+
             _playerRef.playerLookRef.OnUpdate();
             MyInput();
             SpeedControl();
+            KeepplayerAfloat();
 
             // handle drag
             /*if (grounded)
@@ -122,5 +124,13 @@ public class PlayerMove : BaseState
     public void Teleport(Vector3 destinationPos)
     {
         _RB.position = destinationPos;
+    }
+    void KeepplayerAfloat()
+    {
+        if (transform.position.y < underNeathGroundTreshold && !grounded)
+        {
+            //Debug.Log("speler onderwater!");
+            Teleport(lastGroundPos);
+        }
     }
 }

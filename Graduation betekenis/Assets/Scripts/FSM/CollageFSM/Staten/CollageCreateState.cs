@@ -25,7 +25,7 @@ public class CollageCreateState : BaseState
     public RawImage collagePreview;
 
     public GameObject tutorialObject;
-    public GameObject vraagKnop;
+    public GameObject tutorialObject2;
 
     public RectTransform knipselsPos;
     
@@ -56,22 +56,24 @@ public class CollageCreateState : BaseState
 
     public override void OnEnter()
     {
-        if (tutorial)
-        {
-            tutorialObject.SetActive(true);
-            vraagKnop.SetActive(false);
-        }
-        else
-        {
-            tutorialObject.SetActive(false);
-            vraagKnop.SetActive(true);
-        }
         _collageAgentRef.huidigeStaat = CollageAgent.Collagestaten.CollageCreateState;
+
         
         collageCreateScreen.SetActive(true);
         OnDeselectGlobal();
         SetPicturesToCollageWith(_colManagerRef.picturesToCollageWith);
         SetPicturesPos(picturesInCollage);
+        
+        if (tutorial)
+        {
+            tutorialObject.SetActive(true);
+            tutorialObject2.SetActive(true);
+        }
+        else
+        {
+            tutorialObject.SetActive(false);
+            tutorialObject2.SetActive(false);
+        }
     }
     
     public override void OnUpdate()
