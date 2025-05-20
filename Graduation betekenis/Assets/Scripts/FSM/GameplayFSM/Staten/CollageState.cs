@@ -8,6 +8,8 @@ public class CollageState : BaseState
 {
     private Agent _agent;
     private GameManager _gameManagerRef;
+    
+    public int collageSceneIndex;
 
     public UnityEvent onCollageEnter;
 
@@ -21,7 +23,7 @@ public class CollageState : BaseState
     {
         _agent.huidigeStaat = Agent.staten.CollageState;
         onCollageEnter.Invoke();
-        SceneManager.LoadScene("CollageScene");
+        SceneManager.LoadScene(collageSceneIndex);
     }
     
     public override void OnUpdate()
