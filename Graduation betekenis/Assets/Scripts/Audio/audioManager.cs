@@ -10,6 +10,8 @@ public class audioManager : MonoBehaviour
     public geluid[] soundsList;
     
     public static audioManager instance;
+    
+    public bool dontDestroy;
 
     void AudioLayerInit()
     {
@@ -35,7 +37,10 @@ public class audioManager : MonoBehaviour
             return;
         }*/
 
-        //DontDestroyOnLoad(gameObject);
+        if (dontDestroy)
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
 
         AudioLayerInit();
     }

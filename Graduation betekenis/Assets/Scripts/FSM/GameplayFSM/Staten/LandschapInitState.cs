@@ -20,7 +20,7 @@ public class LandschapInitState : BaseState
     {
         //Debug.Log("LandschapState OnEnter");
         _agent.huidigeStaat = Agent.staten.LandschapInitState;
-        
+        _gameManagerRef.audioManRef.PlaySound(0);
         if (skipTutorial)
         {
             _gameManagerRef.fadeVlak.gameObject.SetActive(false);
