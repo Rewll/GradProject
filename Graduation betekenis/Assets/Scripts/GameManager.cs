@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [Space] 
     public Image fadeVlak;
 
+    public GameObject tutorialArea;
     public GameObject deurBeginRuimte;
     public Transform deurGeslotenPos;
     public Transform deurOpenPos;

@@ -44,8 +44,20 @@ public class PictureDisplay : MonoBehaviour
         pictures.Add(newDisplayPicture);
     }
 
+    public void EmptyCamera()
+    {
+        foreach (GameObject obj in pictures)
+        {
+            Destroy(obj);
+        }
+        pictures.Clear();
+        
+        PictureAlign();
+    }
+    
     public void ShowPictures()
     {
+        Debug.Log("Showing picture display");
         picturesViewScreen.SetActive(true);
         PictureAlign();
     }

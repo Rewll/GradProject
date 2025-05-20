@@ -30,6 +30,7 @@ public class PlayerMove : BaseState
     private Rigidbody _RB;
     private Player _playerRef;
     
+    
     void Awake()
     {
         _playerRef = GetComponent<Player>();
@@ -44,8 +45,10 @@ public class PlayerMove : BaseState
         
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        
-        _playerRef.kameraDisabledMesh.SetActive(true);
+        if (!_playerRef.playerIsFrozen)
+        {
+            _playerRef.kameraDisabledMesh.SetActive(true);
+        }
     }
     
     public override void OnUpdate()

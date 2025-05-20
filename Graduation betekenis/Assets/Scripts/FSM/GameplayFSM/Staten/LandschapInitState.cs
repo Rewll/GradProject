@@ -19,8 +19,8 @@ public class LandschapInitState : BaseState
     public override void OnEnter()
     {
         //Debug.Log("LandschapState OnEnter");
-        _agent.huidigeStaat = Agent.staten.LandschapState;
-        _gameManagerRef.TeleportPlayer(startplek.position);
+        _agent.huidigeStaat = Agent.staten.LandschapInitState;
+        
         if (skipTutorial)
         {
             _gameManagerRef.fadeVlak.gameObject.SetActive(false);

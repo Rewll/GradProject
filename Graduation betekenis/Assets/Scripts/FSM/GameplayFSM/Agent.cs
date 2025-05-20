@@ -11,7 +11,7 @@ public class Agent : MonoBehaviour
     public enum staten
     {GameStartState,
         FabriekInitState, FabriekTutorialState, FabriekWerkState, FabriekOntsnapState, 
-        LandschapInitState,LandschapTutorialState, LandschapState, 
+        LandschapInitState,LandschapTutorialState, LandschapTutorial2, LandschapState, 
         CollageState}
 
     public staten StartStaat;
@@ -41,6 +41,9 @@ public class Agent : MonoBehaviour
                 break;
             case staten.LandschapTutorialState:
                 startState = typeof(LandschapTutorialState);
+                break;
+            case staten.LandschapTutorial2:
+                startState = typeof(LandschapTutorial2);
                 break;
             case staten.LandschapState:
                 startState = typeof(LandschapState);

@@ -63,6 +63,7 @@ public class Kamera : BaseState
     public override void OnExit()
     {
         SetGameObjects(false);
+        
     }
     
     public void SetGameObjects(bool status)
