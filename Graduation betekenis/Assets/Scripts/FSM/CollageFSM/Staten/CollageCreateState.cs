@@ -24,6 +24,11 @@ public class CollageCreateState : BaseState
     public CollageCuttingManager collCutRef;
     public RawImage collagePreview;
 
+    public GameObject tutorialObject;
+    public GameObject vraagKnop;
+
+    public RectTransform knipselsPos;
+    
     [Header("Collage stuff:")] 
     [SerializeField] private float collageSmallScale;
     [SerializeField] private Vector2 collageSmallPosition;
@@ -38,6 +43,8 @@ public class CollageCreateState : BaseState
     [Header("Picture stuff:")]
     public List<GameObject> picturesInCollage = new List<GameObject>();
     public GameObject selectedPicture;
+    [Space] 
+    public bool tutorial;
     
     
     private void Awake()
@@ -49,6 +56,16 @@ public class CollageCreateState : BaseState
 
     public override void OnEnter()
     {
+        if (tutorial)
+        {
+            tutorialObject.SetActive(true);
+            vraagKnop.SetActive(false);
+        }
+        else
+        {
+            tutorialObject.SetActive(false);
+            vraagKnop.SetActive(true);
+        }
         _collageAgentRef.huidigeStaat = CollageAgent.Collagestaten.CollageCreateState;
         
         collageCreateScreen.SetActive(true);
@@ -130,7 +147,7 @@ public class CollageCreateState : BaseState
             obj.name = "Picture in collage " + picturesInCollage.Count;
             RectTransform rt = obj.GetComponent<RectTransform>();
             rt.SetParent(pictureInCollageParent, false);
-            rt.anchoredPosition = Vector2.zero;
+            rt.anchoredPosition = knipselsPos.anchoredPosition;
             rt.localScale = new Vector3(0.3f, 0.3f, 0.3f);
             rt.GetChild(1).localScale = Vector3.one;
             float scale = rt.GetChild(1).GetComponent<RectTransform>().localScale.x;
