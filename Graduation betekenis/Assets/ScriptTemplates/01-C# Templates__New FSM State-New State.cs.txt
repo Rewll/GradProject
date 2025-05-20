@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class #SCRIPTNAME# : BaseState
+{
+    private void Start()
+    {
+      #NOTRIM#  
+    }
+
+    public override void OnEnter()
+    {
+       #NOTRIM#
+    }
+    
+    public override void OnUpdate()
+    {
+       #NOTRIM#
+    }
+    
+    public override void OnFixedUpdate()
+    {
+        #NOTRIM#
+    }
+    
+    public override void OnExit()
+    {
+       #NOTRIM#
+    }
+}
