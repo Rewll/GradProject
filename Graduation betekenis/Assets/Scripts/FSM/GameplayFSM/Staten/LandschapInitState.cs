@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LandschapState : BaseState
+public class LandschapInitState : BaseState
 {
     private Agent _agent;
     private GameManager _gameManagerRef;
-    
+    public bool skipTutorial;
+    [Header("References: ")]
+    public Transform startplek;
 
     private void Awake()
     {
@@ -18,6 +20,17 @@ public class LandschapState : BaseState
     {
         //Debug.Log("LandschapState OnEnter");
         _agent.huidigeStaat = Agent.staten.LandschapState;
+        _gameManagerRef.TeleportPlayer(startplek.position);
+        if (skipTutorial)
+        {
+            _gameManagerRef.fadeVlak.gameObject.SetActive(false);
+            owner.SwitchState(typeof(LandschapState));
+        }
+        else
+        {
+            _gameManagerRef.fadeVlak.gameObject.SetActive(true);
+            owner.SwitchState(typeof(LandschapTutorialState));
+        }
     }
     
     public override void OnUpdate()
@@ -34,10 +47,4 @@ public class LandschapState : BaseState
     {
        
     }
-
-    public void StartCollageFase()
-    {
-        owner.SwitchState(typeof(CollageState));
-    }
-    
 }
