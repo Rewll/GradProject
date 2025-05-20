@@ -52315,7 +52315,7 @@ PrefabInstance:
       objectReference: {fileID: 427992866}
     - target: {fileID: 1442948885391101463, guid: a90603761dfbec245b11a67978c5b7d0, type: 3}
       propertyPath: m_VersionIndex
-      value: 2486
+      value: 3032
       objectReference: {fileID: 0}
     - target: {fileID: 1483307577811755965, guid: a90603761dfbec245b11a67978c5b7d0, type: 3}
       propertyPath: m_Layer
