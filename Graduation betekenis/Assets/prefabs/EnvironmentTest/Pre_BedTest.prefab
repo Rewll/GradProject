@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 6100767180801297981}
   - component: {fileID: 787053505881857720}
   m_Layer: 0
-  m_Name: BedTest 1
+  m_Name: Pre_BedTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
