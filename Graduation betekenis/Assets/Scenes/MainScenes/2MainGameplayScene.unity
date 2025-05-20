@@ -24242,7 +24242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 147da843abad2af449b12045a17db370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipTutorial: 0
+  skipTutorial: 1
   startplek: {fileID: 480381001}
 --- !u!114 &702569699
 MonoBehaviour:
@@ -74062,7 +74062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aacd4474006ff84b987fa84a1ba7683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  moveSpeed: 10
   groundDrag: 5
   groundCheck: {fileID: 3900337798097792170}
   groundDistance: 0.4
@@ -74072,6 +74072,7 @@ MonoBehaviour:
   grounded: 0
   orientation: {fileID: 6991535946436414448}
   gravityScale: 1
+  underNeathGroundTreshold: -11
 --- !u!114 &8543838662985082308
 MonoBehaviour:
   m_ObjectHideFlags: 0
