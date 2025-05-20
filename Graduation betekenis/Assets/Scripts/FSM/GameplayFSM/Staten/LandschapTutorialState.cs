@@ -50,7 +50,7 @@ public class LandschapTutorialState : BaseState
         _gameManagerRef.fadeVlak.gameObject.SetActive(true);
         _gameManagerRef.fadeVlak.DOFade(1, 0.001f);
         _gameManagerRef.SetFreezePlayer(true);
-        _gameManagerRef.SetPlayerRotation(startPlayerRotation.x, startPlayerRotation.y);
+        //_gameManagerRef.SetPlayerRotation(startPlayerRotation.x, startPlayerRotation.y);
         _gameManagerRef.TeleportPlayer(playerStartPosition.position);
         cameraMesh.SetActive(false);
         fotoMaakKnop.SetActive(false);
