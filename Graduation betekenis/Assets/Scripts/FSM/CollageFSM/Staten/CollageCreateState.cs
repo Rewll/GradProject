@@ -101,7 +101,7 @@ public class CollageCreateState : BaseState
             RawImage image = rt.GetChild(1).GetComponent<RawImage>();
             image.texture = pictures[i];
             rt.SetParent(pictureInCollageParent, false);
-            rt.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+            rt.localScale = new Vector3(0.4f, 0.4f, 0.4f);
             newPictureInCollage.GetComponent<PictureInCollage>().canvas = mainCanvas;
             newPictureInCollage.GetComponent<PictureInCollage>().gameManRef = this;
             picturesInCollage.Add(newPictureInCollage);
@@ -150,11 +150,11 @@ public class CollageCreateState : BaseState
             RectTransform rt = obj.GetComponent<RectTransform>();
             rt.SetParent(pictureInCollageParent, false);
             rt.anchoredPosition = knipselsPos.anchoredPosition;
-            rt.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+            rt.localScale = new Vector3(0.4f, 0.4f, 0.4f);
             rt.GetChild(1).localScale = Vector3.one;
-            float scale = rt.GetChild(1).GetComponent<RectTransform>().localScale.x;
-            float newScale = scale + (scale * 0.08f);
-            rt.GetChild(0).localScale = new Vector3(newScale,newScale,newScale);
+            float pictureScale = rt.GetChild(1).GetComponent<RectTransform>().localScale.x;
+            float selectionImageScale = pictureScale + (pictureScale * 0.08f);
+            rt.GetChild(0).localScale = new Vector3(selectionImageScale,selectionImageScale,selectionImageScale);
             
             picturesInCollage.Add(obj);
         }
