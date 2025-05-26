@@ -8,12 +8,11 @@ public class PlayerLook : MonoBehaviour
 
     public float xRotation;
     public float yRotation;
-    
-    // Update is called once per frame
+
     public void OnUpdate()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxis("Mouse X") * (mouseSensitivity * 0.1f);
+        float mouseY = Input.GetAxis("Mouse Y") * (mouseSensitivity * 0.1f);
         
         yRotation += mouseX;
         xRotation -= mouseY;

@@ -6,8 +6,9 @@ public class FabriekInitState : BaseState
 {
     private FabriekAgent _fabriekAgentRef;
     private FabriekManager _fabriekManagerRef;
-
+    
     public bool skipTutorial;
+    public Transform fabriekStartPos;
     
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class FabriekInitState : BaseState
     {
         _fabriekAgentRef.huidigeStaat = FabriekAgent.FabriekStaten.FabriekInitState;
         _fabriekManagerRef.SetDeur(false);
+        _fabriekManagerRef.playerAgentRef.playerMoveRef.Teleport(fabriekStartPos.position);
         
         if (skipTutorial)
         {

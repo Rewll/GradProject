@@ -6,7 +6,8 @@ public class LandschapInitState : BaseState
 {
     private LandschapAgent _landschapAgent;
     private LandschapManager _landschapManagerRef;
-    public bool skipTutorial;
+    public bool skipTutorial1;
+    public bool skipTutorial2;
     [Header("References: ")]
     public Transform startplek;
 
@@ -21,10 +22,18 @@ public class LandschapInitState : BaseState
         //Debug.Log("LandschapState OnEnter");
         _landschapAgent.huidigeStaat = LandschapAgent.LandschapStaten.LandschapInitState;
         _landschapManagerRef.audioManRef.PlaySound(0);
-        if (skipTutorial)
+        if (skipTutorial1)
         {
-            _landschapManagerRef.fadeVlak.gameObject.SetActive(false);
-            owner.SwitchState(typeof(LandschapState));
+            if (skipTutorial2)
+            {
+                _landschapManagerRef.fadeVlak.gameObject.SetActive(false);
+                owner.SwitchState(typeof(LandschapState));
+            }
+            else
+            {
+                owner.SwitchState(typeof(LandschapTutorial2));
+            }
+
         }
         else
         {

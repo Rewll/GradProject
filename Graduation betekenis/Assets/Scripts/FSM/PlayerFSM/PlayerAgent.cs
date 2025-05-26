@@ -19,6 +19,7 @@ public class PlayerAgent : MonoBehaviour
     [Space]
     [Header("References")]
     public PlayerLook playerLookRef;
+    public PlayerMove playerMoveRef;
     [Space]
     public GameObject kameraDisabledMesh;
     public GameObject kamerUseMesh;
