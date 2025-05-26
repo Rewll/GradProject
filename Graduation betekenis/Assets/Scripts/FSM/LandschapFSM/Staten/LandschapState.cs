@@ -35,7 +35,7 @@ public class LandschapState : BaseState
         Tween fadeTween = _landschapManagerRef.fadeVlak.DOFade(0, fadeTime);
         yield return fadeTween.WaitForCompletion();
         _landschapManagerRef.fadeVlak.gameObject.SetActive(false);
-        _landschapManagerRef.playerAgentRef.SetPlayerMode(PlayerStates.WalkLookState);
+        _landschapManagerRef.playerAgentRef.SetPlayerState(PlayerStates.WalkLookState);
     }
     
     public override void OnUpdate()

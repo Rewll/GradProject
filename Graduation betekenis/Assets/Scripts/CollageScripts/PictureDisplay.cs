@@ -57,7 +57,7 @@ public class PictureDisplay : MonoBehaviour
     
     public void ShowPictures()
     {
-        Debug.Log("Showing picture display");
+        //Debug.Log("Showing picture display");
         picturesViewScreen.SetActive(true);
         PictureAlign();
     }

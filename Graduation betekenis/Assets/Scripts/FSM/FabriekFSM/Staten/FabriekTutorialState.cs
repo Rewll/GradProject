@@ -20,19 +20,21 @@ public class FabriekTutorialState : BaseState
         
         _fabriekManagerRef.fadeVlak.gameObject.SetActive(true);
         _fabriekManagerRef.fadeVlak.DOFade(1, 0.001f);
-        //_fabriekManagerRef.SetFreezePlayer(true);
+        _fabriekManagerRef.playerAgentRef.SetPlayerState(PlayerStates.SleepState);
         StartCoroutine(TutorialRoutine());
     }
 
     IEnumerator TutorialRoutine()
     {
         yield return new WaitForSeconds(1f);
-        //_landschapManagerRef.SetPlayerRotation(0, 90);
+        _fabriekManagerRef.playerAgentRef.SetPlayerLookDirection(0,90);
+        
         Tween fadeTween = _fabriekManagerRef.fadeVlak.DOFade(0, 2f);
         yield return fadeTween.WaitForCompletion();
         _fabriekManagerRef.fadeVlak.gameObject.SetActive(false);
-        //_landschapManagerRef.SetFreezePlayer(false);
+        _fabriekManagerRef.playerAgentRef.SetPlayerState(PlayerStates.WalkLookState);
         //tutorial dingen
+        
         yield return new WaitForSeconds(2f);
         owner.SwitchState(typeof(FabriekWerkState));
     }

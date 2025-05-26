@@ -14,6 +14,8 @@ public class PlayerKameraState : BaseState
     public RenderTexture rendText;
     [Space] 
     public RawImage latestPictureShowImage;
+
+    private Texture2D _fotoTexture;
     
     private void Awake()
     {
@@ -74,23 +76,32 @@ public class PlayerKameraState : BaseState
         }
     }
     
-    public void MakePicture()
+    public void MakeLandschapPicture()
     {
-        StartCoroutine(PictureRoutine());
+        StartCoroutine(PictureRoutine(true));
+        
     }
 
-    IEnumerator PictureRoutine()
+    public void MakeFabriekPicture()
+    {
+        StartCoroutine(PictureRoutine(false));
+    }
+
+    IEnumerator PictureRoutine(bool save)
     {
         yield return new WaitForEndOfFrame();
         RenderTexture.active = rendText;
         int width = rendText.width;
         int height = rendText.height;
-        Texture2D fotoTexture = new Texture2D(width, height, TextureFormat.RGB24, false);
+        _fotoTexture = new Texture2D(width, height, TextureFormat.RGB24, false);
         Rect rect = new Rect(0, 0, width, height);
-        fotoTexture.ReadPixels(rect, 0, 0);
-        fotoTexture.Apply();
-        latestPictureShowImage.texture = fotoTexture;
+        _fotoTexture.ReadPixels(rect, 0, 0);
+        _fotoTexture.Apply();
+        latestPictureShowImage.texture = _fotoTexture;
         //pictureTextures.Add(fotoTexture);
-        picDisplayRef.MakePictureGameObject(fotoTexture);
+        if (save)
+        {
+            picDisplayRef.MakePictureGameObject(_fotoTexture);
+        }
     }
 }

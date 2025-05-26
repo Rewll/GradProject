@@ -17,7 +17,7 @@ public class PlayerAgent : MonoBehaviour
     [Space]
     [Header("Script References:")]
     public PlayerLook playerLookRef;
-    public PlayerWalkLookState playerWalkLookStateRef;
+    public PlayerMove playerMoveRef;
     [Space]
     [Header("Object References:")]
     public GameObject kameraDisabledMesh;
@@ -28,7 +28,7 @@ public class PlayerAgent : MonoBehaviour
     [Header("Player Wide Variables:")]
     public KeyCode CameraKnop;
     
-    private void Start()
+    private void Awake()
     {
         switch (StartStaat)
         {
@@ -57,10 +57,16 @@ public class PlayerAgent : MonoBehaviour
 
     public void TeleportPlayer(Vector3 destinationPos)
     {
-        
+        playerMoveRef.Teleport(destinationPos);
     }
 
-    public void SetPlayerMode(PlayerStates state)
+    public void SetPlayerLookDirection(float xRotation, float yRotation)
+    {
+        playerLookRef.xRotation = xRotation;
+        playerLookRef.yRotation = yRotation;
+    }
+    
+    public void SetPlayerState(PlayerStates state)
     {
         switch (state)
         {

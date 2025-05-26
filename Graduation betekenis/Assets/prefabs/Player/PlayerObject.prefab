@@ -159,13 +159,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartStaat: 0
   huidigeStaat: 0
-  playerLookRef: {fileID: 0}
-  playerWalkLookStateRef: {fileID: 0}
-  kameraDisabledMesh: {fileID: 0}
-  kamerUseMesh: {fileID: 0}
+  playerLookRef: {fileID: 2885364469424080019}
+  playerMoveRef: {fileID: 1420534758139966838}
+  kameraDisabledMesh: {fileID: 7889820702737513920}
+  kamerUseMesh: {fileID: 4863041895375023448}
   pictureScreen: {fileID: 0}
-  kameraModeGameObjects: []
-  CameraKnop: 0
+  kameraModeGameObjects:
+  - {fileID: 4863041895375023448}
+  CameraKnop: 101
 --- !u!114 &6686674440392007363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aacd4474006ff84b987fa84a1ba7683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMoveRef: {fileID: 0}
 --- !u!114 &244336978272902508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1370,18 +1370,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea78cd3b133fcb645842280b13b86fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  groundDrag: 0
+  moveSpeed: 10
+  groundDrag: 5
   groundCheck: {fileID: 7791079645658110036}
   groundDistance: 0.4
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   grounded: 0
   orientation: {fileID: 2860106796569405344}
   gravityScale: 1
-  playerCanFallBelowGround: 0
-  underNeathGroundTreshold: 0
+  underNeathGroundTreshold: -11
 --- !u!1 &6810232129995629567
 GameObject:
   m_ObjectHideFlags: 0

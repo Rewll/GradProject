@@ -49,7 +49,7 @@ public class LandschapTutorialState : BaseState
         _landschapManagerRef.tutorialArea.SetActive(true);
         _landschapManagerRef.fadeVlak.gameObject.SetActive(true);
         _landschapManagerRef.fadeVlak.DOFade(1, 0.001f);
-        _landschapManagerRef.playerAgentRef.SetPlayerMode(PlayerStates.SleepState);
+        _landschapManagerRef.playerAgentRef.SetPlayerState(PlayerStates.SleepState);
         //_gameManagerRef.SetPlayerRotation(startPlayerRotation.x, startPlayerRotation.y);
         _landschapManagerRef.playerAgentRef.TeleportPlayer(playerStartPosition.position);
         cameraMesh.SetActive(false);
@@ -66,7 +66,7 @@ public class LandschapTutorialState : BaseState
         yield return fadeTween.WaitForCompletion();
         _landschapManagerRef.fadeVlak.gameObject.SetActive(false);
         yield return new WaitForSeconds(2f);
-        _landschapManagerRef.playerAgentRef.SetPlayerMode(PlayerStates.WalkLookState);
+        _landschapManagerRef.playerAgentRef.SetPlayerState(PlayerStates.WalkLookState);
         tutorialObjects[0].SetActive(true);
         yield return new WaitUntil(() => CheckForWalkInput());
         yield return new WaitUntil(() => CheckForLookInput());

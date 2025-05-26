@@ -13,7 +13,7 @@ public class PlayerSleepState : BaseState
 
     public override void OnEnter()
     {
-       
+        _playerAgentRef.huidigeStaat = PlayerStates.SleepState;
     }
     
     public override void OnUpdate()

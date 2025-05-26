@@ -19,12 +19,12 @@ public class LandschapTutorial2 : BaseState
     {
         _landschapAgent = GetComponent<LandschapAgent>();
         _landschapManagerRef = GetComponent<LandschapManager>();
-        
     }
     public override void OnEnter()
     {
         _landschapAgent.huidigeStaat = LandschapAgent.LandschapStaten.LandschapTutorialState;
-        //_landschapManagerRef.SetFreezePlayer(true);
+
+        _landschapManagerRef.playerAgentRef.SetPlayerState(PlayerStates.SleepState);
         tutorial2Scherm.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;

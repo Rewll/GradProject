@@ -18,7 +18,7 @@ public class FabriekWerkState : BaseState
     public override void OnEnter()
     {
         _fabriekAgentRef.huidigeStaat = FabriekAgent.FabriekStaten.FabriekWerkState;
-        StartCoroutine(werkRoutine());
+        //StartCoroutine(werkRoutine());
     }
     
     public override void OnUpdate()

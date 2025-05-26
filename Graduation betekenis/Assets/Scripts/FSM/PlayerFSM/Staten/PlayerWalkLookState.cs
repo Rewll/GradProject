@@ -4,8 +4,6 @@ using UnityEngine;
 public class PlayerWalkLookState : BaseState
 {
     private PlayerAgent _playerAgentRef;
-    [SerializeField] private PlayerMove playerMoveRef;
-    
     
     void Awake()
     {
@@ -23,8 +21,9 @@ public class PlayerWalkLookState : BaseState
     
     public override void OnUpdate()
     {
-        playerMoveRef.MyInput();
-        playerMoveRef.SpeedControl();
+        _playerAgentRef.playerMoveRef.MyInput();
+        _playerAgentRef.playerMoveRef.GroundCheck();
+        _playerAgentRef.playerMoveRef.SpeedControl();
         _playerAgentRef.playerLookRef.MouseLook();
         
         if (Input.GetKeyDown(_playerAgentRef.CameraKnop))
@@ -34,17 +33,12 @@ public class PlayerWalkLookState : BaseState
     }
     public override void OnFixedUpdate()
     {
-        playerMoveRef.MovePlayer();
-        playerMoveRef.Gravity();
+        _playerAgentRef.playerMoveRef.MovePlayer();
+        _playerAgentRef.playerMoveRef.Gravity();
     }
     
     public override void OnExit()
     {
         _playerAgentRef.kameraDisabledMesh.SetActive(false);
-    }
-    public void SetPlayerRotation(float xRotation, float yRotation)
-    {
-        _playerAgentRef.playerLookRef.xRotation = xRotation;
-        _playerAgentRef.playerLookRef.yRotation = yRotation;
     }
 }

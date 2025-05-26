@@ -21,6 +21,7 @@ public class LandschapInitState : BaseState
     {
         //Debug.Log("LandschapState OnEnter");
         _landschapAgent.huidigeStaat = LandschapAgent.LandschapStaten.LandschapInitState;
+        
         _landschapManagerRef.audioManRef.PlaySound(0);
         if (skipTutorial1)
         {
