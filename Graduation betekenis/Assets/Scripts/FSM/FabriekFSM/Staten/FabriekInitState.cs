@@ -1,0 +1,49 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class FabriekInitState : BaseState
+{
+    private FabriekAgent _fabriekAgentRef;
+    private FabriekManager _fabriekManagerRef;
+
+    public bool skipTutorial;
+    
+    private void Awake()
+    {
+        _fabriekAgentRef = GetComponent<FabriekAgent>();
+        _fabriekManagerRef = GetComponent<FabriekManager>();
+    }
+
+    public override void OnEnter()
+    {
+        _fabriekAgentRef.huidigeStaat = FabriekAgent.FabriekStaten.FabriekInitState;
+        _fabriekManagerRef.SetDeur(false);
+        
+        if (skipTutorial)
+        {
+            _fabriekManagerRef.fadeVlak.gameObject.SetActive(false);
+            owner.SwitchState(typeof(FabriekWerkState));
+        }
+        else
+        {
+            _fabriekManagerRef.fadeVlak.gameObject.SetActive(true);
+            owner.SwitchState(typeof(FabriekTutorialState));
+        }
+    }
+    
+    public override void OnUpdate()
+    {
+       
+    }
+    
+    public override void OnFixedUpdate()
+    {
+        
+    }
+    
+    public override void OnExit()
+    {
+       
+    }
+}

@@ -14,8 +14,10 @@ public class PlayerMove : BaseState
     public Transform orientation;
     [Space] [Header("Gravity")] 
     public float gravityScale = 1.0f;
+
+    [SerializeField] private bool playerCanFallBelowGround;
     [SerializeField] private float underNeathGroundTreshold;
-        
+    
     [Space] 
     private static float _globalGravity = -9.81f;
     
@@ -23,33 +25,33 @@ public class PlayerMove : BaseState
     private float _verticalInput;
     private Vector3 _moveDirection;
     private Rigidbody _RB;
-    private Player _playerRef;
+    private PlayerAgent _playerAgentRef;
     Vector3 lastGroundPos;
     
     
     void Awake()
     {
-        _playerRef = GetComponent<Player>();
+        _playerAgentRef = GetComponent<PlayerAgent>();
         _RB = GetComponent<Rigidbody>();
         _RB.freezeRotation = true;
         _RB.linearDamping = groundDrag;
-        _playerRef.kameraDisabledMesh.SetActive(false);
+        _playerAgentRef.kameraDisabledMesh.SetActive(false);
     }
     public override void OnEnter()
     {
-        _playerRef.huidigeStaat = playerStates.WalkLookMode;
+        _playerAgentRef.huidigeStaat = playerStates.WalkLookMode;
         
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        if (!_playerRef.playerIsFrozen)
+        if (!_playerAgentRef.playerIsFrozen)
         {
-            _playerRef.kameraDisabledMesh.SetActive(true);
+            _playerAgentRef.kameraDisabledMesh.SetActive(true);
         }
     }
     
     public override void OnUpdate()
     {
-        if (!_playerRef.playerIsFrozen)
+        if (!_playerAgentRef.playerIsFrozen)
         {
             // ground check
             grounded = Physics.CheckSphere(groundCheck.position, groundDistance,whatIsGround);
@@ -58,17 +60,20 @@ public class PlayerMove : BaseState
                 lastGroundPos = transform.position;
             }
 
-            _playerRef.playerLookRef.OnUpdate();
+            _playerAgentRef.playerLookRef.OnUpdate();
             MyInput();
             SpeedControl();
-            KeepplayerAfloat();
+            if (playerCanFallBelowGround)
+            {
+                KeepplayerAfloat();
+            }
 
             // handle drag
             /*if (grounded)
                 RB.linearDamping = groundDrag;
             else
                 RB.linearDamping = 0;*/
-            if (Input.GetKeyDown(_playerRef.CameraKnop))
+            if (Input.GetKeyDown(_playerAgentRef.CameraKnop))
             {
                 owner.SwitchState(typeof(Kamera));
             }
@@ -76,7 +81,7 @@ public class PlayerMove : BaseState
     }
     public override void OnFixedUpdate()
     {
-        if (!_playerRef.playerIsFrozen)
+        if (!_playerAgentRef.playerIsFrozen)
         {
             MovePlayer();
             Gravity();
@@ -85,7 +90,7 @@ public class PlayerMove : BaseState
     
     public override void OnExit()
     {
-        _playerRef.kameraDisabledMesh.SetActive(false);
+        _playerAgentRef.kameraDisabledMesh.SetActive(false);
     }
     
     void MyInput()
@@ -132,5 +137,10 @@ public class PlayerMove : BaseState
             //Debug.Log("speler onderwater!");
             Teleport(lastGroundPos);
         }
+    }
+    public void SetPlayerRotation(float xRotation, float yRotation)
+    {
+        _playerAgentRef.playerLookRef.xRotation = xRotation;
+        _playerAgentRef.playerLookRef.yRotation = yRotation;
     }
 }

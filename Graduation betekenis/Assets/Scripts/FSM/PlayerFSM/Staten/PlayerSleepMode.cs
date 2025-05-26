@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerSleepMode : BaseState
 {
-    private Player _playerRef;
+    private PlayerAgent _playerAgentRef;
 
     void Awake()
     {
-        _playerRef = GetComponent<Player>();
+        _playerAgentRef = GetComponent<PlayerAgent>();
     }
 
     public override void OnEnter()

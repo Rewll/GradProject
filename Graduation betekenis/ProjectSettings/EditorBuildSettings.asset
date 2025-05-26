@@ -6,13 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainScenes/1 StartScherm.unity
+    path: Assets/Scenes/MainScenes/0 StartScherm.unity
     guid: 95b3acd0a579eb949a0635e70cae69e1
   - enabled: 1
-    path: Assets/Scenes/MainScenes/2MainGameplayScene.unity
+    path: Assets/Scenes/MainScenes/1 FabriekScene.unity
+    guid: a898e204822488943a896075aecbd895
+  - enabled: 1
+    path: Assets/Scenes/MainScenes/2 LandschapScene.unity
     guid: 4fcf96fc47933474bbd48e638f8bd2db
   - enabled: 1
-    path: Assets/Scenes/MainScenes/3CollageScene.unity
+    path: Assets/Scenes/MainScenes/3 CollageScene.unity
     guid: 1259786076ebeb44381f20a83207bcfb
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

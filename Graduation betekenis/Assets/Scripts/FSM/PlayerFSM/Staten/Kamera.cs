@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class Kamera : BaseState
 {
-    private Player playerRef;
+    private PlayerAgent _playerAgentRef;
     public PictureDisplay picDisplayRef;
     [Space]
     [Header("Kamera variables")]
@@ -17,14 +17,14 @@ public class Kamera : BaseState
     
     private void Awake()
     {
-        playerRef = GetComponent<Player>();
+        _playerAgentRef = GetComponent<PlayerAgent>();
         SetGameObjects(false);  
     }
 
     public override void OnEnter()
     {
         //Debug.Log("kamera");
-        playerRef.huidigeStaat = playerStates.CameraMode;
+        _playerAgentRef.huidigeStaat = playerStates.CameraMode;
         
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -34,7 +34,7 @@ public class Kamera : BaseState
     public override void OnUpdate()
     {
         //Debug.Log("kamera");
-        if (Input.GetKeyDown(playerRef.CameraKnop))
+        if (Input.GetKeyDown(_playerAgentRef.CameraKnop))
         {
             owner.SwitchState(typeof(PlayerMove));
             return;
@@ -42,7 +42,7 @@ public class Kamera : BaseState
 
         if (Input.GetMouseButton(1))
         {
-            playerRef.playerLookRef.OnUpdate();
+            _playerAgentRef.playerLookRef.OnUpdate();
             if (Cursor.lockState == CursorLockMode.None)
             {
                 Cursor.visible = false;
@@ -68,7 +68,7 @@ public class Kamera : BaseState
     
     public void SetGameObjects(bool status)
     {
-        foreach (GameObject kameraGObject in playerRef.kameraModeGameObjects)
+        foreach (GameObject kameraGObject in _playerAgentRef.kameraModeGameObjects)
         {
             kameraGObject.SetActive(status);
         }
