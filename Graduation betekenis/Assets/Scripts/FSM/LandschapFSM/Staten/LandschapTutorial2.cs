@@ -24,7 +24,7 @@ public class LandschapTutorial2 : BaseState
     public override void OnEnter()
     {
         _landschapAgent.huidigeStaat = LandschapAgent.LandschapStaten.LandschapTutorialState;
-        _landschapManagerRef.SetFreezePlayer(true);
+        //_landschapManagerRef.SetFreezePlayer(true);
         tutorial2Scherm.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;

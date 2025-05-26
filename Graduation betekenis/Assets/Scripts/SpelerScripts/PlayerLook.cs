@@ -9,7 +9,7 @@ public class PlayerLook : MonoBehaviour
     public float xRotation;
     public float yRotation;
 
-    public void OnUpdate()
+    public void MouseLook()
     {
         float mouseX = Input.GetAxis("Mouse X") * (mouseSensitivity * 0.1f);
         float mouseY = Input.GetAxis("Mouse Y") * (mouseSensitivity * 0.1f);

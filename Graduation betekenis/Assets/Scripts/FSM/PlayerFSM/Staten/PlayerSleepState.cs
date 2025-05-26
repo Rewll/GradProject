@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSleepMode : BaseState
+public class PlayerSleepState : BaseState
 {
     private PlayerAgent _playerAgentRef;
 

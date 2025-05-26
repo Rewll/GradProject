@@ -20,7 +20,7 @@ public class FabriekInitState : BaseState
     {
         _fabriekAgentRef.huidigeStaat = FabriekAgent.FabriekStaten.FabriekInitState;
         _fabriekManagerRef.SetDeur(false);
-        _fabriekManagerRef.playerAgentRef.playerMoveRef.Teleport(fabriekStartPos.position);
+        _fabriekManagerRef.playerAgentRef.TeleportPlayer(fabriekStartPos.position);
         
         if (skipTutorial)
         {

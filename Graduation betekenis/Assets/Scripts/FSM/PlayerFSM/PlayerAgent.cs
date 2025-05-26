@@ -4,42 +4,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public enum playerStates {WalkLookMode, CameraMode, SleepMode}
+public enum PlayerStates {WalkLookState, KameraState, SleepState}
 
 public class PlayerAgent : MonoBehaviour
 {
     private FSM fsm;
     private System.Type startState;
+    
     [Header("Player States:")]
-    public playerStates StartStaat;
-    public playerStates huidigeStaat;
+    public PlayerStates StartStaat;
+    public PlayerStates huidigeStaat;
     [Space]
-    [Header("Player Wide Variables:")]
-    public KeyCode CameraKnop;
-    [Space]
-    [Header("References")]
+    [Header("Script References:")]
     public PlayerLook playerLookRef;
-    public PlayerMove playerMoveRef;
+    public PlayerWalkLookState playerWalkLookStateRef;
     [Space]
+    [Header("Object References:")]
     public GameObject kameraDisabledMesh;
     public GameObject kamerUseMesh;
     public GameObject pictureScreen;
     public List<GameObject> kameraModeGameObjects = new List<GameObject>();
     [Space]
-    public bool playerIsFrozen;
+    [Header("Player Wide Variables:")]
+    public KeyCode CameraKnop;
     
     private void Start()
     {
         switch (StartStaat)
         {
-            case playerStates.WalkLookMode:
-                startState = typeof(PlayerMove);
+            case PlayerStates.WalkLookState:
+                startState = typeof(PlayerWalkLookState);
                 break;
-            case playerStates.CameraMode:
-                startState = typeof(Kamera);
+            case PlayerStates.KameraState:
+                startState = typeof(PlayerKameraState);
                 break;
-            case playerStates.SleepMode:
-                startState = typeof(PlayerSleepMode);
+            case PlayerStates.SleepState:
+                startState = typeof(PlayerSleepState);
                 break;
         }
         huidigeStaat = StartStaat;
@@ -53,5 +53,26 @@ public class PlayerAgent : MonoBehaviour
     void FixedUpdate()
     {
         fsm.OnFixedUpdate();
+    }
+
+    public void TeleportPlayer(Vector3 destinationPos)
+    {
+        
+    }
+
+    public void SetPlayerMode(PlayerStates state)
+    {
+        switch (state)
+        {
+            case PlayerStates.WalkLookState:
+                fsm.SwitchState(typeof(PlayerWalkLookState));
+                break;
+            case PlayerStates.KameraState:
+                fsm.SwitchState(typeof(PlayerKameraState));
+                break;
+            case PlayerStates.SleepState:
+                fsm.SwitchState(typeof(PlayerSleepState));
+                break;
+        }
     }
 }

@@ -26,7 +26,7 @@ public class LandschapState : BaseState
 
         
         
-        _landschapManagerRef.TeleportPlayer(startplek.position);
+        _landschapManagerRef.playerAgentRef.TeleportPlayer(startplek.position);
         StartCoroutine(StartRoutine());
     }
 
@@ -35,7 +35,7 @@ public class LandschapState : BaseState
         Tween fadeTween = _landschapManagerRef.fadeVlak.DOFade(0, fadeTime);
         yield return fadeTween.WaitForCompletion();
         _landschapManagerRef.fadeVlak.gameObject.SetActive(false);
-        _landschapManagerRef.SetFreezePlayer(false);
+        _landschapManagerRef.playerAgentRef.SetPlayerMode(PlayerStates.WalkLookState);
     }
     
     public override void OnUpdate()

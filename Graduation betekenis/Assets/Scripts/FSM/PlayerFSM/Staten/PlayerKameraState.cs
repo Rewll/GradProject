@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class Kamera : BaseState
+public class PlayerKameraState : BaseState
 {
     private PlayerAgent _playerAgentRef;
     public PictureDisplay picDisplayRef;
@@ -24,7 +24,7 @@ public class Kamera : BaseState
     public override void OnEnter()
     {
         //Debug.Log("kamera");
-        _playerAgentRef.huidigeStaat = playerStates.CameraMode;
+        _playerAgentRef.huidigeStaat = PlayerStates.KameraState;
         
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -42,12 +42,12 @@ public class Kamera : BaseState
 
         if (Input.GetMouseButton(1))
         {
-            _playerAgentRef.playerLookRef.OnUpdate();
             if (Cursor.lockState == CursorLockMode.None)
             {
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
             }
+            _playerAgentRef.playerLookRef.MouseLook();
         }
         else if (Cursor.lockState == CursorLockMode.Locked)
         {
@@ -64,7 +64,6 @@ public class Kamera : BaseState
     public override void OnExit()
     {
         SetGameObjects(false);
-        
     }
     
     public void SetGameObjects(bool status)
