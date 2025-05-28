@@ -75,19 +75,13 @@ public class PlayerKameraState : BaseState
             kameraGObject.SetActive(status);
         }
     }
+
+    public void MakePicture()
+    {
+        StartCoroutine(PictureRoutine(_playerAgentRef.inFabriek));
+    }
     
-    public void MakeLandschapPicture()
-    {
-        StartCoroutine(PictureRoutine(true));
-        
-    }
-
-    public void MakeFabriekPicture()
-    {
-        StartCoroutine(PictureRoutine(false));
-    }
-
-    IEnumerator PictureRoutine(bool save)
+    IEnumerator PictureRoutine(bool Fabriek)
     {
         yield return new WaitForEndOfFrame();
         RenderTexture.active = rendText;
@@ -99,9 +93,19 @@ public class PlayerKameraState : BaseState
         _fotoTexture.Apply();
         latestPictureShowImage.texture = _fotoTexture;
         //pictureTextures.Add(fotoTexture);
-        if (save)
+        if (!Fabriek)
         {
             picDisplayRef.MakePictureGameObject(_fotoTexture);
         }
+
+        if (Fabriek)
+        {
+            if (!_playerAgentRef.heeftFoto)
+            {
+                _playerAgentRef.heeftFoto = true;
+            }
+            _playerAgentRef.fabriekFoto = _fotoTexture;
+        }
+
     }
 }

@@ -1,9 +1,11 @@
-using System.Transactions;
 using UnityEngine;
 
 public class PlayerWalkLookState : BaseState
 {
     private PlayerAgent _playerAgentRef;
+    [Header("Fabriek Variables:")]
+    [SerializeField] private LayerMask fabriekLayer;
+    [SerializeField] private float raycastLength;
     
     void Awake()
     {
@@ -29,8 +31,32 @@ public class PlayerWalkLookState : BaseState
         if (Input.GetKeyDown(_playerAgentRef.CameraKnop))
         {
             owner.SwitchState(typeof(PlayerKameraState));
+            return;
+        }
+
+        if (_playerAgentRef.inFabriek && _playerAgentRef.heeftFoto)
+        {
+            FotoOphangRaycast();
         }
     }
+
+    void FotoOphangRaycast()
+    {
+        Transform raycastPos = _playerAgentRef.fabriekRaycastPos;
+        RaycastHit hit;
+        Debug.DrawRay(raycastPos.position, raycastPos.TransformDirection(Vector3.forward) * raycastLength, Color.yellow); 
+        if (Physics.Raycast(raycastPos.position, raycastPos.TransformDirection(Vector3.forward), out hit, raycastLength, fabriekLayer))
+        {
+            //Debug.Log("Did Hit"); 
+            if (Input.GetMouseButton(0))
+            {
+                hit.transform.gameObject.GetComponent<FotoOphangManager>().HangFotoOp(_playerAgentRef.fabriekFoto);
+                _playerAgentRef.heeftFoto = false;
+                _playerAgentRef.fabriekFoto = null;
+            }
+        }
+    }
+    
     public override void OnFixedUpdate()
     {
         _playerAgentRef.playerMoveRef.MovePlayer();

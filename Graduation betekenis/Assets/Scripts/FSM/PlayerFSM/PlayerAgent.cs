@@ -24,9 +24,14 @@ public class PlayerAgent : MonoBehaviour
     public GameObject kamerUseMesh;
     public GameObject pictureScreen;
     public List<GameObject> kameraModeGameObjects = new List<GameObject>();
+    public Transform fabriekRaycastPos;
     [Space]
     [Header("Player Wide Variables:")]
     public KeyCode CameraKnop;
+    public bool inFabriek;
+    [Space] 
+    public bool heeftFoto;
+    public Texture fabriekFoto;
     
     private void Awake()
     {

@@ -326,7 +326,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &180965841
 Transform:
   m_ObjectHideFlags: 0
@@ -2029,7 +2029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartStaat: 0
-  huidigeStaat: 0
+  huidigeStaat: 3
 --- !u!114 &702569691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2119,7 +2119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 147da843abad2af449b12045a17db370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipTutorial1: 1
+  skipTutorial1: 0
   skipTutorial2: 0
   startplek: {fileID: 480381001}
 --- !u!114 &702569699
@@ -11467,10 +11467,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: KameraUI
       objectReference: {fileID: 0}
+    - target: {fileID: 915974595445182513, guid: c56c3ae3a4fc3a345b49d6a24f6a1456, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1003912433999014416, guid: c56c3ae3a4fc3a345b49d6a24f6a1456, type: 3}
       propertyPath: picStorageRef
       value: 
       objectReference: {fileID: 164102919}
+    - target: {fileID: 2967421481034257416, guid: c56c3ae3a4fc3a345b49d6a24f6a1456, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 83
+      objectReference: {fileID: 0}
     - target: {fileID: 5490794441367647626, guid: c56c3ae3a4fc3a345b49d6a24f6a1456, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -11481,7 +11489,7 @@ PrefabInstance:
       objectReference: {fileID: 702569693}
     - target: {fileID: 5490794441367647626, guid: c56c3ae3a4fc3a345b49d6a24f6a1456, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MakeLandschapPicture
+      value: MakePicture
       objectReference: {fileID: 0}
     - target: {fileID: 8776422179816622625, guid: c56c3ae3a4fc3a345b49d6a24f6a1456, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -11519,7 +11527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2737540230103041981, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -55.703575
+      value: -58.08
       objectReference: {fileID: 0}
     - target: {fileID: 2737540230103041981, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11527,7 +11535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2737540230103041981, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16.425873
+      value: 45.46
       objectReference: {fileID: 0}
     - target: {fileID: 2737540230103041981, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11562,9 +11570,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7527875416245054749}
     - target: {fileID: 3197382577623612983, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
-      propertyPath: kameraModeGameObjects.Array.size
-      value: 2
-      objectReference: {fileID: 0}
+      propertyPath: 'kameraModeGameObjects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1617200747}
     - target: {fileID: 3197382577623612983, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
       propertyPath: 'kameraModeGameObjects.Array.data[1]'
       value: 
@@ -11577,6 +11585,14 @@ PrefabInstance:
       propertyPath: latestPictureShowImage
       value: 
       objectReference: {fileID: 1674413344}
+    - target: {fileID: 4863041895375023448, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633728932498346029, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7654348416863587227, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
       propertyPath: pictureScreen
       value: 
