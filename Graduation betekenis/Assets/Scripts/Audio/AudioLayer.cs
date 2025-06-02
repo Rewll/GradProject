@@ -76,26 +76,26 @@ public class AudioLayer : MonoBehaviour
         geluid g = FindSound(geluidsIndex);
         g.source.Stop();
     }
-    public void FadeIn(int geluidsIndex)
+    public void FadeInSound(int geluidsIndex, float fadeTime)
     {
         geluid g = FindSound(geluidsIndex);
-        StartCoroutine(FadeInRoutine(geluidsIndex, g.source, 2f));
+        StartCoroutine(FadeInRoutine(geluidsIndex, g.source, fadeTime));
     }
     
     IEnumerator FadeInRoutine(int geluidsIndex,AudioSource audioSource, float fadeTime) {
         PlaySound(geluidsIndex);
         audioSource.Play();
         audioSource.volume = 0f;
-        while (audioSource.volume < 1) {
+        while (audioSource.volume < FindSound(geluidsIndex).volume) {
             audioSource.volume += Time.deltaTime / fadeTime;
             yield return null;
         }
     }
 
-    public void FadeOut(int geluidsIndex)
+    public void FadeOutSound(int geluidsIndex, float fadeTime)
     {
         geluid g = FindSound(geluidsIndex);
-        StartCoroutine(FadeOutRoutine(geluidsIndex, g.source, 2f));
+        StartCoroutine(FadeOutRoutine(geluidsIndex, g.source, fadeTime));
     }
     
     IEnumerator FadeOutRoutine(int geluidsIndex,AudioSource audioSource, float fadeTime) {

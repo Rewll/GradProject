@@ -4,6 +4,7 @@ public class PlayerMove : MonoBehaviour
 {
     [Space] [Header("Movement")] 
     public float moveSpeed;
+    private float _currentSpeed;
     public float groundDrag;
     [Space] [Header("Ground Check")] 
     public Transform groundCheck;
@@ -56,17 +57,25 @@ public class PlayerMove : MonoBehaviour
     public void MovePlayer()
     {
         _moveDirection = orientation.forward * _verticalInput + orientation.right * _horizontalInput;
-        _rb.AddForce(_moveDirection.normalized * (moveSpeed * 10f), ForceMode.Force);
+        _rb.AddForce(_moveDirection.normalized * (_currentSpeed * 10f), ForceMode.Force);
     }
     
     public void SpeedControl()
     {
-        Vector3 flatVel = new Vector3(_rb.linearVelocity.x, 0f, _rb.linearVelocity.z);
-
-        // limit velocity if needed
-        if(flatVel.magnitude > moveSpeed)
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
+            _currentSpeed = moveSpeed * 10f;
+        }
+        else
+        {
+            _currentSpeed = moveSpeed;
+        }
+        Vector3 flatVel = new Vector3(_rb.linearVelocity.x, 0f, _rb.linearVelocity.z);
+        
+        // limit velocity if needed
+        if(flatVel.magnitude > _currentSpeed)
+        {
+            Vector3 limitedVel = flatVel.normalized * _currentSpeed;
             _rb.linearVelocity = new Vector3(limitedVel.x, _rb.linearVelocity.y, limitedVel.z);
         }
     }

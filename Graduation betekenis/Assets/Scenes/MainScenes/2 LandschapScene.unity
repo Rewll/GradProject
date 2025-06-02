@@ -1969,7 +1969,7 @@ MonoBehaviour:
   soundsList:
   - NaamClip: Ambient muziek
     geluidsClip: {fileID: 8300000, guid: c34e37ea48ac02a4cb3a574f36f25f59, type: 3}
-    volume: 1
+    volume: 0.4
     loop: 1
     muted: 0
     source: {fileID: 0}
@@ -8532,6 +8532,8 @@ MonoBehaviour:
   - {fileID: 1839376970}
   - {fileID: 1244111358}
   currentLandMarkIndex: 0
+  landMarkFadeInTime: 2
+  landMarkFadeOutTime: 2
 --- !u!4 &1686297728
 Transform:
   m_ObjectHideFlags: 0
@@ -10044,13 +10046,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerNum: 1
   soundsList:
-  - NaamClip: Landmark0
-    geluidsClip: {fileID: 8300000, guid: 0837988e93b88a040820c4b0848a9414, type: 3}
+  - NaamClip: Landmark1 - Bed
+    geluidsClip: {fileID: 8300000, guid: 645c0e9981e63494180bff09d4529063, type: 3}
     volume: 1
     loop: 0
     muted: 0
     source: {fileID: 0}
-  - NaamClip: Landmark1
+  - NaamClip: Landmark2 - Informatie
+    geluidsClip: {fileID: 8300000, guid: 2f04ad246834cbc42ae2ceea53808397, type: 3}
+    volume: 1
+    loop: 0
+    muted: 0
+    source: {fileID: 0}
+  - NaamClip: Landmark3 - Snelheid
+    geluidsClip: {fileID: 8300000, guid: 645c0e9981e63494180bff09d4529063, type: 3}
+    volume: 1
+    loop: 0
+    muted: 0
+    source: {fileID: 0}
+  - NaamClip: Landmark4 Spiraliteit
     geluidsClip: {fileID: 8300000, guid: 645c0e9981e63494180bff09d4529063, type: 3}
     volume: 1
     loop: 0
@@ -10498,24 +10512,40 @@ PrefabInstance:
     m_TransformParent: {fileID: 1055452158}
     m_Modifications:
     - target: {fileID: 626151928677939096, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 626151928677939096, guid: 66ac241232d03634e912d58611129536, type: 3}
       propertyPath: m_Name
-      value: LandMark1
+      value: LandMark2 - Informatie
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6882
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7.0067
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.7602
       objectReference: {fileID: 0}
     - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -62.9
+      value: -88.676
       objectReference: {fileID: 0}
     - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -21.23
+      value: -19.48
       objectReference: {fileID: 0}
     - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 46.6
+      value: 152.84
       objectReference: {fileID: 0}
     - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9303783
       objectReference: {fileID: 0}
     - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
       propertyPath: m_LocalRotation.x
@@ -10523,7 +10553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.36660084
       objectReference: {fileID: 0}
     - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
       propertyPath: m_LocalRotation.z
@@ -10535,7 +10565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 43.012
       objectReference: {fileID: 0}
     - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -10566,8 +10596,16 @@ PrefabInstance:
       value: LandMarkManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
       propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576517418641165246, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

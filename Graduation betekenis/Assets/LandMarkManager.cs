@@ -10,7 +10,9 @@ public class LandMarkManager : MonoBehaviour
     [Space]
     public List<GameObject> landmarks = new List<GameObject>();
     [SerializeField] private int currentLandMarkIndex = 0;
-    
+    [Space] 
+    [SerializeField] private float landMarkFadeInTime;
+    [SerializeField] private float landMarkFadeOutTime;
     private bool _firstLandMark = true;
     
     public void ActivateLandMark(int newLandMarkIndex)
@@ -20,15 +22,13 @@ public class LandMarkManager : MonoBehaviour
         
         if (!_firstLandMark)
         {
-            landMarkLayerRef.StopPlaying(currentLandMarkIndex);
-            //landMarkLayerRef.PlaySound(newLandMarkIndex);
-            landMarkLayerRef.FadeIn(newLandMarkIndex);
+            landMarkLayerRef.FadeOutSound(currentLandMarkIndex, landMarkFadeOutTime);
+            landMarkLayerRef.FadeInSound(newLandMarkIndex, landMarkFadeInTime);
             Debug.Log("LM " + newLandMarkIndex + " Activated --- " + "Lm " + currentLandMarkIndex + " deactivated");
         }
         else if (_firstLandMark)
         {
-            //landMarkLayerRef.PlaySound(newLandMarkIndex);
-            landMarkLayerRef.FadeIn(newLandMarkIndex);
+            landMarkLayerRef.FadeInSound(newLandMarkIndex, landMarkFadeInTime);
             _firstLandMark = false;
             Debug.Log("LM " + newLandMarkIndex + "activated");
         }
