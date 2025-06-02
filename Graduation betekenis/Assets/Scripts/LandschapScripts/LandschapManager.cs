@@ -10,7 +10,7 @@ public class LandschapManager : MonoBehaviour
     public Image fadeVlak;
 
     public GameObject tutorialArea;
-    public audioManager audioManRef;
+    public AudioLayer audioManRef;
     
     public void SetCursorMode(int mode)
     {
