@@ -17,6 +17,7 @@ public class LandMarkManager : MonoBehaviour
     {
         if (newLandMarkIndex == currentLandMarkIndex)
             return;  
+        
         if (!_firstLandMark)
         {
             landMarkLayerRef.StopPlaying(currentLandMarkIndex);
