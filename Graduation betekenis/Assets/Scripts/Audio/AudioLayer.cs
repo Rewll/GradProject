@@ -43,7 +43,7 @@ public class AudioLayer : MonoBehaviour
             Debug.LogWarning("Geluid: " + name + " niet gevonden!");
             return null;
         }
-        else if (g.source == null)
+        else if (!g.source)
         {
             Debug.LogWarning("Source van geluid niet gevonden!");
             return null;
@@ -76,7 +76,38 @@ public class AudioLayer : MonoBehaviour
         geluid g = FindSound(geluidsIndex);
         g.source.Stop();
     }
+    public void FadeIn(int geluidsIndex)
+    {
+        geluid g = FindSound(geluidsIndex);
+        StartCoroutine(FadeInRoutine(geluidsIndex, g.source, 2f));
+    }
+    
+    IEnumerator FadeInRoutine(int geluidsIndex,AudioSource audioSource, float fadeTime) {
+        PlaySound(geluidsIndex);
+        audioSource.Play();
+        audioSource.volume = 0f;
+        while (audioSource.volume < 1) {
+            audioSource.volume += Time.deltaTime / fadeTime;
+            yield return null;
+        }
+    }
 
+    public void FadeOut(int geluidsIndex)
+    {
+        geluid g = FindSound(geluidsIndex);
+        StartCoroutine(FadeOutRoutine(geluidsIndex, g.source, 2f));
+    }
+    
+    IEnumerator FadeOutRoutine(int geluidsIndex,AudioSource audioSource, float fadeTime) {
+        float startVolume = audioSource.volume;
+        while (audioSource.volume > 0) {
+            audioSource.volume -= startVolume * Time.deltaTime / fadeTime;
+            yield return null;
+        }
+        StopPlaying(geluidsIndex);
+    }
+
+    
     public float GetPlayTime(int geluidsIndex)
     {
         geluid g = FindSound(geluidsIndex);
