@@ -7,7 +7,7 @@ public class geluid
     public string NaamClip;
     public AudioClip geluidsClip;
     [Range(0f, 1f)]
-    public float volume;
+    public float volume = 1f;
     public bool loop;
     public bool muted;
 
