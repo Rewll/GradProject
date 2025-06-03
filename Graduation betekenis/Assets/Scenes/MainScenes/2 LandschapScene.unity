@@ -10053,13 +10053,13 @@ MonoBehaviour:
     muted: 0
     source: {fileID: 0}
   - NaamClip: Landmark2 - Informatie
-    geluidsClip: {fileID: 8300000, guid: 2f04ad246834cbc42ae2ceea53808397, type: 3}
+    geluidsClip: {fileID: 8300000, guid: f6d25053aba0e1448beab3b9dbf2c2de, type: 3}
     volume: 1
     loop: 0
     muted: 0
     source: {fileID: 0}
   - NaamClip: Landmark3 - Snelheid
-    geluidsClip: {fileID: 8300000, guid: 645c0e9981e63494180bff09d4529063, type: 3}
+    geluidsClip: {fileID: 8300000, guid: e59fd3f80ab3cba469ed2fbc0f76d6c2, type: 3}
     volume: 1
     loop: 0
     muted: 0
