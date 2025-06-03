@@ -1966,12 +1966,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerNum: 0
+  mixerGroup: {fileID: -4008933925153914209, guid: d22fb85508f89734c8fa84628263ff2d, type: 2}
   soundsList:
   - NaamClip: Ambient muziek
     geluidsClip: {fileID: 8300000, guid: c34e37ea48ac02a4cb3a574f36f25f59, type: 3}
     volume: 0.4
     loop: 1
-    muted: 0
     source: {fileID: 0}
   dontDestroy: 1
 --- !u!1 &823080506
@@ -8453,6 +8453,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1630833285}
+  - component: {fileID: 1630833286}
   m_Layer: 0
   m_Name: Audiolayers
   m_TagString: Untagged
@@ -8477,6 +8478,19 @@ Transform:
   - {fileID: 1962673242}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1630833286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630833284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d7931379e8b46c4e83c4a1368341fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 0}
 --- !u!1 &1636725059 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 288977799357588334, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
@@ -10045,30 +10059,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerNum: 1
+  mixerGroup: {fileID: -6108954217141079583, guid: d22fb85508f89734c8fa84628263ff2d, type: 2}
   soundsList:
   - NaamClip: Landmark1 - Bed
     geluidsClip: {fileID: 8300000, guid: 645c0e9981e63494180bff09d4529063, type: 3}
     volume: 1
     loop: 0
-    muted: 0
     source: {fileID: 0}
   - NaamClip: Landmark2 - Informatie
     geluidsClip: {fileID: 8300000, guid: f6d25053aba0e1448beab3b9dbf2c2de, type: 3}
     volume: 1
     loop: 0
-    muted: 0
     source: {fileID: 0}
   - NaamClip: Landmark3 - Snelheid
     geluidsClip: {fileID: 8300000, guid: e59fd3f80ab3cba469ed2fbc0f76d6c2, type: 3}
     volume: 1
     loop: 0
-    muted: 0
     source: {fileID: 0}
   - NaamClip: Landmark4 Spiraliteit
     geluidsClip: {fileID: 8300000, guid: 645c0e9981e63494180bff09d4529063, type: 3}
     volume: 1
     loop: 0
-    muted: 0
     source: {fileID: 0}
   dontDestroy: 0
 --- !u!1 &1972190959
@@ -10755,6 +10766,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6985573461663569905}
     - target: {fileID: 244336978272902508, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
+      propertyPath: zoomSensitivity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 244336978272902508, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
       propertyPath: latestPictureShowImage
       value: 
       objectReference: {fileID: 1674413344}
@@ -10842,6 +10857,10 @@ PrefabInstance:
       propertyPath: 'kameraModeGameObjects.Array.data[1]'
       value: 
       objectReference: {fileID: 1617200747}
+    - target: {fileID: 8185207152417518816, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
+      propertyPath: field of view
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

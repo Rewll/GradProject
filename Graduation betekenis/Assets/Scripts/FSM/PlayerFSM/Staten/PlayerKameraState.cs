@@ -9,13 +9,21 @@ public class PlayerKameraState : BaseState
 {
     private PlayerAgent _playerAgentRef;
     public PictureDisplay picDisplayRef;
-    [Space]
-    [Header("Kamera variables")]
+
+    [Space] [Header("Kamera variables")] 
+    [SerializeField] private Camera kamera;
     public RenderTexture rendText;
     [Space] 
     public RawImage latestPictureShowImage;
-
+    
     private Texture2D _fotoTexture;
+    [Space] 
+    [SerializeField] private float zoomSensitivity;
+    [SerializeField] private float minZoom;
+    [SerializeField] private float maxZoom;
+    [Space]
+    Vector2 scrollDelta;
+    float scrollCalcul;
     
     private void Awake()
     {
@@ -42,6 +50,7 @@ public class PlayerKameraState : BaseState
             return;
         }
 
+        ZoomCamera();
         if (Input.GetMouseButton(1))
         {
             if (Cursor.lockState == CursorLockMode.None)
@@ -76,6 +85,23 @@ public class PlayerKameraState : BaseState
         }
     }
 
+    void ZoomCamera()
+    {
+        if (Input.GetMouseButtonDown(2))
+        {
+            kamera.fieldOfView = maxZoom;
+        }
+        else
+        {
+            float newZoom = -Input.mouseScrollDelta.y * zoomSensitivity;
+        
+            if ((kamera.fieldOfView + newZoom) < maxZoom && (kamera.fieldOfView + newZoom) > minZoom)
+            {
+                kamera.fieldOfView += newZoom;
+            }
+        }
+    }
+    
     public void MakePicture()
     {
         StartCoroutine(PictureRoutine(_playerAgentRef.inFabriek));
