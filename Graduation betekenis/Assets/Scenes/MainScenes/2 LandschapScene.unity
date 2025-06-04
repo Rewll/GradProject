@@ -2088,6 +2088,136 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3908759966163444958, guid: 890b112f57cd1784b8b1ebe06eb59530, type: 3}
   m_PrefabInstance: {fileID: 1757899715}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &849551446
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1055452158}
+    m_Modifications:
+    - target: {fileID: 626151928677939096, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 626151928677939096, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_Name
+      value: LandMark3 - Snelheid
+      objectReference: {fileID: 0}
+    - target: {fileID: 635050521518877536, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_Size.x
+      value: 10.49561
+      objectReference: {fileID: 0}
+    - target: {fileID: 635050521518877536, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_Size.z
+      value: 10.121552
+      objectReference: {fileID: 0}
+    - target: {fileID: 635050521518877536, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_Center.x
+      value: 7.038905
+      objectReference: {fileID: 0}
+    - target: {fileID: 635050521518877536, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_Center.z
+      value: 0.45036522
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6882
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7.0067
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.7602
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -19.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 238.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9303783
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.36660084
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 43.012
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1686297727}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ActivateLandMark
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LandMarkManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576517418641165246, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 66ac241232d03634e912d58611129536, type: 3}
+--- !u!4 &849551447 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+  m_PrefabInstance: {fileID: 849551446}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &868375273
 GameObject:
   m_ObjectHideFlags: 0
@@ -2725,8 +2855,11 @@ Transform:
   m_Children:
   - {fileID: 480381001}
   - {fileID: 1972190960}
-  - {fileID: 1839376971}
   - {fileID: 1244111357}
+  - {fileID: 1671784877}
+  - {fileID: 1839376971}
+  - {fileID: 849551447}
+  - {fileID: 1426631484}
   - {fileID: 300648603}
   - {fileID: 180965841}
   m_Father: {fileID: 0}
@@ -2992,7 +3125,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 626151928677939096, guid: 66ac241232d03634e912d58611129536, type: 3}
       propertyPath: m_Name
-      value: LandMark2
+      value: Testlandmark
+      objectReference: {fileID: 0}
+    - target: {fileID: 626151928677939096, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7167,7 +7304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7824938225145086079, guid: a90603761dfbec245b11a67978c5b7d0, type: 3}
       propertyPath: m_Name
-      value: TestDagEnvironment
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 7824938225145086079, guid: a90603761dfbec245b11a67978c5b7d0, type: 3}
       propertyPath: m_Layer
@@ -7860,6 +7997,144 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3908759966163444958, guid: 890b112f57cd1784b8b1ebe06eb59530, type: 3}
   m_PrefabInstance: {fileID: 649999864}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1426631483
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1055452158}
+    m_Modifications:
+    - target: {fileID: 626151928677939096, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 626151928677939096, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_Name
+      value: LandMark4 - De Spiraliteit
+      objectReference: {fileID: 0}
+    - target: {fileID: 635050521518877536, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_Size.x
+      value: 28.771288
+      objectReference: {fileID: 0}
+    - target: {fileID: 635050521518877536, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_Size.y
+      value: 3.1416533
+      objectReference: {fileID: 0}
+    - target: {fileID: 635050521518877536, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_Size.z
+      value: 27.340755
+      objectReference: {fileID: 0}
+    - target: {fileID: 635050521518877536, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_Center.x
+      value: 5.4198737
+      objectReference: {fileID: 0}
+    - target: {fileID: 635050521518877536, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_Center.y
+      value: 1.0708274
+      objectReference: {fileID: 0}
+    - target: {fileID: 635050521518877536, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_Center.z
+      value: 2.528053
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6882
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7.0067
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.7602
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -109.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -19.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 257.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9303783
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.36660084
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 43.012
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1686297727}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ActivateLandMark
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LandMarkManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576517418641165246, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 66ac241232d03634e912d58611129536, type: 3}
+--- !u!4 &1426631484 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+  m_PrefabInstance: {fileID: 1426631483}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1429801828
 GameObject:
   m_ObjectHideFlags: 0
@@ -8495,6 +8770,136 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 288977799357588334, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
   m_PrefabInstance: {fileID: 5890244111541571153}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1671784876
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1055452158}
+    m_Modifications:
+    - target: {fileID: 626151928677939096, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 626151928677939096, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_Name
+      value: LandMark1 - Waar kom jij voor uit bed
+      objectReference: {fileID: 0}
+    - target: {fileID: 635050521518877536, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_Size.x
+      value: 41.75424
+      objectReference: {fileID: 0}
+    - target: {fileID: 635050521518877536, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_Size.z
+      value: 29.7611
+      objectReference: {fileID: 0}
+    - target: {fileID: 635050521518877536, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_Center.x
+      value: -6.8358283
+      objectReference: {fileID: 0}
+    - target: {fileID: 635050521518877536, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_Center.z
+      value: -1.9728571
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6882
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7.0067
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.7602
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 64.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -19.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 147.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.000083431594
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 179.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1686297727}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ActivateLandMark
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LandMarkManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576517418641165246, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 66ac241232d03634e912d58611129536, type: 3}
+--- !u!4 &1671784877 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+  m_PrefabInstance: {fileID: 1671784876}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1674413342 stripped
 GameObject:
@@ -10077,7 +10482,12 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - NaamClip: Landmark4 Spiraliteit
-    geluidsClip: {fileID: 8300000, guid: 645c0e9981e63494180bff09d4529063, type: 3}
+    geluidsClip: {fileID: 8300000, guid: b17d1d636471566429266c856201f590, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - NaamClip: LandMark5 - De vierde dood
+    geluidsClip: {fileID: 8300000, guid: 5baca3b1c0ae1e649a1bf61a7befab25, type: 3}
     volume: 1
     loop: 0
     source: {fileID: 0}
