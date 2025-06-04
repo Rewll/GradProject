@@ -40,6 +40,8 @@ public class CollageCreateState : BaseState
     [SerializeField] private Vector2 collageDonePosition;
     [Space]
     public List<Button> buttonsThatUseSelect = new List<Button>();
+    public Button layerUpButton;
+    public Button layerDownButton;
     [Header("Picture stuff:")]
     public List<GameObject> picturesInCollage = new List<GameObject>();
     public GameObject selectedPicture;
@@ -159,26 +161,57 @@ public class CollageCreateState : BaseState
             picturesInCollage.Add(obj);
         }
     }
+
+    void SetLayerButtons()
+    {
+        layerDownButton.interactable = true;
+        layerUpButton.interactable = true;
+        if (selectedPicture.transform.GetSiblingIndex() == 0)
+        {
+            layerDownButton.interactable = false;
+        }
+        else if (selectedPicture.transform.GetSiblingIndex() > selectedPicture.transform.parent.childCount - 1)
+        { 
+            layerUpButton.interactable = false;
+        }
+    }
+    public void MoveImageLayer(bool upOrDown)
+    {
+        int siblingIndex = selectedPicture.transform.GetSiblingIndex();
+        
+        if (upOrDown)
+        {
+            Debug.Log("Move up");
+            selectedPicture.transform.SetSiblingIndex(siblingIndex++);
+        }
+        else if(!upOrDown)
+        {
+            Debug.Log("Move down");
+            selectedPicture.transform.SetSiblingIndex(siblingIndex--);
+        }
+        SetLayerButtons();
+    }
+    
     
     public void SetSelected(GameObject selected)
     {
-        OnSelectGlobal();
         if (selectedPicture != null)
         {
             selectedPicture.GetComponent<PictureInCollage>().OnDeselect();
         }
         selectedPicture = selected;
+        OnSelectGlobal();
         selectedPicture.GetComponent<PictureInCollage>().OnSelect();
     }
 
     public void Deselect()
     {
-        OnDeselectGlobal();
         if (selectedPicture != null)
         {
             selectedPicture.GetComponent<PictureInCollage>().OnDeselect();
         }
         selectedPicture = null;
+        OnDeselectGlobal();
     }
 
     public void OnSelectGlobal()
@@ -187,6 +220,7 @@ public class CollageCreateState : BaseState
         {
             button.interactable = true;
         }
+        SetLayerButtons();
     }
 
     public void OnDeselectGlobal()

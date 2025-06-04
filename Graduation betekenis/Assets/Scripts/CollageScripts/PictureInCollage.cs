@@ -39,7 +39,7 @@ public class PictureInCollage : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void OnPointerDown(PointerEventData eventData)
     {
         isHold = true;
-        RTransform.SetAsLastSibling();
+        //RTransform.SetAsLastSibling();
         if (gameManRef.selectedPicture != this.gameObject)
         {
             gameManRef.SetSelected(this.gameObject);
