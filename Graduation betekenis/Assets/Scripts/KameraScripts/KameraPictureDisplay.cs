@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 using TMPro;
 
-public class PictureDisplay : MonoBehaviour
+public class KameraPictureDisplay : MonoBehaviour
 {
     public GameObject displayPicturePrefab;
     public PictureStorage picStorageRef;

@@ -10,6 +10,9 @@ public class DeselectObject : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         //Debug.Log("OnPointerDown from: " + this.gameObject.name );
-        gameManRef.Deselect();
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            gameManRef.Deselect();
+        }
     }
 }

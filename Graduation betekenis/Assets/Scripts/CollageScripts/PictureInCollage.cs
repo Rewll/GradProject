@@ -1,103 +1,119 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using SimpleCursor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class PictureInCollage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler , IDragHandler, IPointerClickHandler
+public class PictureInCollage : MonoBehaviour, IPointerDownHandler, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
+    [Header("References: ")]
     public Canvas canvas;
     public CollageCreateState gameManRef;
-    RectTransform RTransform;
+    public Image selectionBackgroundImage;
+    private RectTransform _rt;
+    [Space]
     [SerializeField] private float scaleFactor;
     [SerializeField] private float maxScale;
     [SerializeField] private float minScale;
-    public Image SelectionBackgroundImage;
-    [SerializeField] private bool isHold;
+    [SerializeField] private bool isSelected;
+    public float rotationSpeed;
+
+    private float _rotationVelocity;
+
     private void Awake()
     {
-        RTransform = GetComponent<RectTransform>();
+        _rt = GetComponent<RectTransform>();
     }
-    
-    public void OnPointerEnter(PointerEventData eventData)
+    public void OnBeginDrag(PointerEventData eventData)
     {
-       
-    }
-    
-    public void OnPointerClick(PointerEventData eventData)
-    {
-
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            CursorUtilities.ChangeCursor(CursorType.Move);
+        }
     }
     
     public void OnDrag(PointerEventData eventData)
     {
-        RTransform.anchoredPosition += eventData.delta / RTransform.parent.localScale /canvas.scaleFactor;
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            _rt.anchoredPosition += eventData.delta / _rt.parent.parent.localScale /canvas.scaleFactor;
+        }
+        
+    }
+    
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            CursorUtilities.ChangeCursor(default);
+        }
     }
     
     public void OnPointerDown(PointerEventData eventData)
     {
-        isHold = true;
-        RTransform.SetAsLastSibling();
-        if (gameManRef.selectedPicture != this.gameObject)
+        if (eventData.button == PointerEventData.InputButton.Left)
         {
-            gameManRef.SetSelected(this.gameObject);
-        }
-        else
-        {
-            gameManRef.Deselect();
+            if (gameManRef.selectedPicture != this.gameObject)
+            {
+                gameManRef.SetSelected(this.gameObject);
+            }
         }
     }
     
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        isHold = false;
-    }
-
     void ResizePictureInCollage()
     {
         float newScale = Input.mouseScrollDelta.y * scaleFactor * Time.deltaTime;
         
-        if ((RTransform.localScale.x + newScale) < maxScale &&
-            (RTransform.localScale.x + newScale) > minScale)
+        if ((_rt.localScale.x + newScale) < maxScale &&
+            (_rt.localScale.x + newScale) > minScale)
         {
-            RTransform.localScale += new Vector3(newScale, newScale, newScale);
+            _rt.localScale += new Vector3(newScale, newScale, newScale);
         }
-        
-        //Debug.Log("x: " + Input.mouseScrollDelta.x);
-        //Debug.Log("y: " + Input.mouseScrollDelta.y);
     }
 
     void RotatePictureInCollage()
     {
-        
-    }
-
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        
+        _rotationVelocity = Input.mousePositionDelta.x * rotationSpeed;
+        transform.Rotate(Vector3.back, -_rotationVelocity, Space.Self);
     }
     
     private void Update()
     {
-        if (isHold)
+        if (isSelected)
         {
             ResizePictureInCollage();
+            if (Input.GetMouseButton(1))
+            {
+                RotatePictureInCollage();
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                CursorUtilities.ChangeCursor(CursorType.Rotate);
+            }
+            else if (Input.GetMouseButtonUp(1))
+            {
+                CursorUtilities.ChangeCursor(CursorType.Default);
+            }
         }
     }
+    
     public void OnSelect()
     {
         //Debug.Log(gameObject.name + "OnSelect");
-        SelectionBackgroundImage.enabled = true;
-        
+        isSelected = true;
+        selectionBackgroundImage.enabled = true;
     }
     
     public void OnDeselect()
     {
         //Debug.Log(gameObject.name + "OnDeSelect");
-        SelectionBackgroundImage.enabled = false;
+        isSelected = false;
+        selectionBackgroundImage.enabled = false;
     }
 
 

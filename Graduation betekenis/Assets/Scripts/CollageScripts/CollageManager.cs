@@ -16,5 +16,5 @@ public class CollageManager : MonoBehaviour
     public RenderTexture collageRT;
 
     public Texture2D collageTexture;
-    public GameObject collagePreviewScherm;
+    public GameObject collageKlaarScherm;
 }

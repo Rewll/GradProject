@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class PlayerKameraState : BaseState
 {
     private PlayerAgent _playerAgentRef;
-    public PictureDisplay picDisplayRef;
+    public KameraPictureDisplay picDisplayRef;
 
     [Space] [Header("Kamera variables")] 
     [SerializeField] private Camera kamera;

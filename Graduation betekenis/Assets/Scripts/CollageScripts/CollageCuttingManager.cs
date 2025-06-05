@@ -8,30 +8,45 @@ using UnityEngine.UI;
 
 public class CollageCuttingManager : MonoBehaviour
 {
+    [Header("References:")]
     public CollageCreateState gameManRef;
+    public pictureToCutFrom picScriptRef;
     public GameObject cutPiecePrefab;
+    public RectTransform cutPieceParent;
+    public RawImage pictureToCutImage;
+    public Button cutButton;
+    private RectTransform _pictureToCutRT;
+    
     public RectTransform selectionPoint1;
     public RectTransform selectionPoint2;
     public RectTransform selectionSquare;
-    public RectTransform cutPieceParent;
-    public RawImage pictureToCutImage;
-    public pictureToCutFrom picScriptRef;
+    public Camera cam;
+    public Canvas MainCanvas;
+    [Space]
     public List<GameObject> CutPieceObjects = new List<GameObject>();
     [HideInInspector] public Texture textureToCutFrom;
     RenderTexture cutRT;
     [Space] 
-    [SerializeField] private Vector2 mousePosition1;
-    [SerializeField] private Vector2 mousePosition2;
+    private Vector2 cutSelectionPos1;
+    private Vector2 cutSelectionPos2;
     public bool isCutting;
 
-    public Camera cam;
-    public Canvas MainCanvas;
-    public Vector2 mousePosDebug;
     public bool inImage;
+
+    private Vector2 _selectionStartPos;
+    private bool _selectionActive;
+    
+    private void Awake()
+    {
+        _selectionStartPos = selectionSquare.anchoredPosition;
+        _pictureToCutRT = pictureToCutImage.rectTransform;
+    }
+
     public void CutInit(Texture texture)
     {
         textureToCutFrom = texture;
         pictureToCutImage.texture = textureToCutFrom;
+        ResetSelection();
         isCutting = true;
     }
 
@@ -45,53 +60,66 @@ public class CollageCuttingManager : MonoBehaviour
     {
         if (isCutting)
         {
-            if (picScriptRef.mouseOver)
+            CutSelection();
+        }
+    }
+
+    bool MouseIsOverImage()
+    {
+        Vector2 mousePos = Input.mousePosition;
+        
+        Vector3[] v = new Vector3[4];
+        _pictureToCutRT.GetWorldCorners(v);
+        //0: bottom left
+        //1: top left
+        //2: top right
+        //3: bottom right
+        if ((mousePos.x > v[0].x && mousePos.x < v[3].x) && 
+            (mousePos.y > v[0].y && mousePos.y < v[1].y))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    void CutSelection()
+    {
+        Vector3[] v = new Vector3[4];
+        _pictureToCutRT.GetWorldCorners(v);
+        //0: bottom left
+        //1: top left
+        //2: top right
+        //3: bottom right
+        Vector2 minPos = v[0];
+        Vector2 maxPos = v[0];
+        if (MouseIsOverImage())
+        {
+            if (Input.GetMouseButtonDown(0))
             {
-                GetMousePos();
+                SetSelectionButtons(true);
+                cutSelectionPos1 = Input.mousePosition;
+                
+                selectionPoint1.anchoredPosition = Input.mousePosition / (Vector2)selectionPoint2.parent.localScale / MainCanvas.scaleFactor;
+                selectionSquare.anchoredPosition = selectionPoint1.anchoredPosition;
+            }
+        
+            if (Input.GetMouseButton(0))
+            {
+                selectionPoint2.anchoredPosition = Input.mousePosition / (Vector2)selectionPoint2.parent.localScale / MainCanvas.scaleFactor;
+            
+                selectionSquare.sizeDelta = new Vector2(Math.Abs(selectionPoint1.anchoredPosition.x - selectionPoint2.anchoredPosition.x),
+                    Math.Abs(selectionPoint1.anchoredPosition.y - selectionPoint2.anchoredPosition.y));
+            }
+        
+            if (Input.GetMouseButtonUp(0))
+            {
+                cutSelectionPos2 = Input.mousePosition;
             }
         }
     }
-
-    void GetMousePos()
-    {
-        mousePosDebug = Input.mousePosition;
-        if (Input.GetMouseButtonDown(0))
-        {
-            mousePosition1 = Input.mousePosition;
-            selectionPoint1.anchoredPosition = Input.mousePosition / (Vector2)selectionPoint2.parent.localScale /MainCanvas.scaleFactor;
-            float minX = Mathf.Min(selectionPoint1.anchoredPosition.x, selectionPoint2.anchoredPosition.x);
-            float minY = Mathf.Min(selectionPoint1.anchoredPosition.y, selectionPoint2.anchoredPosition.y);
-            //selectionSquare.anchoredPosition = new Vector2(minX,minY);
-            selectionSquare.anchoredPosition = selectionPoint1.anchoredPosition;
-        }
-        if (Input.GetMouseButton(0))
-        {
-            selectionPoint2.anchoredPosition = Input.mousePosition / (Vector2)selectionPoint2.parent.localScale /MainCanvas.scaleFactor;
-            
-            selectionSquare.sizeDelta = new Vector2(Math.Abs(selectionPoint1.anchoredPosition.x - selectionPoint2.anchoredPosition.x),
-                                                    Math.Abs(selectionPoint1.anchoredPosition.y - selectionPoint2.anchoredPosition.y));
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            mousePosition2 = Input.mousePosition;
-            MakeCut();
-        }
-    }
-
-    /*bool isInImage()
-    {
-        RectTransform pictureRT = pictureToCutImage.rectTransform;
-        Vector3[] v = new Vector3[4];
-        pictureRT.GetWorldCorners(v);
-        float point1 = v[0].x / pictureRT.localScale.x / MainCanvas.scaleFactor;
-        float point1 = v[0].x / pictureRT.localScale.x / MainCanvas.scaleFactor;
-        
-        if (Input.mousePosition.x < point1 
-            && Input.mousePosition.x > v[1].x)
-        {
-            
-        }
-    }*/
     
     public void MakeCut()
     {
@@ -142,16 +170,16 @@ public class CollageCuttingManager : MonoBehaviour
         float worldWidth = v[3].x- v[0].x;
         float worldHeight = v[2].y - v[0].y;
         
-        float minX = Mathf.Min(mousePosition1.x, mousePosition2.x);
-        float minY = Mathf.Min(mousePosition1.y, mousePosition2.y);
+        float minX = Mathf.Min(cutSelectionPos1.x, cutSelectionPos2.x);
+        float minY = Mathf.Min(cutSelectionPos1.y, cutSelectionPos2.y);
 
         float widthRatio = pictureToCutImage.texture.width/worldWidth;
         float heightRatio = pictureToCutImage.texture.height/worldHeight;
         
         float xRect = (minX - v[0].x) * widthRatio;
         float yRect = (minY - v[0].y) * heightRatio;
-        float rectWidth = Math.Abs(mousePosition1.x - mousePosition2.x) * widthRatio;
-        float rectHeight = Math.Abs(mousePosition1.y - mousePosition2.y) * heightRatio;
+        float rectWidth = Math.Abs(cutSelectionPos1.x - cutSelectionPos2.x) * widthRatio;
+        float rectHeight = Math.Abs(cutSelectionPos1.y - cutSelectionPos2.y) * heightRatio;
         
         //Debug.Log("xRect = " + xRect); 
         //Debug.Log("yRect = " + yRect);
@@ -167,5 +195,26 @@ public class CollageCuttingManager : MonoBehaviour
             yRect , 
             rectWidth , 
             rectHeight );
+    }
+
+    public void ResetSelection()
+    {
+        selectionSquare.anchoredPosition = _selectionStartPos;
+        selectionPoint1.anchoredPosition = _selectionStartPos;
+        selectionPoint2.anchoredPosition = _selectionStartPos;
+        selectionSquare.sizeDelta = new Vector2(10,10);
+        SetSelectionButtons(false);
+    }
+
+    public void SetSelectionButtons(bool state)
+    {
+        if (state)
+        {
+            cutButton.interactable = true;
+        }
+        else
+        {
+            cutButton.interactable = false;
+        }
     }
 }

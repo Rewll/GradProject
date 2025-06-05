@@ -13,7 +13,7 @@ public class LandschapTutorial2 : BaseState
     public GameObject tutorial2Scherm;
     public float fadeToBlackTime = 2f;
     [Space] 
-    public PictureDisplay picDisRef;
+    public KameraPictureDisplay picDisRef;
     
     private void Awake()
     {
