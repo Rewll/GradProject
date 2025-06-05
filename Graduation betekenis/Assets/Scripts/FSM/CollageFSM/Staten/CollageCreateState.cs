@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.EventSystems;
 
 public class CollageCreateState : BaseState
@@ -33,7 +34,7 @@ public class CollageCreateState : BaseState
     private readonly float _collageSmallScale = 0.6473701f;
     private readonly Vector2 _collageSmallPosition = new Vector2(0, -178f);
     private readonly float _collageFullScale = 0.959199f;
-    private readonly Vector2 _collageFullPosition = Vector2.zero;
+    private readonly Vector2 _collageFullPosition = new Vector2(-42.6531f, -9.3674f);
     [Space]
     private RectTransform _collageRT;
     [SerializeField] private float collageDoneScale;
@@ -42,6 +43,7 @@ public class CollageCreateState : BaseState
     public List<Button> buttonsThatUseSelect = new List<Button>();
     public Button layerUpButton;
     public Button layerDownButton;
+    public TMP_Text layerText;
     [Header("Picture stuff:")]
     public List<GameObject> picturesInCollage = new List<GameObject>();
     public GameObject selectedPicture;
@@ -165,6 +167,7 @@ public class CollageCreateState : BaseState
     {
         layerDownButton.interactable = true;
         layerUpButton.interactable = true;
+        layerText.text = "Laag: " + "\n" + selectedPicture.transform.GetSiblingIndex() + " / " + (pictureInCollageParent.transform.childCount - 1);
         if (selectedPicture.transform.GetSiblingIndex() == 0)
         {
             layerDownButton.interactable = false;
@@ -177,18 +180,20 @@ public class CollageCreateState : BaseState
     public void MoveImageLayer(bool upOrDown)
     {
         int siblingIndex = selectedPicture.transform.GetSiblingIndex();
-        
+        //Debug.Log("index was:"+ siblingIndex);
         if (upOrDown)
         {
-            Debug.Log("Move up");
-            selectedPicture.transform.SetSiblingIndex(siblingIndex++);
+            int newIndex = siblingIndex + 1;
+            //Debug.Log("move up, new index" + newIndex);
+            selectedPicture.transform.SetSiblingIndex(newIndex);
         }
         else if(!upOrDown)
         {
-            Debug.Log("Move down");
-            selectedPicture.transform.SetSiblingIndex(siblingIndex--);
+            int newIndex = siblingIndex - 1;
+            //Debug.Log("move down, new index" + newIndex);
+            selectedPicture.transform.SetSiblingIndex(newIndex);
         }
-        //SetLayerButtons();
+        SetLayerButtons();
     }
     
     
@@ -219,7 +224,8 @@ public class CollageCreateState : BaseState
         {
             button.interactable = true;
         }
-        //SetLayerButtons();
+        layerText.gameObject.SetActive(true);
+        SetLayerButtons();
     }
 
     public void OnDeselectGlobal()
@@ -228,6 +234,7 @@ public class CollageCreateState : BaseState
         {
             button.interactable = false;
         }
+        layerText.gameObject.SetActive(false);
     }
     
     public void LaadCollageKlaarScherm()

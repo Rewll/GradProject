@@ -12,7 +12,7 @@ public class PictureInCollage : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public Canvas canvas;
     public CollageCreateState gameManRef;
     public Image selectionBackgroundImage;
-    private RectTransform _rTransform;
+    private RectTransform _rt;
     [Space]
     [SerializeField] private float scaleFactor;
     [SerializeField] private float maxScale;
@@ -20,7 +20,7 @@ public class PictureInCollage : MonoBehaviour, IPointerEnterHandler, IPointerExi
     [SerializeField] private bool isHold;
     private void Awake()
     {
-        _rTransform = GetComponent<RectTransform>();
+        _rt = GetComponent<RectTransform>();
     }
     
     public void OnPointerEnter(PointerEventData eventData)
@@ -35,32 +35,36 @@ public class PictureInCollage : MonoBehaviour, IPointerEnterHandler, IPointerExi
     
     public void OnDrag(PointerEventData eventData)
     {
-        _rTransform.anchoredPosition += eventData.delta / _rTransform.parent.localScale /canvas.scaleFactor;
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            _rt.anchoredPosition += eventData.delta / _rt.parent.parent.localScale /canvas.scaleFactor;
+        }
     }
     
     public void OnPointerDown(PointerEventData eventData)
     {
-        isHold = true;
-        //RTransform.SetAsLastSibling();
-        if (gameManRef.selectedPicture != this.gameObject)
+        if (eventData.button == PointerEventData.InputButton.Left)
         {
-            gameManRef.SetSelected(this.gameObject);
+            if (gameManRef.selectedPicture != this.gameObject)
+            {
+                gameManRef.SetSelected(this.gameObject);
+            }
         }
     }
     
     public void OnPointerUp(PointerEventData eventData)
     {
-        isHold = false;
+        
     }
 
     void ResizePictureInCollage()
     {
         float newScale = Input.mouseScrollDelta.y * scaleFactor * Time.deltaTime;
         
-        if ((_rTransform.localScale.x + newScale) < maxScale &&
-            (_rTransform.localScale.x + newScale) > minScale)
+        if ((_rt.localScale.x + newScale) < maxScale &&
+            (_rt.localScale.x + newScale) > minScale)
         {
-            _rTransform.localScale += new Vector3(newScale, newScale, newScale);
+            _rt.localScale += new Vector3(newScale, newScale, newScale);
         }
     }
 
@@ -85,12 +89,14 @@ public class PictureInCollage : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void OnSelect()
     {
         //Debug.Log(gameObject.name + "OnSelect");
+        isHold = true;
         selectionBackgroundImage.enabled = true;
     }
     
     public void OnDeselect()
     {
         //Debug.Log(gameObject.name + "OnDeSelect");
+        isHold = false;
         selectionBackgroundImage.enabled = false;
     }
 }
