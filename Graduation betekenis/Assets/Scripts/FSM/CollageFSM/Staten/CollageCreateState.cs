@@ -30,12 +30,12 @@ public class CollageCreateState : BaseState
     public RectTransform knipselsPos;
     
     [Header("Collage stuff:")] 
-    [SerializeField] private float collageSmallScale;
-    [SerializeField] private Vector2 collageSmallPosition;
-    [SerializeField] private float collageFullScale;
-    [SerializeField] private Vector2 collageFullPosition;
+    private readonly float _collageSmallScale = 0.6473701f;
+    private readonly Vector2 _collageSmallPosition = new Vector2(0, -178f);
+    private readonly float _collageFullScale = 0.959199f;
+    private readonly Vector2 _collageFullPosition = Vector2.zero;
     [Space]
-    private RectTransform collageRT;
+    private RectTransform _collageRT;
     [SerializeField] private float collageDoneScale;
     [SerializeField] private Vector2 collageDonePosition;
     [Space]
@@ -53,7 +53,7 @@ public class CollageCreateState : BaseState
     {
         _collageAgentRef = GetComponent<CollageAgent>();
         _colManagerRef = GetComponent<CollageManager>();
-        collageRT = collage.GetComponent<RectTransform>();
+        _collageRT = collage.GetComponent<RectTransform>();
     }
 
     public override void OnEnter()
@@ -126,16 +126,15 @@ public class CollageCreateState : BaseState
     
     public void SetFullScreen(bool setState)
     {
-        
         if (setState)
         {
-            collageRT.localScale = new Vector3(collageFullScale, collageFullScale, collageFullScale);
-            collageRT.anchoredPosition = collageFullPosition;
+            _collageRT.localScale = new Vector3(_collageFullScale, _collageFullScale, _collageFullScale);
+            _collageRT.anchoredPosition = _collageFullPosition;
         }
         else if (!setState)
         {
-            collageRT.localScale = new Vector3(collageSmallScale, collageSmallScale, collageSmallScale);
-            collageRT.anchoredPosition = collageSmallPosition;
+            _collageRT.localScale = new Vector3(_collageSmallScale, _collageSmallScale, _collageSmallScale);
+            _collageRT.anchoredPosition = _collageSmallPosition;
         }
     }
     
@@ -189,7 +188,7 @@ public class CollageCreateState : BaseState
             Debug.Log("Move down");
             selectedPicture.transform.SetSiblingIndex(siblingIndex--);
         }
-        SetLayerButtons();
+        //SetLayerButtons();
     }
     
     
@@ -220,7 +219,7 @@ public class CollageCreateState : BaseState
         {
             button.interactable = true;
         }
-        SetLayerButtons();
+        //SetLayerButtons();
     }
 
     public void OnDeselectGlobal()
@@ -231,38 +230,36 @@ public class CollageCreateState : BaseState
         }
     }
     
-    public void LaadCollageKlaarScherm(bool setState)
+    public void LaadCollageKlaarScherm()
     {
-        if (setState)
-        {
-            collageRT.localScale = new Vector3(collageDoneScale, collageDoneScale, collageDoneScale);
-            collageRT.anchoredPosition = collageDonePosition;
-        }
-        else if (!setState)
-        {
-            collageRT.localScale = new Vector3(collageSmallScale, collageSmallScale, collageSmallScale);
-            collageRT.anchoredPosition = collageSmallPosition;
-        }
+        StartCoroutine(CollageDoneRoutine());
+
     }
     
-    public void RenderCollageToTexture()
+    IEnumerator CollageDoneRoutine()
     {
-        StartCoroutine(CollageRenderRoutine());
-        
-    }
-
-    IEnumerator CollageRenderRoutine()
-    {
+        _collageRT.localScale = new Vector3(1, 1, 1);
+        _collageRT.anchoredPosition = Vector2.zero;
         yield return new WaitForEndOfFrame(); // waits until frame is done drawing
-        //RenderTexture.active = _colManagerRef.collageRT; //points to RT i want to use
-        _colManagerRef.collageTexture = new Texture2D(1920, 1080, TextureFormat.RGB24, false); //Creates texture for cutout with the rect size
-        Rect sizeRect = new Rect(0 , 0, Screen.width,Screen.height);
+        int width = Screen.width;
+        int height = Screen.height;
+        
+        _colManagerRef.collageTexture = new Texture2D(width,height, TextureFormat.RGB24, false); //Creates texture size of screen
+        Rect sizeRect = new Rect(0, 0, width,height);
         
         _colManagerRef.collageTexture.ReadPixels(sizeRect, 0, 0); //reads pixels from the rendertexture to the texture 
         _colManagerRef.collageTexture.Apply(); //apply
         
         collagePreview.texture = _colManagerRef.collageTexture;
-        _colManagerRef.collagePreviewScherm.SetActive(true);
+        _colManagerRef.collageKlaarScherm.SetActive(true);
+        SetFullScreen(false);
+    }
+
+    public void SaveCollage()
+    {
+        byte[] byteArray = _colManagerRef.collageTexture.EncodeToPNG();
+        string dateAndTime = System.DateTime.Now.ToString("dd/MM/yyyy_HH-mm-ss");
+        System.IO.File.WriteAllBytes("Assets/Collages/Collage "+ dateAndTime +" .png", byteArray);
     }
     
     private IEnumerator CoroutineScreenshot()
