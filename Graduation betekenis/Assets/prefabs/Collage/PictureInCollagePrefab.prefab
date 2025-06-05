@@ -213,3 +213,7 @@ MonoBehaviour:
   maxScale: 1.5
   minScale: 0.01
   isHold: 0
+  rotationSpeed: 0.5
+  rotationDamping: 0.5
+  _rotationVelocity: 0
+  _dragged: 0

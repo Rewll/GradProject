@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using SimpleCursor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class PictureInCollage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler , IDragHandler, IPointerClickHandler
+public class PictureInCollage : MonoBehaviour, IPointerDownHandler, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     [Header("References: ")]
     public Canvas canvas;
@@ -17,20 +19,21 @@ public class PictureInCollage : MonoBehaviour, IPointerEnterHandler, IPointerExi
     [SerializeField] private float scaleFactor;
     [SerializeField] private float maxScale;
     [SerializeField] private float minScale;
-    [SerializeField] private bool isHold;
+    [SerializeField] private bool isSelected;
+    public float rotationSpeed;
+
+    private float _rotationVelocity;
+
     private void Awake()
     {
         _rt = GetComponent<RectTransform>();
     }
-    
-    public void OnPointerEnter(PointerEventData eventData)
+    public void OnBeginDrag(PointerEventData eventData)
     {
-       
-    }
-    
-    public void OnPointerClick(PointerEventData eventData)
-    {
-
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            CursorUtilities.ChangeCursor(CursorType.Move);
+        }
     }
     
     public void OnDrag(PointerEventData eventData)
@@ -38,6 +41,15 @@ public class PictureInCollage : MonoBehaviour, IPointerEnterHandler, IPointerExi
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             _rt.anchoredPosition += eventData.delta / _rt.parent.parent.localScale /canvas.scaleFactor;
+        }
+        
+    }
+    
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            CursorUtilities.ChangeCursor(default);
         }
     }
     
@@ -52,11 +64,6 @@ public class PictureInCollage : MonoBehaviour, IPointerEnterHandler, IPointerExi
         }
     }
     
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        
-    }
-
     void ResizePictureInCollage()
     {
         float newScale = Input.mouseScrollDelta.y * scaleFactor * Time.deltaTime;
@@ -70,33 +77,44 @@ public class PictureInCollage : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     void RotatePictureInCollage()
     {
-        
-    }
-    
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        
+        _rotationVelocity = Input.mousePositionDelta.x * rotationSpeed;
+        transform.Rotate(Vector3.back, -_rotationVelocity, Space.Self);
     }
     
     private void Update()
     {
-        if (isHold)
+        if (isSelected)
         {
             ResizePictureInCollage();
+            if (Input.GetMouseButton(1))
+            {
+                RotatePictureInCollage();
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                CursorUtilities.ChangeCursor(CursorType.Rotate);
+            }
+            else if (Input.GetMouseButtonUp(1))
+            {
+                CursorUtilities.ChangeCursor(CursorType.Default);
+            }
         }
     }
     
     public void OnSelect()
     {
         //Debug.Log(gameObject.name + "OnSelect");
-        isHold = true;
+        isSelected = true;
         selectionBackgroundImage.enabled = true;
     }
     
     public void OnDeselect()
     {
         //Debug.Log(gameObject.name + "OnDeSelect");
-        isHold = false;
+        isSelected = false;
         selectionBackgroundImage.enabled = false;
     }
+
+
 }
