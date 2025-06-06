@@ -28,7 +28,7 @@ public class PlayerKameraState : BaseState
     private void Awake()
     {
         _playerAgentRef = GetComponent<PlayerAgent>();
-        SetGameObjects(false);  
+        //SetGameObjects(false);  
     }
 
     public override void OnEnter()
@@ -38,7 +38,7 @@ public class PlayerKameraState : BaseState
         
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        SetGameObjects(true);
+        //SetGameObjects(true);
     }
 
     public override void OnUpdate()
@@ -46,6 +46,7 @@ public class PlayerKameraState : BaseState
         //Debug.Log("kamera");
         if (Input.GetKeyDown(_playerAgentRef.CameraKnop))
         {
+            _playerAgentRef.kameraAnimator.SetTrigger("TrDisable");
             owner.SwitchState(typeof(PlayerWalkLookState));
             return;
         }
@@ -74,7 +75,8 @@ public class PlayerKameraState : BaseState
     
     public override void OnExit()
     {
-        SetGameObjects(false);
+        //SetGameObjects(false);
+        
     }
     
     public void SetGameObjects(bool status)

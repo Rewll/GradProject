@@ -1075,8 +1075,8 @@ Mesh:
   m_CookingOptions: 30
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1.0000001
-  m_MeshMetrics[1]: 1
+  'm_MeshMetrics[0]': 1.0000001
+  'm_MeshMetrics[1]': 1
   m_MeshOptimizationFlags: 1
   m_StreamData:
     serializedVersion: 2
@@ -7317,10 +7317,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 7824938225145086079, guid: a90603761dfbec245b11a67978c5b7d0, type: 3}
-      propertyPath: m_Name
-      value: Environment
-      objectReference: {fileID: 0}
     - target: {fileID: 7833906400188971249, guid: a90603761dfbec245b11a67978c5b7d0, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -8471,10 +8467,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: Probeer je betekenis/zingeving vast te leggen met de camera. In het landschap
-    zul je verschillende dingen vinden. Probeer in het landschap foto's te maken van
-    dingen die jij betekenisvol vind of van dingen die passen bij je eigen zingeving.
-    Wat je hieronder verstaat is aan jou, maar denk aan dingen die je belangrijk vind
-    of dingen die voor jou een reden zijn om uit bed te komen. Nadat je de foto's
+    zul je verschillende dingen vinden. Probeer in het landschap foto's te maken
+    van dingen die jij betekenisvol vind of van dingen die passen bij je eigen zingeving.
+    Wat je hieronder verstaat is aan jou, maar denk aan dingen die je belangrijk
+    vind of dingen die voor jou een reden zijn om uit bed te komen. Nadat je de foto's
     hebt gemaakt ga je met deze foto's een collage maken.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8630,8 +8626,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Als je door deze deur gaat dan begint de laatste fase van het spel. Je kan
-    dan niet terug naar dit landschap. Wees hier bewust van.
+  m_text: Als je door deze deur gaat dan begint de laatste fase van het spel. Je
+    kan dan niet terug naar dit landschap. Wees hier bewust van.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9394,8 +9390,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Nu je weet hoe de camera werkt kan je deze gebruiken. \n\nZometeen bevind
-    je je in een landschap waar je van alles tegenkomt \n\nJou opdracht is om in dit
-    landschap met de camera jou zingeving en betekenis vast te leggen."
+    je je in een landschap waar je van alles tegenkomt \n\nJou opdracht is om in
+    dit landschap met de camera jou zingeving en betekenis vast te leggen."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11550,11 +11546,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66ac241232d03634e912d58611129536, type: 3}
---- !u!4 &4026864975054791927 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4026864976441146704, guid: a90603761dfbec245b11a67978c5b7d0, type: 3}
-  m_PrefabInstance: {fileID: 1403394471}
-  m_PrefabAsset: {fileID: 0}
 --- !u!222 &1376787595179128383
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12519,7 +12510,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &3803274840606592362
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12647,6 +12638,11 @@ RectTransform:
   m_AnchoredPosition: {x: 100, y: -0.000015258789}
   m_SizeDelta: {x: 100, y: 58.9763}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!4 &4026864975054791927 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4026864976441146704, guid: a90603761dfbec245b11a67978c5b7d0, type: 3}
+  m_PrefabInstance: {fileID: 1403394471}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4086470626781991983
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12817,6 +12813,7 @@ GameObject:
   - component: {fileID: 3225385266534550621}
   - component: {fileID: 7888219156364172021}
   - component: {fileID: 1799336985371487299}
+  - component: {fileID: 7939536068333515833}
   m_Layer: 5
   m_Name: Passive
   m_TagString: Untagged
@@ -13452,10 +13449,6 @@ PrefabInstance:
       propertyPath: latestPictureShowImage
       value: 
       objectReference: {fileID: 206217670415315432}
-    - target: {fileID: 244336978272902508, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
-      propertyPath: zoomSensitivity
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 288977799357588334, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
       propertyPath: m_Name
       value: PlayerObject
@@ -13509,11 +13502,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1156342552232301481}
     - target: {fileID: 3197382577623612983, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
-      propertyPath: kameraModeGameObjects.Array.data[0]
+      propertyPath: kameraAnimator
+      value: 
+      objectReference: {fileID: 1799336985371487299}
+    - target: {fileID: 3197382577623612983, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
+      propertyPath: kameraDisabledMesh
+      value: 
+      objectReference: {fileID: 4299620637454205585}
+    - target: {fileID: 3197382577623612983, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
+      propertyPath: 'kameraModeGameObjects.Array.data[0]'
       value: 
       objectReference: {fileID: 3685231487233411855}
     - target: {fileID: 3197382577623612983, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
-      propertyPath: kameraModeGameObjects.Array.data[1]
+      propertyPath: 'kameraModeGameObjects.Array.data[1]'
       value: 
       objectReference: {fileID: 3685231487233411855}
     - target: {fileID: 3284954713635975250, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
@@ -13545,22 +13546,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6888851089058085198}
     - target: {fileID: 7654348416863587227, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
-      propertyPath: kameraModeGameObjects.Array.data[1]
+      propertyPath: 'kameraModeGameObjects.Array.data[1]'
       value: 
       objectReference: {fileID: 3685231487233411855}
     - target: {fileID: 8185207152417518816, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
       propertyPath: field of view
       value: 60
       objectReference: {fileID: 0}
-    - target: {fileID: 8185207152417518816, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
-      propertyPath: field of view
-      value: 60
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: [{fileID: 4863041895375023448, guid: 5b7966b53c6c70542870b32fd6664321, type: 3},
-      {fileID: 7889820702737513920, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}]
+    m_RemovedGameObjects:
+    - {fileID: 4863041895375023448, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
+    - {fileID: 7889820702737513920, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: [{targetCorrespondingSourceObject: {fileID: 993970980671441878, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}, insertIndex: -1, addedObject: {fileID: 5890244111541571158}}]
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 993970980671441878, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5890244111541571158}
   m_SourcePrefab: {fileID: 100100000, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
 --- !u!114 &5890244111541571154 stripped
 MonoBehaviour:
@@ -14539,6 +14540,72 @@ RectTransform:
   m_AnchoredPosition: {x: -32.49997, y: -65.00003}
   m_SizeDelta: {x: 1924, y: 1084.1289}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &7939536068333515833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4299620637454205585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21c67ed7e8bcffc4ab607cbc53eb4484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableKam:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7888219156364172021}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3685231487233411855}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  disableKam:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7888219156364172021}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 3685231487233411855}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7952015776673017755
 GameObject:
   m_ObjectHideFlags: 0

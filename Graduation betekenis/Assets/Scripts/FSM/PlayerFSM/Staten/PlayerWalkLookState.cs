@@ -29,6 +29,7 @@ public class PlayerWalkLookState : BaseState
         
         if (Input.GetKeyDown(_playerAgentRef.CameraKnop))
         {
+            _playerAgentRef.kameraAnimator.SetTrigger("TrEnable");
             owner.SwitchState(typeof(PlayerKameraState));
             return;
         }
@@ -64,6 +65,5 @@ public class PlayerWalkLookState : BaseState
     
     public override void OnExit()
     {
-        
     }
 }
