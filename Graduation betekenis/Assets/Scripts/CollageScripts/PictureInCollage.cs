@@ -21,7 +21,7 @@ public class PictureInCollage : MonoBehaviour, IPointerDownHandler, IDragHandler
     [SerializeField] private float minScale;
     [SerializeField] private bool isSelected;
     public float rotationSpeed;
-
+    public bool magGekniptWorden;
     private float _rotationVelocity;
 
     private void Awake()

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3021564076207624091}
   - component: {fileID: 4369915899044817413}
   - component: {fileID: 2580826458151321355}
+  - component: {fileID: 9026052197005431497}
   m_Layer: 5
   m_Name: Tekst
   m_TagString: Untagged
@@ -35,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000046610832, y: 0}
-  m_SizeDelta: {x: 1233.1941, y: 100.7127}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4369915899044817413
 CanvasRenderer:
@@ -65,7 +66,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: VoorbeeldVoorbeeld
+  m_text: 'Woord
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6e294558c6f260041ace775382e3c77c, type: 2}
   m_sharedMaterial: {fileID: -4942861527353617658, guid: 6e294558c6f260041ace775382e3c77c, type: 2}
@@ -136,6 +139,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &9026052197005431497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018055792426070712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!1 &3094430665205356096
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +188,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 919.0774, y: 100}
+  m_SizeDelta: {x: 305.09, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3471676420678146332
 CanvasRenderer:
@@ -195,7 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.49019608}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -247,7 +264,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1, y: 10.478178}
-  m_SizeDelta: {x: 1516.31, y: 123.83426}
+  m_SizeDelta: {x: 375.1328, y: 123.8343}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &778049313393802624
 MonoBehaviour:

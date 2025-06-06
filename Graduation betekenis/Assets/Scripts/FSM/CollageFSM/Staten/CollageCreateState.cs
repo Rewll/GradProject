@@ -173,6 +173,9 @@ public class CollageCreateState : BaseState
         rt.SetParent(pictureInCollageParent, false);
         newTextInCollage.GetComponent<PictureInCollage>().canvas = mainCanvas;
         newTextInCollage.GetComponent<PictureInCollage>().gameManRef = this;
+        RectTransform selectionRT = newTextInCollage.transform.GetChild(1).GetComponent<RectTransform>();
+        selectionRT.sizeDelta = new Vector2(rt.sizeDelta.x, rt.sizeDelta.y);
+        Debug.Log(selectionRT.sizeDelta);
     }
     void SetLayerButtons()
     {
@@ -231,9 +234,12 @@ public class CollageCreateState : BaseState
 
     public void OnSelectGlobal()
     {
-        foreach (Button button in buttonsThatUseSelect)
+        if (selectedPicture.GetComponent<PictureInCollage>().magGekniptWorden)
         {
-            button.interactable = true;
+            foreach (Button button in buttonsThatUseSelect)
+            {
+                button.interactable = true;
+            }
         }
         layerText.gameObject.SetActive(true);
         SetLayerButtons();
