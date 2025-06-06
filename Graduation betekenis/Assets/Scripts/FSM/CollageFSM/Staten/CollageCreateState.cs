@@ -18,6 +18,7 @@ public class CollageCreateState : BaseState
     public GameObject collage;
     public GameObject collageCreateScreen;
     public GameObject pictureInCollagePrefab;
+    public GameObject textInCollagePrefab;
     public Canvas mainCanvas;
     public RectTransform pictureInCollageParent;
     [Space] 
@@ -163,6 +164,16 @@ public class CollageCreateState : BaseState
         }
     }
 
+    public void AddWordToCollage(string word)
+    {
+        GameObject newTextInCollage = Instantiate(textInCollagePrefab);
+        newTextInCollage.transform.GetChild(1).GetComponent<TMP_Text>().text = word;
+        newTextInCollage.name = "Tekst in collage";
+        RectTransform rt = newTextInCollage.GetComponent<RectTransform>();
+        rt.SetParent(pictureInCollageParent, false);
+        newTextInCollage.GetComponent<PictureInCollage>().canvas = mainCanvas;
+        newTextInCollage.GetComponent<PictureInCollage>().gameManRef = this;
+    }
     void SetLayerButtons()
     {
         layerDownButton.interactable = true;
