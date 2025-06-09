@@ -20,7 +20,7 @@ public class WoordSchermManager : MonoBehaviour
 
     public void ToevoegenAanCollage()
     {
-        colManagerRef.AddWordToCollage(_getyptWoord);
+        colManagerRef.AddWordToCollage(_getyptWoord, voorbeeldTekst.color);
     }
 
 }

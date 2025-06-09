@@ -255,7 +255,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 15, y: 15}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6177366410584698090
 CanvasRenderer:
@@ -597,14 +597,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7c2f45f4a4d5f647af30e16a8a1d315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHue: 255
-  currentSaturation: 255
-  currentValue: 255
+  currentHue: 0
+  currentSaturation: 0
+  currentValue: 0
   hueImage: {fileID: 7309480451174152043}
   satValImage: {fileID: 2791532187479656351}
   outPutImage: {fileID: 2819412829472136211}
   hueSlider: {fileID: 7249279522351618302}
-  changeThisColour: {fileID: 0}
+  objectsToColor: []
 --- !u!1 &5779867803675048100
 GameObject:
   m_ObjectHideFlags: 0

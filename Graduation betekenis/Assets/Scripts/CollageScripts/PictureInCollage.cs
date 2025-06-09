@@ -66,7 +66,7 @@ public class PictureInCollage : MonoBehaviour, IPointerDownHandler, IDragHandler
     
     void ResizePictureInCollage()
     {
-        float newScale = Input.mouseScrollDelta.y * scaleFactor * Time.deltaTime;
+        float newScale = Input.mouseScrollDelta.y * scaleFactor;
         
         if ((_rt.localScale.x + newScale) < maxScale &&
             (_rt.localScale.x + newScale) > minScale)

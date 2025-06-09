@@ -209,7 +209,7 @@ MonoBehaviour:
   canvas: {fileID: 0}
   gameManRef: {fileID: 0}
   selectionBackgroundImage: {fileID: 8091505771246816909}
-  scaleFactor: 4
+  scaleFactor: 0.03
   maxScale: 5
   minScale: 0.01
   isSelected: 0

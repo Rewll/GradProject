@@ -24,7 +24,7 @@ public class SVImageControl : MonoBehaviour, IDragHandler, IPointerClickHandler
         _rectTransform = GetComponent<RectTransform>();
         
         _pickerRectTransform = pickerImage.GetComponent<RectTransform>();
-        _pickerRectTransform.position = new Vector2(-(_rectTransform.sizeDelta.x * 0.5f), -(_rectTransform.sizeDelta.y * 0.5f));
+        //_pickerRectTransform.position = new Vector2(-(_rectTransform.sizeDelta.x * 0.5f), -(_rectTransform.sizeDelta.y * 0.5f));
     }
 
     void UpdateColour(PointerEventData eventData)
