@@ -21,19 +21,13 @@ public class FabriekWerkState : BaseState
     {
         _fabriekAgentRef.huidigeStaat = FabriekAgent.FabriekStaten.FabriekWerkState;
         machineAnim.SetTrigger("TrEnter");
-        //StartCoroutine(werkRoutine());
     }
     
     public override void OnUpdate()
     {
        
     }
-
-    IEnumerator werkRoutine()
-    {
-        yield return new WaitForSeconds(werkTijd);
-        owner.SwitchState(typeof(FabriekOntsnapState));
-    }
+    
     public override void OnFixedUpdate()
     {
         
@@ -42,5 +36,10 @@ public class FabriekWerkState : BaseState
     public override void OnExit()
     {
        
+    }
+
+    public void SpelerOntsnapFase()
+    {
+        owner.SwitchState(typeof(FabriekOntsnapState));
     }
 }
