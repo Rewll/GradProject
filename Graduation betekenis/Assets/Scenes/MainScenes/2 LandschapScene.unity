@@ -11091,6 +11091,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: KameraUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4580619972197882589, guid: c04a13d067e84b244b1a7b7ea1be4ce2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5071007776685344712, guid: c04a13d067e84b244b1a7b7ea1be4ce2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
