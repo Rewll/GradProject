@@ -8,6 +8,7 @@ using UnityEngine.Serialization;
 public class AudioLayer : MonoBehaviour
 {
     [SerializeField] private int layerNum;
+    [SerializeField] AudioMixerGroup mixerGroup;
     public geluid[] soundsList;
     
     public bool dontDestroy;
@@ -20,7 +21,7 @@ public class AudioLayer : MonoBehaviour
             g.source.clip = g.geluidsClip;
             g.source.volume = g.volume;
             g.source.loop = g.loop;
-            g.source.mute = g.muted;
+            g.source.outputAudioMixerGroup = mixerGroup;
         }
     }
 

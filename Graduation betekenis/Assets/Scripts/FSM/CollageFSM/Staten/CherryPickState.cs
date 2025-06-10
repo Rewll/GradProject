@@ -19,6 +19,7 @@ public class CherryPickState : BaseState
     public GameObject cherryPickPrefab;
     public GameObject cherryPickParent;
     public GameObject teveelFotosScherm;
+    public GameObject teWeinigFotosScherm;
 
     [Header("Picture Cherrypick:")] public List<RectTransform> picturesShowingPlaces = new List<RectTransform>();
     public List<GameObject> pictureCherryObjects = new List<GameObject>();
@@ -162,6 +163,10 @@ public class CherryPickState : BaseState
         if (amountOfSelectedPictures > _colManagerRef.amountOfPicturesToCollageWith)
         {
             teveelFotosScherm.SetActive(true);
+        }
+        else if (amountOfSelectedPictures <= 0)
+        {
+            teWeinigFotosScherm.SetActive(true);
         }
         else if (amountOfSelectedPictures <= _colManagerRef.amountOfPicturesToCollageWith)
         {

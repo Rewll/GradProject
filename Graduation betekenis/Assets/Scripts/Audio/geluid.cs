@@ -9,7 +9,6 @@ public class geluid
     [Range(0f, 1f)]
     public float volume = 1f;
     public bool loop;
-    public bool muted;
 
     [HideInInspector]
     public AudioSource source;

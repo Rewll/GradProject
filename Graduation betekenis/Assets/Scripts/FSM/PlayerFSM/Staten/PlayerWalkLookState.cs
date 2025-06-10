@@ -18,7 +18,6 @@ public class PlayerWalkLookState : BaseState
         
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        _playerAgentRef.kameraDisabledMesh.SetActive(true);
     }
     
     public override void OnUpdate()
@@ -30,6 +29,7 @@ public class PlayerWalkLookState : BaseState
         
         if (Input.GetKeyDown(_playerAgentRef.CameraKnop))
         {
+            _playerAgentRef.kameraAnimator.SetTrigger("TrEnable");
             owner.SwitchState(typeof(PlayerKameraState));
             return;
         }
@@ -65,6 +65,5 @@ public class PlayerWalkLookState : BaseState
     
     public override void OnExit()
     {
-        _playerAgentRef.kameraDisabledMesh.SetActive(false);
     }
 }

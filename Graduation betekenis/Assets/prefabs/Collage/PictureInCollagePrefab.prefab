@@ -208,8 +208,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
   gameManRef: {fileID: 0}
+  selectionBackgroundImage: {fileID: 8091505771246816909}
   scaleFactor: 4
   maxScale: 1.5
   minScale: 0.01
-  SelectionBackgroundImage: {fileID: 8091505771246816909}
   isHold: 0
+  rotationSpeed: 0.5
+  rotationDamping: 0.5
+  _rotationVelocity: 0
+  _dragged: 0

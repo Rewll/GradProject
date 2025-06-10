@@ -21,10 +21,11 @@ public class PlayerAgent : MonoBehaviour
     [Space]
     [Header("Object References:")]
     public GameObject kameraDisabledMesh;
-    public GameObject kamerUseMesh;
     public GameObject pictureScreen;
     public List<GameObject> kameraModeGameObjects = new List<GameObject>();
     public Transform fabriekRaycastPos;
+    [Space] 
+    public Animator kameraAnimator;
     [Space]
     [Header("Player Wide Variables:")]
     public KeyCode CameraKnop;
