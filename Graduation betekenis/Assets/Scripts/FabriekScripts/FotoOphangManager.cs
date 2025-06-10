@@ -13,6 +13,7 @@ public class FotoOphangManager : MonoBehaviour
     [SerializeField] private int aantalFotos;
     [SerializeField] private int fotoTreshold = 10;
     public UnityEvent onFotoTresholdBereikt;
+    public UnityEvent onOphang;
     public void HangFotoOp(Texture pictureTexture)
     {
         fotoOphangImages[aantalFotos].GetComponent<RawImage>().texture = pictureTexture;
@@ -21,5 +22,6 @@ public class FotoOphangManager : MonoBehaviour
         {
             onFotoTresholdBereikt.Invoke();
         }
+        onOphang.Invoke();
     }
 }
