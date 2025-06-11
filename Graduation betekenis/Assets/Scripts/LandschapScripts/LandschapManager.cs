@@ -8,9 +8,13 @@ public class LandschapManager : MonoBehaviour
     public PlayerAgent playerAgentRef;
     [Space] 
     public Image fadeVlak;
-
-    public GameObject tutorialArea;
     public AudioLayer audioManRef;
+    public bool skipTutorial;
+    [Space] 
+    [Header("Tutorial References")]
+    public GameObject cameraTutorial1;
+    public GameObject cameraTutorial2;
+    public Button fotoKijkKnop;
     
     public void SetCursorMode(int mode)
     {

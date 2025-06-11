@@ -2365,7 +2365,7 @@ MonoBehaviour:
   collageKlaarScherm: {fileID: 409243921}
   collageCreateScreen: {fileID: 1822524765}
   collageTutorialScreen: {fileID: 1266446861}
-  skipTutorial: 1
+  skipTutorial: 0
 --- !u!4 &239382548
 Transform:
   m_ObjectHideFlags: 0
@@ -14876,6 +14876,8 @@ MonoBehaviour:
   colManagerRef: {fileID: 239382543}
   tekstInputField: {fileID: 1719580821}
   voorbeeldTekst: {fileID: 1417719714}
+  wordScaleFactor: 0.1
+  wordMaxScale: 6
 --- !u!1 &1817784801
 GameObject:
   m_ObjectHideFlags: 0
