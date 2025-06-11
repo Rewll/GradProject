@@ -14,11 +14,12 @@ public class PictureInCollage : MonoBehaviour, IPointerDownHandler, IDragHandler
     public Canvas canvas;
     public CollageCreateState gameManRef;
     public Image selectionBackgroundImage;
+    public RectTransform parentRectTransform;
     private RectTransform _rt;
     [Space]
-    [SerializeField] private float scaleFactor;
-    [SerializeField] private float maxScale;
-    [SerializeField] private float minScale;
+    public float scaleFactor;
+    public float maxScale;
+    public float minScale;
     [SerializeField] private bool isSelected;
     public float rotationSpeed;
     public bool magGekniptWorden;
@@ -40,7 +41,7 @@ public class PictureInCollage : MonoBehaviour, IPointerDownHandler, IDragHandler
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            _rt.anchoredPosition += eventData.delta / _rt.parent.parent.localScale /canvas.scaleFactor;
+            _rt.anchoredPosition += eventData.delta / parentRectTransform.localScale /canvas.scaleFactor;
         }
         
     }

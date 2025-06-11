@@ -10,6 +10,8 @@ public class WoordSchermManager : MonoBehaviour
     public TMP_Text voorbeeldTekst;
     
     private string _getyptWoord;
+    public float wordScaleFactor = 0.1f;
+    public float wordMaxScale = 6f;
     
     public void SetVoorbeeld()
     {
@@ -19,7 +21,7 @@ public class WoordSchermManager : MonoBehaviour
 
     public void ToevoegenAanCollage()
     {
-        colManagerRef.AddWordToCollage(_getyptWoord, voorbeeldTekst.color);
+        colManagerRef.AddWordToCollage(_getyptWoord, voorbeeldTekst.color, wordScaleFactor,wordMaxScale);
     }
 
 }

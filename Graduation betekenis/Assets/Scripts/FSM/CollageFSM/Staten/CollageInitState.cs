@@ -10,6 +10,7 @@ public class CollageInitState : BaseState
     public PictureStorage picStorageRef;
     [Space]
     public List<GameObject> Screens = new List<GameObject>();
+    
     private void Awake()
     {
         _collageAgentRef = GetComponent<CollageAgent>();
@@ -42,7 +43,6 @@ public class CollageInitState : BaseState
                 {
                     _colManagerRef.picturesToCollageWith.Add(picture);
                 }
-                owner.SwitchState(typeof(CollageCreateState));
             }
         }
         else
@@ -52,8 +52,18 @@ public class CollageInitState : BaseState
             {
                 _colManagerRef.picturesToCollageWith.Add(_colManagerRef.testTexture);
             }
-            owner.SwitchState(typeof(CollageCreateState));
+
+            if (_colManagerRef.skipTutorial)
+            {
+                owner.SwitchState(typeof(CollageCreateState));
+            }
+            else
+            {
+                owner.SwitchState(typeof(CollageTutorialState));
+            }
+            
         }
+        
     }
     
     public override void OnUpdate()

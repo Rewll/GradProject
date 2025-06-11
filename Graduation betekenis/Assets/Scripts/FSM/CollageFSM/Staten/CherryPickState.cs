@@ -11,7 +11,8 @@ public class CherryPickState : BaseState
     private CollageAgent _collageAgentRef;
     private CollageManager _colManagerRef;
 
-    [Header("References:")] public GameObject cherryPickScreen;
+    [Header("References:")] 
+    public GameObject cherryPickScreen;
     public GameObject nextButton;
     public GameObject previousButton;
     public TMP_Text pageNumberText;
@@ -30,6 +31,8 @@ public class CherryPickState : BaseState
     public int pageMin;
     public int pageMax;
     public int amountOfSelectedPictures;
+    [Space] 
+    public bool skipTutorial;
 
     private void Awake()
     {
@@ -177,7 +180,15 @@ public class CherryPickState : BaseState
                     _colManagerRef.picturesToCollageWith.Add(obj.GetComponent<CherryPickObject>().pictureTexture);
                 }
             }
-            owner.SwitchState(typeof(CollageCreateState));
+            
+            if (_colManagerRef.skipTutorial)
+            {
+                owner.SwitchState(typeof(CollageCreateState));
+            }
+            else
+            {
+                owner.SwitchState(typeof(CollageTutorialState));
+            }
         }
     }
 

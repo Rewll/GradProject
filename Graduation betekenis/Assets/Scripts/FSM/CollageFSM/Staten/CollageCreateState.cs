@@ -25,10 +25,7 @@ public class CollageCreateState : BaseState
     [SerializeField] private List<RectTransform> pictureStartPositions = new List<RectTransform>();
     public CollageCuttingManager collCutRef;
     public RawImage collagePreview;
-
-    public GameObject tutorialObject;
-    public GameObject tutorialObject2;
-
+    
     public RectTransform knipselsPos;
     
     [Header("Collage stuff:")] 
@@ -48,8 +45,7 @@ public class CollageCreateState : BaseState
     [Header("Picture stuff:")]
     public List<GameObject> picturesInCollage = new List<GameObject>();
     public GameObject selectedPicture;
-    [Space] 
-    public bool tutorial;
+
     
     
     private void Awake()
@@ -62,23 +58,11 @@ public class CollageCreateState : BaseState
     public override void OnEnter()
     {
         _collageAgentRef.huidigeStaat = CollageAgent.Collagestaten.CollageCreateState;
-
         
         collageCreateScreen.SetActive(true);
         OnDeselectGlobal();
         SetPicturesToCollageWith(_colManagerRef.picturesToCollageWith);
         SetPicturesPos(picturesInCollage);
-        
-        if (tutorial)
-        {
-            tutorialObject.SetActive(true);
-            tutorialObject2.SetActive(true);
-        }
-        else
-        {
-            tutorialObject.SetActive(false);
-            tutorialObject2.SetActive(false);
-        }
     }
     
     public override void OnUpdate()
@@ -109,6 +93,7 @@ public class CollageCreateState : BaseState
             rt.localScale = new Vector3(0.25f, 0.25f, 0.25f);
             newPictureInCollage.GetComponent<PictureInCollage>().canvas = mainCanvas;
             newPictureInCollage.GetComponent<PictureInCollage>().gameManRef = this;
+            newPictureInCollage.GetComponent<PictureInCollage>().parentRectTransform = collage.GetComponent<RectTransform>();
             picturesInCollage.Add(newPictureInCollage);
         }
     }
@@ -150,7 +135,8 @@ public class CollageCreateState : BaseState
     {
         foreach (GameObject obj in collCutRef.CutPieceObjects)
         {
-            obj.name = "Picture in collage " + picturesInCollage.Count;
+            obj.name = "CutPicture in collage " + picturesInCollage.Count;
+            obj.GetComponent<PictureInCollage>().parentRectTransform = collage.GetComponent<RectTransform>();
             RectTransform rt = obj.GetComponent<RectTransform>();
             rt.SetParent(pictureInCollageParent, false);
             rt.anchoredPosition = knipselsPos.anchoredPosition;
@@ -164,7 +150,7 @@ public class CollageCreateState : BaseState
         }
     }
 
-    public void AddWordToCollage(string word, Color wordColor)
+    public void AddWordToCollage(string word, Color wordColor, float wordScaleFactor, float wordMaxScale)
     {
         GameObject newTextInCollage = Instantiate(textInCollagePrefab);
         newTextInCollage.transform.GetChild(1).GetComponent<TMP_Text>().text = word;
@@ -172,8 +158,12 @@ public class CollageCreateState : BaseState
         newTextInCollage.name = "Tekst in collage";
         RectTransform rt = newTextInCollage.GetComponent<RectTransform>();
         rt.SetParent(pictureInCollageParent, false);
-        newTextInCollage.GetComponent<PictureInCollage>().canvas = mainCanvas;
-        newTextInCollage.GetComponent<PictureInCollage>().gameManRef = this;
+        PictureInCollage picInColRef = newTextInCollage.GetComponent<PictureInCollage>();
+        picInColRef.canvas = mainCanvas;
+        picInColRef.gameManRef = this;
+        picInColRef.parentRectTransform = collage.GetComponent<RectTransform>();
+        picInColRef.scaleFactor = wordScaleFactor;
+        picInColRef.maxScale = wordMaxScale;
         RectTransform selectionRT = newTextInCollage.transform.GetChild(1).GetComponent<RectTransform>();
         selectionRT.sizeDelta = new Vector2(rt.sizeDelta.x, rt.sizeDelta.y);
         //Debug.Log(selectionRT.sizeDelta);
