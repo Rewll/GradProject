@@ -12,6 +12,7 @@ public class LandschapState : BaseState
     public float screenFadeTime = 2f;
     [Header("References: ")]
     public Transform startplek;
+    public AudioLayer landMarkLayer;
     [Space] 
     public bool spelerHeeftGekeken;
     private void Awake()
@@ -28,11 +29,11 @@ public class LandschapState : BaseState
     {
         _landschapAgent.huidigeStaat = LandschapAgent.LandschapStaten.LandschapState;
         
+        _landschapManagerRef.playerAgentRef.TeleportPlayer(startplek.position);
         _landschapManagerRef.SetCursorMode(0);
         _landschapManagerRef.fadeVlak.gameObject.SetActive(true);
         _landschapManagerRef.fadeVlak.DOFade(1, 0.001f);
-
-        _landschapManagerRef.playerAgentRef.TeleportPlayer(startplek.position);
+    
         _landschapManagerRef.audioManRef.FadeInSound(0, 5f);
         StartCoroutine(StartRoutine());
     }
@@ -41,9 +42,11 @@ public class LandschapState : BaseState
     {
         yield return new WaitForSeconds(2f);
         _landschapManagerRef.playerAgentRef.SetPlayerState(PlayerStates.WalkLookState);
+        _landschapManagerRef.playerAgentRef.SetPlayerLookDirection(5.775f, -96.124f);
         Tween fadeTween = _landschapManagerRef.fadeVlak.DOFade(0, screenFadeTime);
         yield return fadeTween.WaitForCompletion();
         _landschapManagerRef.fadeVlak.gameObject.SetActive(false);
+        landMarkLayer.FadeInSound(0,2f);
         if (!_landschapManagerRef.skipTutorial)
         {
             StartCoroutine(TutorialRoutine());

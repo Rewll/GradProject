@@ -1490,6 +1490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenFadeTime: 2
   startplek: {fileID: 480381001}
+  landMarkLayer: {fileID: 1962673243}
   spelerHeeftGekeken: 0
 --- !u!114 &702569693
 MonoBehaviour:
@@ -1518,6 +1519,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startplek: {fileID: 480381001}
+--- !u!1 &832695645 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 626151928677939096, guid: 66ac241232d03634e912d58611129536, type: 3}
+  m_PrefabInstance: {fileID: 849551446}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &849551446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2029,6 +2035,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1118628276 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 626151928677939096, guid: 66ac241232d03634e912d58611129536, type: 3}
+  m_PrefabInstance: {fileID: 1671784876}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1198701984 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6264231581881311699, guid: 946ff1854418a374eaa2d484f95ed27a, type: 3}
@@ -2167,11 +2178,6 @@ PrefabInstance:
 --- !u!4 &1244111357 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
-  m_PrefabInstance: {fileID: 1244111356}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1244111358 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 626151928677939096, guid: 66ac241232d03634e912d58611129536, type: 3}
   m_PrefabInstance: {fileID: 1244111356}
   m_PrefabAsset: {fileID: 0}
 --- !u!43 &1340290782
@@ -2339,6 +2345,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1356061794 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 626151928677939096, guid: 66ac241232d03634e912d58611129536, type: 3}
+  m_PrefabInstance: {fileID: 1426631483}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1358196577
 GameObject:
   m_ObjectHideFlags: 0
@@ -7625,6 +7636,10 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 1025
       objectReference: {fileID: 0}
+    - target: {fileID: 2510389113485740372, guid: d506cec53f059d04e9e285f87a0f3974, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3364221190997223296, guid: d506cec53f059d04e9e285f87a0f3974, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -7937,6 +7952,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987520866586807255, guid: 66ac241232d03634e912d58611129536, type: 3}
       propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -8013,8 +8032,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   landMarkLayerRef: {fileID: 1962673243}
   landmarks:
+  - {fileID: 1118628276}
   - {fileID: 1839376970}
-  - {fileID: 1244111358}
+  - {fileID: 832695645}
+  - {fileID: 1356061794}
+  - {fileID: 1746735523}
   currentLandMarkIndex: 0
   landMarkFadeInTime: 2
   landMarkFadeOutTime: 2
@@ -8541,6 +8563,11 @@ PrefabInstance:
 --- !u!4 &1746735522 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
+  m_PrefabInstance: {fileID: 1746735521}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1746735523 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 626151928677939096, guid: 66ac241232d03634e912d58611129536, type: 3}
   m_PrefabInstance: {fileID: 1746735521}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1755757502
@@ -9175,28 +9202,28 @@ MonoBehaviour:
   mixerGroup: {fileID: -6108954217141079583, guid: d22fb85508f89734c8fa84628263ff2d, type: 2}
   soundsList:
   - NaamClip: Landmark1 - Bed
-    geluidsClip: {fileID: 8300000, guid: 645c0e9981e63494180bff09d4529063, type: 3}
-    volume: 1
+    geluidsClip: {fileID: 8300000, guid: 7ce86d6187284ca489fef3ab3ec86cb9, type: 3}
+    volume: 0.8
     loop: 0
     source: {fileID: 0}
   - NaamClip: Landmark2 - Informatie
     geluidsClip: {fileID: 8300000, guid: f6d25053aba0e1448beab3b9dbf2c2de, type: 3}
-    volume: 1
+    volume: 0.8
     loop: 0
     source: {fileID: 0}
   - NaamClip: Landmark3 - Snelheid
     geluidsClip: {fileID: 8300000, guid: e59fd3f80ab3cba469ed2fbc0f76d6c2, type: 3}
-    volume: 1
+    volume: 0.8
     loop: 0
     source: {fileID: 0}
   - NaamClip: Landmark4 Spiraliteit
     geluidsClip: {fileID: 8300000, guid: b17d1d636471566429266c856201f590, type: 3}
-    volume: 1
+    volume: 0.8
     loop: 0
     source: {fileID: 0}
   - NaamClip: LandMark5 - De vierde dood
     geluidsClip: {fileID: 8300000, guid: 5baca3b1c0ae1e649a1bf61a7befab25, type: 3}
-    volume: 1
+    volume: 0.8
     loop: 0
     source: {fileID: 0}
   dontDestroy: 0
@@ -9639,19 +9666,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 635050521518877536, guid: 66ac241232d03634e912d58611129536, type: 3}
       propertyPath: m_Size.x
-      value: 31.75362
+      value: 46.89554
       objectReference: {fileID: 0}
     - target: {fileID: 635050521518877536, guid: 66ac241232d03634e912d58611129536, type: 3}
       propertyPath: m_Size.z
-      value: 29.086475
+      value: 37.267178
       objectReference: {fileID: 0}
     - target: {fileID: 635050521518877536, guid: 66ac241232d03634e912d58611129536, type: 3}
       propertyPath: m_Center.x
-      value: 6.2184186
+      value: 6.2184196
       objectReference: {fileID: 0}
     - target: {fileID: 635050521518877536, guid: 66ac241232d03634e912d58611129536, type: 3}
       propertyPath: m_Center.z
-      value: -3.3743877
+      value: -3.374388
       objectReference: {fileID: 0}
     - target: {fileID: 5851858694956032052, guid: 66ac241232d03634e912d58611129536, type: 3}
       propertyPath: m_LocalScale.x
@@ -10073,11 +10100,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1420534758139966838, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
       propertyPath: moveSpeed
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1420534758139966838, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
       propertyPath: gravityScale
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420534758139966838, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
+      propertyPath: debugRunEnabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2737540230103041981, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
       propertyPath: m_LocalPosition.x
