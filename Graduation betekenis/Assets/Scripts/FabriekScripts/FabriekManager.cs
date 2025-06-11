@@ -12,6 +12,7 @@ public class FabriekManager : MonoBehaviour
     public GameObject deurBeginRuimte;
     public Transform deurGeslotenPos;
     public Transform deurOpenPos;
+    public Animator machineAnim;
     [Space] 
     [Header("Variables:")]
     public int volgendeSceneIndex;

@@ -192,7 +192,7 @@ public class CherryPickState : BaseState
             }
         }
 
-        Debug.Log(amount);
+        //Debug.Log(amount);
         amountOfSelectedPictures = amount;
         selectieTekst.text = amountOfSelectedPictures + "/" + _colManagerRef.amountOfPicturesToCollageWith + " geselecteerd";
     }

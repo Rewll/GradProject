@@ -15,7 +15,6 @@ public class WoordSchermManager : MonoBehaviour
     {
         _getyptWoord = tekstInputField.text;
         voorbeeldTekst.text = _getyptWoord;
-        _getyptWoord = _getyptWoord;
     }
 
     public void ToevoegenAanCollage()
