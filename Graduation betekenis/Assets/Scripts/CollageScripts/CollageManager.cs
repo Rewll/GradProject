@@ -17,4 +17,8 @@ public class CollageManager : MonoBehaviour
 
     public Texture2D collageTexture;
     public GameObject collageKlaarScherm;
+    public GameObject collageCreateScreen;
+    public GameObject collageTutorialScreen;
+    [Space] 
+    public bool skipTutorial;
 }

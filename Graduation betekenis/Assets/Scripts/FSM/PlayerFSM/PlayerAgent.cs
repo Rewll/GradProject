@@ -26,12 +26,16 @@ public class PlayerAgent : MonoBehaviour
     public Transform fabriekRaycastPos;
     [Space] 
     public Animator kameraAnimator;
+    public Camera kamera;
+    public Transform kamTransform;
     [Space]
     [Header("Player Wide Variables:")]
     public KeyCode CameraKnop;
+    [Space]
+    [Header("Fabriek dingen:")]
     public bool inFabriek;
-    [Space] 
     public bool heeftFoto;
+    public bool heeftFotoMetObject;
     public Texture fabriekFoto;
     
     private void Awake()

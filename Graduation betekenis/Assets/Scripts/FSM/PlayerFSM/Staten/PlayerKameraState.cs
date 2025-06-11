@@ -9,7 +9,7 @@ public class PlayerKameraState : BaseState
 {
     private PlayerAgent _playerAgentRef;
     public KameraPictureDisplay picDisplayRef;
-
+    
     [Space] [Header("Kamera variables")] 
     [SerializeField] private Camera kamera;
     public RenderTexture rendText;
@@ -18,12 +18,15 @@ public class PlayerKameraState : BaseState
     
     private Texture2D _fotoTexture;
     [Space] 
+    public bool magZoomen;
     [SerializeField] private float zoomSensitivity;
     [SerializeField] private float minZoom;
     [SerializeField] private float maxZoom;
-    [Space]
-    Vector2 scrollDelta;
-    float scrollCalcul;
+    [Space] 
+    [Header("Fabriek variables")]
+    public GameObject redObject;
+    [SerializeField] private float raycastLength;
+    [SerializeField] private bool objectInPicture;
     
     private void Awake()
     {
@@ -51,7 +54,15 @@ public class PlayerKameraState : BaseState
             return;
         }
 
-        ZoomCamera();
+        if (magZoomen)
+        {
+            ZoomCamera();
+        }
+
+        if (_playerAgentRef.inFabriek)
+        {
+            Debug.DrawRay(_playerAgentRef.kamTransform.position, _playerAgentRef.kamTransform.TransformDirection(Vector3.forward) * raycastLength, Color.red);
+        }
         if (Input.GetMouseButton(1))
         {
             if (Cursor.lockState == CursorLockMode.None)
@@ -75,18 +86,10 @@ public class PlayerKameraState : BaseState
     
     public override void OnExit()
     {
-        //SetGameObjects(false);
+        
         
     }
     
-    public void SetGameObjects(bool status)
-    {
-        foreach (GameObject kameraGObject in _playerAgentRef.kameraModeGameObjects)
-        {
-            kameraGObject.SetActive(status);
-        }
-    }
-
     void ZoomCamera()
     {
         if (Input.GetMouseButtonDown(2))
@@ -109,7 +112,7 @@ public class PlayerKameraState : BaseState
         StartCoroutine(PictureRoutine(_playerAgentRef.inFabriek));
     }
     
-    IEnumerator PictureRoutine(bool Fabriek)
+    IEnumerator PictureRoutine(bool fabriek)
     {
         yield return new WaitForEndOfFrame();
         RenderTexture.active = rendText;
@@ -121,19 +124,37 @@ public class PlayerKameraState : BaseState
         _fotoTexture.Apply();
         latestPictureShowImage.texture = _fotoTexture;
         //pictureTextures.Add(fotoTexture);
-        if (!Fabriek)
+        if (!fabriek)
         {
             picDisplayRef.MakePictureGameObject(_fotoTexture);
         }
-
-        if (Fabriek)
+        else if(fabriek)
         {
-            if (!_playerAgentRef.heeftFoto)
+            _playerAgentRef.heeftFoto = true;
+            if (CheckIfObjectIsInPicture())
             {
-                _playerAgentRef.heeftFoto = true;
+                //Debug.Log("Foto gemaakt met object");
+                _playerAgentRef.heeftFotoMetObject = true;
+            }
+            else
+            {
+                //Debug.Log("Foto gemaakt");
+                _playerAgentRef.heeftFotoMetObject = false;
             }
             _playerAgentRef.fabriekFoto = _fotoTexture;
         }
+    }
 
+    private bool CheckIfObjectIsInPicture()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(_playerAgentRef.kamTransform.position, _playerAgentRef.kamTransform.TransformDirection(Vector3.forward), out hit, raycastLength))
+        {
+            if (hit.transform.CompareTag("RedObject"))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

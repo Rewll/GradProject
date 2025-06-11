@@ -142,6 +142,7 @@ public class CollageCuttingManager : MonoBehaviour
         GameObject newCutPiece = Instantiate(cutPiecePrefab);
         newCutPiece.GetComponent<PictureInCollage>().gameManRef = gameManRef;
         newCutPiece.GetComponent<PictureInCollage>().canvas = MainCanvas;
+        newCutPiece.GetComponent<PictureInCollage>().parentRectTransform = cutPieceParent;
         RectTransform RT = newCutPiece.GetComponent<RectTransform>();
         RawImage cutPieceImage = RT.GetChild(1).GetComponent<RawImage>();
         RT.SetParent(cutPieceParent, false);

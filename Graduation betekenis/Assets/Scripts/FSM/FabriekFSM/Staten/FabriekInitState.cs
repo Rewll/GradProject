@@ -25,6 +25,7 @@ public class FabriekInitState : BaseState
         if (skipTutorial)
         {
             _fabriekManagerRef.fadeVlak.gameObject.SetActive(false);
+            _fabriekManagerRef.machineAnim.SetTrigger("TrEnter");
             owner.SwitchState(typeof(FabriekWerkState));
         }
         else
