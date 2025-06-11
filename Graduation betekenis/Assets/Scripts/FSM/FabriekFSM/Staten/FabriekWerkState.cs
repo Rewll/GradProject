@@ -7,6 +7,8 @@ public class FabriekWerkState : BaseState
 {
     private FabriekAgent _fabriekAgentRef;
     private FabriekManager _fabriekManagerRef;
+    [Space] 
+    public Animator machineAnim;
 
     private void Awake()
     {
@@ -18,19 +20,14 @@ public class FabriekWerkState : BaseState
     public override void OnEnter()
     {
         _fabriekAgentRef.huidigeStaat = FabriekAgent.FabriekStaten.FabriekWerkState;
-        //StartCoroutine(werkRoutine());
+        machineAnim.SetTrigger("TrEnter");
     }
     
     public override void OnUpdate()
     {
        
     }
-
-    IEnumerator werkRoutine()
-    {
-        yield return new WaitForSeconds(werkTijd);
-        owner.SwitchState(typeof(FabriekOntsnapState));
-    }
+    
     public override void OnFixedUpdate()
     {
         
@@ -39,5 +36,10 @@ public class FabriekWerkState : BaseState
     public override void OnExit()
     {
        
+    }
+
+    public void SpelerOntsnapFase()
+    {
+        owner.SwitchState(typeof(FabriekOntsnapState));
     }
 }

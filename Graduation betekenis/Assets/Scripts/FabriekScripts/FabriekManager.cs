@@ -6,6 +6,7 @@ public class FabriekManager : MonoBehaviour
     [Header("References")]
     public GameObject playerObjectRef;
     public PlayerAgent playerAgentRef;
+    public AudioLayer fabriekAmbianceLayerRef;
     [Space] 
     public Image fadeVlak;
     public GameObject deurBeginRuimte;

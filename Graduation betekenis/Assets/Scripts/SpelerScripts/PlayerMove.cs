@@ -6,6 +6,7 @@ public class PlayerMove : MonoBehaviour
     public float moveSpeed;
     private float _currentSpeed;
     public float groundDrag;
+    [SerializeField] private bool debugRunEnabled;
     [Space] [Header("Ground Check")] 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -62,7 +63,7 @@ public class PlayerMove : MonoBehaviour
     
     public void SpeedControl()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && debugRunEnabled)
         {
             _currentSpeed = moveSpeed * 10f;
         }

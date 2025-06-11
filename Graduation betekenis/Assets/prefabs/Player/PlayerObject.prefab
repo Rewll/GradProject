@@ -162,11 +162,11 @@ MonoBehaviour:
   playerLookRef: {fileID: 2885364469424080019}
   playerMoveRef: {fileID: 1420534758139966838}
   kameraDisabledMesh: {fileID: 7889820702737513920}
-  kamerUseMesh: {fileID: 4863041895375023448}
   pictureScreen: {fileID: 0}
   kameraModeGameObjects:
   - {fileID: 0}
   fabriekRaycastPos: {fileID: 0}
+  kameraAnimator: {fileID: 0}
   CameraKnop: 101
   inFabriek: 0
   heeftFoto: 0
@@ -949,7 +949,7 @@ Transform:
   m_GameObject: {fileID: 5061012177212798924}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.023000004, y: 0, z: 1.1605226}
+  m_LocalPosition: {x: 0, y: 0, z: 1.1605226}
   m_LocalScale: {x: 0.4921673, y: 0.4131, z: 0.41309997}
   m_ConstrainProportionsScale: 0
   m_Children: []

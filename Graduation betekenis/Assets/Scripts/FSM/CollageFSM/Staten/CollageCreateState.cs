@@ -18,6 +18,7 @@ public class CollageCreateState : BaseState
     public GameObject collage;
     public GameObject collageCreateScreen;
     public GameObject pictureInCollagePrefab;
+    public GameObject textInCollagePrefab;
     public Canvas mainCanvas;
     public RectTransform pictureInCollageParent;
     [Space] 
@@ -105,7 +106,7 @@ public class CollageCreateState : BaseState
             RawImage image = rt.GetChild(1).GetComponent<RawImage>();
             image.texture = pictures[i];
             rt.SetParent(pictureInCollageParent, false);
-            rt.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+            rt.localScale = new Vector3(0.25f, 0.25f, 0.25f);
             newPictureInCollage.GetComponent<PictureInCollage>().canvas = mainCanvas;
             newPictureInCollage.GetComponent<PictureInCollage>().gameManRef = this;
             picturesInCollage.Add(newPictureInCollage);
@@ -163,6 +164,20 @@ public class CollageCreateState : BaseState
         }
     }
 
+    public void AddWordToCollage(string word, Color wordColor)
+    {
+        GameObject newTextInCollage = Instantiate(textInCollagePrefab);
+        newTextInCollage.transform.GetChild(1).GetComponent<TMP_Text>().text = word;
+        newTextInCollage.transform.GetChild(1).GetComponent<TMP_Text>().color = wordColor;
+        newTextInCollage.name = "Tekst in collage";
+        RectTransform rt = newTextInCollage.GetComponent<RectTransform>();
+        rt.SetParent(pictureInCollageParent, false);
+        newTextInCollage.GetComponent<PictureInCollage>().canvas = mainCanvas;
+        newTextInCollage.GetComponent<PictureInCollage>().gameManRef = this;
+        RectTransform selectionRT = newTextInCollage.transform.GetChild(1).GetComponent<RectTransform>();
+        selectionRT.sizeDelta = new Vector2(rt.sizeDelta.x, rt.sizeDelta.y);
+        //Debug.Log(selectionRT.sizeDelta);
+    }
     void SetLayerButtons()
     {
         layerDownButton.interactable = true;
@@ -220,9 +235,12 @@ public class CollageCreateState : BaseState
 
     public void OnSelectGlobal()
     {
-        foreach (Button button in buttonsThatUseSelect)
+        if (selectedPicture.GetComponent<PictureInCollage>().magGekniptWorden)
         {
-            button.interactable = true;
+            foreach (Button button in buttonsThatUseSelect)
+            {
+                button.interactable = true;
+            }
         }
         layerText.gameObject.SetActive(true);
         SetLayerButtons();
