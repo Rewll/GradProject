@@ -19,7 +19,6 @@ public class AudioLayer : MonoBehaviour
         {
             g.source = gameObject.AddComponent<AudioSource>();
             g.source.clip = g.geluidsClip;
-            g.source.volume = g.volume;
             g.source.loop = g.loop;
             g.source.outputAudioMixerGroup = mixerGroup;
         }
@@ -69,6 +68,7 @@ public class AudioLayer : MonoBehaviour
     public void PlaySound(int geluidsIndex)
     {
         geluid g = FindSound(geluidsIndex);
+        g.source.volume = g.volume;
         g.source.Play();
     }
 

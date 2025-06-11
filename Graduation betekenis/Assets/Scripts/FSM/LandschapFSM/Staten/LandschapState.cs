@@ -13,6 +13,7 @@ public class LandschapState : BaseState
     [Header("References: ")]
     public Transform startplek;
     public AudioLayer landMarkLayer;
+    public LandMarkManager landMarkManagerRef;
     [Space] 
     public bool spelerHeeftGekeken;
     private void Awake()
@@ -46,7 +47,7 @@ public class LandschapState : BaseState
         Tween fadeTween = _landschapManagerRef.fadeVlak.DOFade(0, screenFadeTime);
         yield return fadeTween.WaitForCompletion();
         _landschapManagerRef.fadeVlak.gameObject.SetActive(false);
-        landMarkLayer.FadeInSound(0,2f);
+        landMarkManagerRef.ActivateLandMark(0);
         if (!_landschapManagerRef.skipTutorial)
         {
             StartCoroutine(TutorialRoutine());

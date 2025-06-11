@@ -65,10 +65,10 @@ public class FabriekTutorialState : BaseState
     IEnumerator TutorialRoutine()
     {
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(4f);
         _fabriekManagerRef.playerAgentRef.SetPlayerLookDirection(0,90);
-        
-        Tween fadeTween = _fabriekManagerRef.fadeVlak.DOFade(0, 2f);
+        _fabriekManagerRef.fabriekAmbianceLayerRef.FadeInSound(0,5f);
+        Tween fadeTween = _fabriekManagerRef.fadeVlak.DOFade(0, 3f);
         yield return fadeTween.WaitForCompletion();
         _fabriekManagerRef.fadeVlak.gameObject.SetActive(false);
         _fabriekManagerRef.playerAgentRef.SetPlayerState(PlayerStates.WalkLookState);
@@ -85,9 +85,11 @@ public class FabriekTutorialState : BaseState
         yield return new WaitForSeconds(2f);
         tutorialObjects[1].SetActive(false);
         tutorialObjects[2].SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         
         tutorialObjects[2].SetActive(false);
+        yield return new WaitForSeconds(2f);
+
         tutorialObjects[3].SetActive(true);
         yield return new WaitUntil(() => CheckForLookInput() && Input.GetMouseButton(1));
         yield return new WaitForSeconds(2f);

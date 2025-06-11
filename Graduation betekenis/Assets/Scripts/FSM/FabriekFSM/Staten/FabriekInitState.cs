@@ -21,11 +21,12 @@ public class FabriekInitState : BaseState
         _fabriekAgentRef.huidigeStaat = FabriekAgent.FabriekStaten.FabriekInitState;
         _fabriekManagerRef.SetDeur(false);
         _fabriekManagerRef.playerAgentRef.TeleportPlayer(fabriekStartPos.position);
-        _fabriekManagerRef.fabriekAmbianceLayerRef.FadeInSound(0,3);
+        
         if (skipTutorial)
         {
             _fabriekManagerRef.fadeVlak.gameObject.SetActive(false);
             _fabriekManagerRef.machineAnim.SetTrigger("TrEnter");
+            _fabriekManagerRef.fabriekAmbianceLayerRef.FadeInSound(0,5f);
             owner.SwitchState(typeof(FabriekWerkState));
         }
         else

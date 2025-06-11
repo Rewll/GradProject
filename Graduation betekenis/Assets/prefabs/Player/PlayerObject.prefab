@@ -167,9 +167,12 @@ MonoBehaviour:
   - {fileID: 0}
   fabriekRaycastPos: {fileID: 0}
   kameraAnimator: {fileID: 0}
+  kamera: {fileID: 0}
+  kamTransform: {fileID: 0}
   CameraKnop: 101
   inFabriek: 0
   heeftFoto: 0
+  heeftFotoMetObject: 0
   fabriekFoto: {fileID: 0}
 --- !u!114 &6686674440392007363
 MonoBehaviour:
@@ -183,10 +186,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aacd4474006ff84b987fa84a1ba7683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spelerMagKijken: 0
+  spelerMagLopen: 0
   fabriekLayer:
     serializedVersion: 2
     m_Bits: 0
   raycastLength: 0
+  ophangManagerRef: {fileID: 0}
 --- !u!114 &244336978272902508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,9 +209,13 @@ MonoBehaviour:
   kamera: {fileID: 8185207152417518816}
   rendText: {fileID: 8400000, guid: 8c6aea0e2e1353d478d840e4313ce989, type: 2}
   latestPictureShowImage: {fileID: 0}
+  magZoomen: 0
   zoomSensitivity: 2
   minZoom: 1
   maxZoom: 60
+  redObject: {fileID: 0}
+  raycastLength: 0
+  objectInPicture: 0
 --- !u!114 &2039965764879418476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1375,6 +1385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   groundDrag: 5
+  debugRunEnabled: 0
   groundCheck: {fileID: 7791079645658110036}
   groundDistance: 0.4
   whatIsGround:

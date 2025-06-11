@@ -17,8 +17,8 @@ public class LandMarkManager : MonoBehaviour
     
     public void ActivateLandMark(int newLandMarkIndex)
     {
-        if (newLandMarkIndex == currentLandMarkIndex)
-            return;  
+        if (!_firstLandMark && newLandMarkIndex == currentLandMarkIndex)
+            return; 
         
         if (!_firstLandMark)
         {
