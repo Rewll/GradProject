@@ -43,14 +43,14 @@ public class CollageInitState : BaseState
                 foreach (Texture picture in _colManagerRef.picturesMade)
                 {
                     _colManagerRef.picturesToCollageWith.Add(picture);
-                    if (_colManagerRef.skipTutorial)
-                    {
-                        owner.SwitchState(typeof(CollageCreateState));
-                    }
-                    else
-                    {
-                        owner.SwitchState(typeof(CollageTutorialState));
-                    }
+                }
+                if (_colManagerRef.skipTutorial)
+                {
+                    owner.SwitchState(typeof(CollageCreateState));
+                }
+                else
+                {
+                    owner.SwitchState(typeof(CollageTutorialState));
                 }
             }
         }
