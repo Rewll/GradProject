@@ -45,7 +45,7 @@ public class FabriekOntsnapState : BaseState
         yield return new WaitForSeconds(1f);
         _fabriekManagerRef.fabriekAmbianceLayerRef.FadeOutSound(0,3);
         _fabriekManagerRef.fadeVlak.gameObject.SetActive(true);
-        Tween fadeTween = _fabriekManagerRef.fadeVlak.DOFade(1, 3f);
+        Tween fadeTween = _fabriekManagerRef.fadeVlak.DOFade(1, 1f);
         yield return fadeTween.WaitForCompletion();
         SceneManager.LoadScene(_fabriekManagerRef.volgendeSceneIndex);
     }
