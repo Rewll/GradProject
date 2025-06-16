@@ -13,8 +13,8 @@ public class CollageCreateState : BaseState
     private CollageAgent _collageAgentRef;
     private CollageManager _colManagerRef;
     
-    
     [Header("References:")]
+    public GameManager gmRef;
     public GameObject collage;
     public GameObject collageCreateScreen;
     public GameObject pictureInCollagePrefab;

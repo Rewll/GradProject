@@ -18,15 +18,12 @@ public class PlayerAgent : MonoBehaviour
     [Header("Script References:")]
     public PlayerLook playerLookRef;
     public PlayerMove playerMoveRef;
+    [SerializeField] private GameManager GMref;
     [Space]
     [Header("Object References:")]
-    public GameObject kameraDisabledMesh;
-    public GameObject pictureScreen;
-    public List<GameObject> kameraModeGameObjects = new List<GameObject>();
     public Transform fabriekRaycastPos;
     [Space] 
     public Animator kameraAnimator;
-    public Camera kamera;
     public Transform kamTransform;
     [Space]
     [Header("Player Wide Variables:")]
@@ -57,12 +54,32 @@ public class PlayerAgent : MonoBehaviour
     }
     void Update()
     {
-        fsm.OnUpdate();
+        if (GMref)
+        {
+            if (!GMref.paused)
+            {
+                fsm.OnUpdate();
+            }
+        }
+        else
+        {
+            fsm.OnUpdate();
+        }
     }
 
     void FixedUpdate()
     {
-        fsm.OnFixedUpdate();
+        if (GMref)
+        {
+            if (!GMref.paused)
+            {
+                fsm.OnFixedUpdate();
+            }
+        }
+        else
+        {
+            fsm.OnFixedUpdate();
+        }
     }
 
     public void TeleportPlayer(Vector3 destinationPos)
