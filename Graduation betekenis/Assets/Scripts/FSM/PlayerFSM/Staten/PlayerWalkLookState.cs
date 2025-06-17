@@ -17,7 +17,15 @@ public class PlayerWalkLookState : BaseState
     
     public override void OnEnter()
     {
-        _playerAgentRef.huidigeStaat = PlayerStates.WalkLookState;
+        if (_playerAgentRef)
+        {
+            _playerAgentRef.huidigeStaat = PlayerStates.WalkLookState;
+        }
+        else
+        {
+            _playerAgentRef = FindAnyObjectByType<PlayerAgent>();
+            _playerAgentRef.huidigeStaat = PlayerStates.WalkLookState;
+        }
         
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

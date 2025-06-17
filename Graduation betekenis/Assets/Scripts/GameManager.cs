@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
+        ResetFuncties();
         if (Input.GetKeyDown(pauseButton) && !paused)
         {
             SetPauseGame(true);
@@ -68,5 +69,33 @@ public class GameManager : MonoBehaviour
     public void LoadScene(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
+    }
+
+    public void ResetFuncties()
+    {
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.LeftAlt))
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                LoadScene(1);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                LoadScene(2);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                LoadScene(3);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                LoadScene(0);
+            }
+        }
+        
     }
 }
