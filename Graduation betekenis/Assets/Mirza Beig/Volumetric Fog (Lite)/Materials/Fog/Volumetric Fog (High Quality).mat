@@ -8,8 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Volumetric Fog (High Quality)
-  m_Shader: {fileID: -6465566751694194690, guid: b41208ea9fa867440be4a9ec08db6e2a,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: b41208ea9fa867440be4a9ec08db6e2a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -145,7 +144,7 @@ Material:
     - _Curl_Strength_Raymarch_Offset: 2
     - _Curl_Strength_Raymarch_Sample: 0.2
     - _Cutoff: 0.5
-    - _Density: 1
+    - _Density: 1.09
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -194,24 +193,24 @@ Material:
     - _PROBE_VOLUMES: 2
     - _PROCEDURAL_DENSITY: 0
     - _Parallax: 0.005
-    - _Power: 1
+    - _Power: 1.5
     - _QueueOffset: 0
     - _RAYMARCH_CLAMP_TO_SURFACE: 0
     - _RaymarchSteps: 2.29
     - _Raymarch_Additional_Light_Self_Shadow_Steps: 8
     - _Raymarch_Depth_Fade: 0
     - _Raymarch_Depth_Fade_Power: 2
-    - _Raymarch_Distance: 14
-    - _Raymarch_Distance_Bias: 1
+    - _Raymarch_Distance: 13.4
+    - _Raymarch_Distance_Bias: 0.5
     - _Raymarch_Height_Falloff: 0.456
     - _Raymarch_Height_Offset: 0
     - _Raymarch_Max_Depth: 0
     - _Raymarch_Noise: 0.04
     - _Raymarch_Self_Shadow_Steps: 4
-    - _Raymarch_Steps: 32
+    - _Raymarch_Steps: 34
     - _ReceiveShadows: 1
-    - _Remap_Max: 0.9
-    - _Remap_Min: 0
+    - _Remap_Max: 0.879
+    - _Remap_Min: 0.052
     - _SIMPLEX_NOISE_ENABLED: 1
     - _SOFT_SHADOWS: 1
     - _Scale: 1.8
@@ -250,7 +249,7 @@ Material:
     - _Cloud_Noise_Voronoi_Animation: {r: 0, g: 0, b: 0.5, a: 0.5}
     - _Cloud_Noise_Voronoi_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 0.36933854, b: 0, a: 1}
-    - _Colour: {r: 0.05490196, g: 0.09411765, b: 0.20784314, a: 1}
+    - _Colour: {r: 0.10980392, g: 0.0627451, b: 0.2784314, a: 0.25490198}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 45}
     - _Raymarch_Vertical_Range: {r: 0, g: 0.1, b: 0, a: 0}
@@ -261,6 +260,7 @@ Material:
     - _Voronoi_Noise_Animation: {r: -0.08, g: 0.2, b: -0.2, a: 1}
     - _Voronoi_Noise_Offset: {r: 0, g: 0, b: 0, a: 45}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!114 &1214869843804668540
 MonoBehaviour:
   m_ObjectHideFlags: 11
