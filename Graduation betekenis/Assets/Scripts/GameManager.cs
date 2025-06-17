@@ -1,11 +1,14 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
-    
+    [SerializeField] private PlayerLook playerRef;
+    [SerializeField] private Slider muisSlider;
+    private float mouseSensSaved;
     public bool paused = false;
     private bool _cursorWasVisible;
     
@@ -13,6 +16,10 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         pauseMenu.SetActive(paused);
+        if (playerRef)
+        {
+            muisSlider.value = playerRef.mouseSensitivity;
+        }
     }
 
     //audiolistener.pause bestaat
@@ -36,7 +43,7 @@ public class GameManager : MonoBehaviour
         {
             paused = true;
             Time.timeScale = 0;
-            AudioListener.pause = true;
+            //AudioListener.pause = true;
             _cursorWasVisible = Cursor.visible;
             
             Cursor.visible = true;
@@ -47,7 +54,7 @@ public class GameManager : MonoBehaviour
         {
             paused = false;
             Time.timeScale = 1;
-            AudioListener.pause = false;
+            //AudioListener.pause = false;
             
             if (!_cursorWasVisible)
             {

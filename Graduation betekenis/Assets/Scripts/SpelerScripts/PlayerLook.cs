@@ -22,4 +22,9 @@ public class PlayerLook : MonoBehaviour
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
         orientaton.rotation = Quaternion.Euler(0, yRotation, 0f);
     }
+    
+    public void VeranderMuisGevoeligheid(float newSens)
+    {
+        mouseSensitivity = newSens;
+    }
 }

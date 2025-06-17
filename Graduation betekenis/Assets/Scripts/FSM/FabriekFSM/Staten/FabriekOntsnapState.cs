@@ -9,6 +9,8 @@ public class FabriekOntsnapState : BaseState
     private FabriekAgent _fabriekAgentRef;
     private FabriekManager _fabriekManagerRef;
 
+    [SerializeField] private playerprefspoep playPrefRef;
+
     private void Awake()
     {
         _fabriekAgentRef = GetComponent<FabriekAgent>();
@@ -42,6 +44,7 @@ public class FabriekOntsnapState : BaseState
 
     IEnumerator FabriekOutroRoutine()
     {
+        playPrefRef.SlaGetalOp();
         yield return new WaitForSeconds(1f);
         _fabriekManagerRef.fabriekAmbianceLayerRef.FadeOutSound(0,3);
         _fabriekManagerRef.fadeVlak.gameObject.SetActive(true);
