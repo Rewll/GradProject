@@ -8,7 +8,7 @@ public class LandschapAgent : MonoBehaviour
 {
     private FSM _fsm;
     private System.Type _startState;
-    public enum LandschapStaten { LandschapInitState, LandschapTutorialState, LandschapTutorial2, LandschapState, CollageState}
+    public enum LandschapStaten { LandschapInitState, LandschapTutorialState, LandschapState, CollageState}
 
     public LandschapStaten StartStaat;
     public LandschapStaten huidigeStaat;
@@ -22,9 +22,6 @@ public class LandschapAgent : MonoBehaviour
                 break;
             case LandschapStaten.LandschapTutorialState:
                 _startState = typeof(LandschapTutorialState);
-                break;
-            case LandschapStaten.LandschapTutorial2:
-                _startState = typeof(LandschapTutorial2);
                 break;
             case LandschapStaten.LandschapState:
                 _startState = typeof(LandschapState);

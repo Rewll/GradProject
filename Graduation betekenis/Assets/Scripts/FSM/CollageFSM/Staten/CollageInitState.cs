@@ -10,6 +10,7 @@ public class CollageInitState : BaseState
     public PictureStorage picStorageRef;
     [Space]
     public List<GameObject> Screens = new List<GameObject>();
+    
     private void Awake()
     {
         _collageAgentRef = GetComponent<CollageAgent>();
@@ -24,6 +25,7 @@ public class CollageInitState : BaseState
         }
         _collageAgentRef.huidigeStaat = CollageAgent.Collagestaten.CollageInitState;
         picStorageRef = FindFirstObjectByType(typeof(PictureStorage)) as PictureStorage;
+        
         if (picStorageRef)
         {
             foreach (Texture pictureTexture in picStorageRef.picturesStored)
@@ -31,29 +33,45 @@ public class CollageInitState : BaseState
                 _colManagerRef.picturesMade.Add(pictureTexture);
             }
             picStorageRef.picturesStored.Clear();
-            //Destroy(picStorageRef.gameObject);
-            if (_colManagerRef.picturesMade.Count > _colManagerRef.amountOfPicturesToCollageWith)
-            { //if there are lot of pictures, cherrypicking needed
+            
+            if (_colManagerRef.picturesMade.Count > _colManagerRef.amountOfPicturesToCollageWith)//if there are lot of pictures, cherrypicking needed
+            { 
                 owner.SwitchState(typeof(CherryPickState));
             }
-            else if(_colManagerRef.picturesMade.Count <= _colManagerRef.amountOfPicturesToCollageWith)
-            { //if there are less pictures than the amount then no cherrypicking needed
+            else if(_colManagerRef.picturesMade.Count <= _colManagerRef.amountOfPicturesToCollageWith)//if there are less pictures than the amount then no cherrypicking needed
+            { 
                 foreach (Texture picture in _colManagerRef.picturesMade)
                 {
                     _colManagerRef.picturesToCollageWith.Add(picture);
                 }
-                owner.SwitchState(typeof(CollageCreateState));
+                if (_colManagerRef.skipTutorial)
+                {
+                    owner.SwitchState(typeof(CollageCreateState));
+                }
+                else
+                {
+                    owner.SwitchState(typeof(CollageTutorialState));
+                }
             }
         }
-        else
-        { //if no picturestorage then use testtextures
+        else //if no picturestorage then use testtextures
+        { 
             Debug.Log("No PictureStorage found. loading testTextures to create with");
             for (int i = 0; i < _colManagerRef.amountOfPicturesToCollageWith; i++)
             {
                 _colManagerRef.picturesToCollageWith.Add(_colManagerRef.testTexture);
             }
-            owner.SwitchState(typeof(CollageCreateState));
+
+            if (_colManagerRef.skipTutorial)
+            {
+                owner.SwitchState(typeof(CollageCreateState));
+            }
+            else
+            {
+                owner.SwitchState(typeof(CollageTutorialState));
+            }
         }
+        
     }
     
     public override void OnUpdate()

@@ -6,35 +6,38 @@ public class LandschapInitState : BaseState
 {
     private LandschapAgent _landschapAgent;
     private LandschapManager _landschapManagerRef;
-    public bool skipTutorial1;
-    public bool skipTutorial2;
     [Header("References: ")]
     public Transform startplek;
 
+    private playerprefspoep playerPrepRef;
     private void Awake()
     {
         _landschapAgent = GetComponent<LandschapAgent>();
         _landschapManagerRef = GetComponent<LandschapManager>();
+        _landschapManagerRef.cameraTutorial1.SetActive(false);
+        _landschapManagerRef.cameraTutorial2.SetActive(false);
+        if (FindAnyObjectByType<playerprefspoep>())
+        {
+            playerPrepRef = FindAnyObjectByType<playerprefspoep>();
+        }
+        else
+        {
+            Debug.Log("Er is geen playerPref poep");
+        }
     }
 
     public override void OnEnter()
     {
         //Debug.Log("LandschapState OnEnter");
         _landschapAgent.huidigeStaat = LandschapAgent.LandschapStaten.LandschapInitState;
-        
-        _landschapManagerRef.audioManRef.FadeInSound(0, 5f);
-        if (skipTutorial1)
+        if (playerPrepRef)
         {
-            if (skipTutorial2)
-            {
-                _landschapManagerRef.fadeVlak.gameObject.SetActive(false);
-                owner.SwitchState(typeof(LandschapState));
-            }
-            else
-            {
-                owner.SwitchState(typeof(LandschapTutorial2));
-            }
-
+            playerPrepRef.LaadGetal();
+        }
+        
+        if (_landschapManagerRef.skipTutorial)
+        {
+            owner.SwitchState(typeof(LandschapState));
         }
         else
         {

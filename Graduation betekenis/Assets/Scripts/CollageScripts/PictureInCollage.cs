@@ -14,11 +14,12 @@ public class PictureInCollage : MonoBehaviour, IPointerDownHandler, IDragHandler
     public Canvas canvas;
     public CollageCreateState gameManRef;
     public Image selectionBackgroundImage;
+    public RectTransform parentRectTransform;
     private RectTransform _rt;
     [Space]
-    [SerializeField] private float scaleFactor;
-    [SerializeField] private float maxScale;
-    [SerializeField] private float minScale;
+    public float scaleFactor;
+    public float maxScale;
+    public float minScale;
     [SerializeField] private bool isSelected;
     public float rotationSpeed;
     public bool magGekniptWorden;
@@ -30,48 +31,62 @@ public class PictureInCollage : MonoBehaviour, IPointerDownHandler, IDragHandler
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Left)
+        if (!gameManRef.gmRef.paused)
         {
-            CursorUtilities.ChangeCursor(CursorType.Move);
+            if (eventData.button == PointerEventData.InputButton.Left)
+            {
+                CursorUtilities.ChangeCursor(CursorType.Move);
+            }
         }
     }
     
     public void OnDrag(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Left)
+        if (!gameManRef.gmRef.paused)
         {
-            _rt.anchoredPosition += eventData.delta / _rt.parent.parent.localScale /canvas.scaleFactor;
+            if (eventData.button == PointerEventData.InputButton.Left)
+            {
+                _rt.anchoredPosition += eventData.delta / parentRectTransform.localScale /canvas.scaleFactor;
+            }
         }
-        
     }
     
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Left)
+        if (!gameManRef.gmRef.paused)
         {
-            CursorUtilities.ChangeCursor(default);
+            if (eventData.button == PointerEventData.InputButton.Left)
+            {
+                CursorUtilities.ChangeCursor(default);
+            }
         }
     }
     
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Left)
+        if (!gameManRef.gmRef.paused)
         {
-            if (gameManRef.selectedPicture != this.gameObject)
+            if (eventData.button == PointerEventData.InputButton.Left)
             {
-                gameManRef.SetSelected(this.gameObject);
+                if (gameManRef.selectedPicture != this.gameObject)
+                {
+                    gameManRef.SetSelected(this.gameObject);
+                }
             }
         }
     }
     
     void ResizePictureInCollage()
     {
-        float newScale = Input.mouseScrollDelta.y * scaleFactor;
-        
-        if ((_rt.localScale.x + newScale) < maxScale &&
-            (_rt.localScale.x + newScale) > minScale)
+        if (!gameManRef.gmRef.paused)
         {
-            _rt.localScale += new Vector3(newScale, newScale, newScale);
+            float newScale = Input.mouseScrollDelta.y * scaleFactor;
+        
+            if ((_rt.localScale.x + newScale) < maxScale &&
+                (_rt.localScale.x + newScale) > minScale)
+            {
+                _rt.localScale += new Vector3(newScale, newScale, newScale);
+            }
         }
     }
 
@@ -83,21 +98,24 @@ public class PictureInCollage : MonoBehaviour, IPointerDownHandler, IDragHandler
     
     private void Update()
     {
-        if (isSelected)
+        if (!gameManRef.gmRef.paused)
         {
-            ResizePictureInCollage();
-            if (Input.GetMouseButton(1))
+            if (isSelected)
             {
-                RotatePictureInCollage();
-            }
+                ResizePictureInCollage();
+                if (Input.GetMouseButton(1))
+                {
+                    RotatePictureInCollage();
+                }
 
-            if (Input.GetMouseButtonDown(1))
-            {
-                CursorUtilities.ChangeCursor(CursorType.Rotate);
-            }
-            else if (Input.GetMouseButtonUp(1))
-            {
-                CursorUtilities.ChangeCursor(CursorType.Default);
+                if (Input.GetMouseButtonDown(1))
+                {
+                    CursorUtilities.ChangeCursor(CursorType.Rotate);
+                }
+                else if (Input.GetMouseButtonUp(1))
+                {
+                    CursorUtilities.ChangeCursor(CursorType.Default);
+                }
             }
         }
     }

@@ -6,7 +6,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Landmark
+  m_Name: LandschapLandmark
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: fa1ffacc4bd66bd4d91d67ab7f79f272
   m_Children: []
@@ -39,7 +39,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Muziek
+  m_Name: LandschapMuziek
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 6fc95602d33fdeb4e947c7f1a17ac43a
   m_Children: []
@@ -67,14 +67,23 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 72d7291082675ee498e86e4ee4b029eb
+    name: FabriekMasterVolume
+  - guid: 18c303d3f374b084cae6f0eb8689e485
+    name: LandmarkVolume
+  - guid: b3747c52f83960842a971588c1f98bf7
+    name: LandschapMasterVolume
+  - guid: 946ebf534197df44cb9e91519bee933f
+    name: MasterVolume
+  - guid: c2140bfe043eefc47892c7602cb4be41
+    name: LandschapMuziekVolume
   m_AudioMixerGroupViews:
   - guids:
     - 7fe0a6356c3729a49b19cf23ad3fb62d
     - 6fc95602d33fdeb4e947c7f1a17ac43a
     - fa1ffacc4bd66bd4d91d67ab7f79f272
     - e98e070ac50ad5141aa7e476555a9794
-    - 296e848883a6f1f4a996acc940f243bf
     - 551ebcfb04fde4a4f9a93359bdf8d16f
     name: View
   m_CurrentViewIndex: 0
@@ -124,37 +133,18 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: ecbe2a3dfb25ac9478ca272d75300538
   m_FloatValues:
-    72d7291082675ee498e86e4ee4b029eb: 0.028544791
-    18c303d3f374b084cae6f0eb8689e485: 19.151928
-    3bc74cf5bb769a046bd0c7982eb9ea97: -23.578796
-    c2140bfe043eefc47892c7602cb4be41: -0.048478477
+    72d7291082675ee498e86e4ee4b029eb: -17.841501
+    18c303d3f374b084cae6f0eb8689e485: 0.7801751
+    3bc74cf5bb769a046bd0c7982eb9ea97: -29.905607
+    c2140bfe043eefc47892c7602cb4be41: -2.588432
   m_TransitionOverrides: {}
---- !u!243 &53318959173746168
-AudioMixerGroupController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Ambiance
-  m_AudioMixer: {fileID: 24100000}
-  m_GroupID: 296e848883a6f1f4a996acc940f243bf
-  m_Children: []
-  m_Volume: 3bc74cf5bb769a046bd0c7982eb9ea97
-  m_Pitch: fe8c601a79d757e45b1a743481cfa697
-  m_Send: 00000000000000000000000000000000
-  m_Effects:
-  - {fileID: 5182593456478498194}
-  m_UserColorIndex: 0
-  m_Mute: 0
-  m_Solo: 0
-  m_BypassEffects: 0
 --- !u!243 &2077090482087276047
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Landschap
+  m_Name: LandschapMaster
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 551ebcfb04fde4a4f9a93359bdf8d16f
   m_Children:
@@ -203,11 +193,10 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fabriek
+  m_Name: FabriekMaster
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: e98e070ac50ad5141aa7e476555a9794
-  m_Children:
-  - {fileID: 53318959173746168}
+  m_Children: []
   m_Volume: 72d7291082675ee498e86e4ee4b029eb
   m_Pitch: 8b25b2de309a4f74db81545eab81e3bb
   m_Send: 00000000000000000000000000000000
@@ -217,20 +206,6 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
---- !u!244 &5182593456478498194
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_EffectID: 8b13ee44f56b72a4683c8a015ac9b9c2
-  m_EffectName: Attenuation
-  m_MixLevel: 3eb5136e25db7bc4faf00568fae812dd
-  m_Parameters: []
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 0
 --- !u!244 &8087395120612000219
 AudioMixerEffectController:
   m_ObjectHideFlags: 3

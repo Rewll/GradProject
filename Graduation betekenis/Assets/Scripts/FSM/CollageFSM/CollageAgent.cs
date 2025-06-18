@@ -4,7 +4,7 @@ public class CollageAgent : MonoBehaviour
 {
     private FSM fsm;
     private System.Type startState;
-    public enum Collagestaten {CollageInitState, CherryPickState, CollageCreateState}
+    public enum Collagestaten {CollageInitState, CollageTutorialState, CherryPickState, CollageCreateState}
 
     Collagestaten StartStaat;
     public Collagestaten huidigeStaat;
