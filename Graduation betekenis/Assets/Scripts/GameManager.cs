@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         }
         if (playerRef)
         {
-            Debug.Log("Slider wordt gezet");
+            //Debug.Log("Slider wordt gezet");
             playerPrepRef.LaadGetal();
             muisSlider.value = playerRef.mouseSensitivity;
         }
@@ -88,10 +88,12 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator LaadSceneRoutine(int sceneIndex)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(1f);
+        fadeVlak.gameObject.SetActive(true);
         Tween fadeTween = fadeVlak.DOFade(1, sceneFadeTime);
+        fadeTween.SetUpdate(true);
         yield return fadeTween.WaitForCompletion();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(1f);
         SceneManager.LoadScene(sceneIndex);
     }
     
@@ -106,18 +108,21 @@ public class GameManager : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 VeranderScene(1);
+                SceneManager.LoadScene(1);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 VeranderScene(2);
+                SceneManager.LoadScene(2);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 VeranderScene(3);
+                SceneManager.LoadScene(3);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha0))
             {
-                VeranderScene(0);
+                SceneManager.LoadScene(0);
             }
         }
         
