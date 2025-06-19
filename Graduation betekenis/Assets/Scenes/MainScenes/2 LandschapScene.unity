@@ -756,7 +756,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ik snap wat ik ga doen. Ik wil beginnen
+  m_text: "Ik snap wat ik ga doen. \nBeginnen."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2293,7 +2293,7 @@ GameObject:
   - component: {fileID: 1002184264}
   - component: {fileID: 1002184263}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2850,7 +2850,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1358196578
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7916,12 +7916,12 @@ GameObject:
   - component: {fileID: 1530986784}
   - component: {fileID: 1530986783}
   m_Layer: 5
-  m_Name: extraUitleg
+  m_Name: MeerUitlegTekst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1530986783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7942,12 +7942,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Probeer je betekenis/zingeving vast te leggen met de camera. In het landschap
-    zul je verschillende dingen vinden. Probeer in het landschap foto's te maken
-    van dingen die jij betekenisvol vind of van dingen die passen bij je eigen zingeving.
-    Wat je hieronder verstaat is aan jou, maar denk aan dingen die je belangrijk
-    vind of dingen die voor jou een reden zijn om uit bed te komen. Nadat je de foto's
-    hebt gemaakt ga je met deze foto's een collage maken.
+  m_text: "In het landschap zul je verschillende dingen vinden. Probeer hier foto's
+    te maken van dingen die jij betekenisvol of zingevend vind. Wat je hieronder
+    verstaat is aan jou, maar denk aan dingen die je belangrijk vind of dingen die
+    voor jou een reden zijn om uit bed te komen. \n\nNadat je de foto's hebt gemaakt
+    ga je met deze foto's een collage maken."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8042,8 +8041,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -8}
-  m_SizeDelta: {x: 776.7372, y: 144.3785}
+  m_AnchoredPosition: {x: 0, y: 2.2088}
+  m_SizeDelta: {x: 776.7372, y: 157.9609}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1538374884
 PrefabInstance:
@@ -8547,7 +8546,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -156.8, y: -154}
+  m_AnchoredPosition: {x: -156.8, y: -166}
   m_SizeDelta: {x: 269.7478, y: 93.1114}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1709013830
@@ -8680,7 +8679,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 169.7, y: -154}
+  m_AnchoredPosition: {x: 169.7, y: -166}
   m_SizeDelta: {x: 194.4921, y: 93.115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1722809206
@@ -9061,8 +9060,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 134}
-  m_SizeDelta: {x: 659.7664, y: 144.3785}
+  m_AnchoredPosition: {x: 0, y: 163}
+  m_SizeDelta: {x: 659.7664, y: 116.3083}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1755757504
 MonoBehaviour:
@@ -9088,8 +9087,9 @@ MonoBehaviour:
     gaat hier doorheen lopen met dezelfde camera.
 
 
-    Jou opdracht is om in dit
-    landschap met de camera jou zingeving en betekenis vast te leggen.'
+    Het is jouw opdracht om met
+    de camera datgene vast te leggen wat jij betekenisvol en/of zingevend vind. Maak
+    zoveel foto''s als je wilt.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9453,7 +9453,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ik zou graag meer informatie willen voordat ik ga beginnen
+  m_text: Ik zou graag meer informatie willen voordat ik begin.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
