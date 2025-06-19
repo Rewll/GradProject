@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float sceneFadeTime = 2f;
     private playerprefspoep playerPrepRef;
     public KeyCode pauseButton = KeyCode.Tab;
+    public List<GameObject> destroyObjects;
     
     private void Awake()
     {
@@ -24,16 +26,14 @@ public class GameManager : MonoBehaviour
         if (FindAnyObjectByType<playerprefspoep>())
         {
             playerPrepRef = FindAnyObjectByType<playerprefspoep>();
+            //Debug.Log("Slider wordt gezet");
+            playerPrepRef.LaadGetal();
+            muisSlider.value = playerRef.mouseSensitivity;
+            destroyObjects.Add(playerPrepRef.gameObject);
         }
         else
         {
             Debug.Log("Er is geen playerPref poep");
-        }
-        if (playerRef)
-        {
-            //Debug.Log("Slider wordt gezet");
-            playerPrepRef.LaadGetal();
-            muisSlider.value = playerRef.mouseSensitivity;
         }
     }
 
@@ -83,9 +83,20 @@ public class GameManager : MonoBehaviour
     
     public void VeranderScene(int sceneIndex)
     {
+
         StartCoroutine(LaadSceneRoutine(sceneIndex));
     }
 
+    void ClearObjects(int sceneIndex )
+    {
+        if (sceneIndex == 0)
+        {
+            foreach (GameObject obj in destroyObjects)
+            {
+                Destroy(obj);
+            }
+        }
+    }
     public IEnumerator LaadSceneRoutine(int sceneIndex)
     {
         yield return new WaitForSecondsRealtime(1f);
@@ -94,6 +105,8 @@ public class GameManager : MonoBehaviour
         fadeTween.SetUpdate(true);
         yield return fadeTween.WaitForCompletion();
         yield return new WaitForSecondsRealtime(1f);
+        ClearObjects(sceneIndex);
+        Time.timeScale = 1;
         SceneManager.LoadScene(sceneIndex);
     }
     
@@ -108,21 +121,19 @@ public class GameManager : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 VeranderScene(1);
-                SceneManager.LoadScene(1);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 VeranderScene(2);
-                SceneManager.LoadScene(2);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 VeranderScene(3);
-                SceneManager.LoadScene(3);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha0))
             {
-                SceneManager.LoadScene(0);
+                VeranderScene(0);
+
             }
         }
         

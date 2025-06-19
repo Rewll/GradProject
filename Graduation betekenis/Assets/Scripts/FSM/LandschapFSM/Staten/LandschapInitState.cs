@@ -22,7 +22,7 @@ public class LandschapInitState : BaseState
         }
         else
         {
-            Debug.Log("Er is geen playerPref poep");
+            //Debug.Log("Er is geen playerPref poep");
         }
     }
 
