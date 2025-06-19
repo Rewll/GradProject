@@ -30,10 +30,6 @@ public class LandschapInitState : BaseState
     {
         //Debug.Log("LandschapState OnEnter");
         _landschapAgent.huidigeStaat = LandschapAgent.LandschapStaten.LandschapInitState;
-        if (playerPrepRef)
-        {
-            playerPrepRef.LaadGetal();
-        }
         
         if (_landschapManagerRef.skipTutorial)
         {

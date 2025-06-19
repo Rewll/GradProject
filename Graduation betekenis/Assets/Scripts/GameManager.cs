@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,13 +13,26 @@ public class GameManager : MonoBehaviour
     private float mouseSensSaved;
     public bool paused = false;
     private bool _cursorWasVisible;
-    
+    [SerializeField] private Image fadeVlak;
+    [SerializeField] private float sceneFadeTime = 2f;
+    private playerprefspoep playerPrepRef;
     public KeyCode pauseButton = KeyCode.Tab;
+    
     private void Awake()
     {
         pauseMenu.SetActive(paused);
+        if (FindAnyObjectByType<playerprefspoep>())
+        {
+            playerPrepRef = FindAnyObjectByType<playerprefspoep>();
+        }
+        else
+        {
+            Debug.Log("Er is geen playerPref poep");
+        }
         if (playerRef)
         {
+            Debug.Log("Slider wordt gezet");
+            playerPrepRef.LaadGetal();
             muisSlider.value = playerRef.mouseSensitivity;
         }
     }
@@ -66,11 +81,20 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    public void LoadScene(int sceneIndex)
+    public void VeranderScene(int sceneIndex)
     {
-        SceneManager.LoadScene(sceneIndex);
+        StartCoroutine(LaadSceneRoutine(sceneIndex));
     }
 
+    public IEnumerator LaadSceneRoutine(int sceneIndex)
+    {
+        yield return new WaitForSeconds(1f);
+        Tween fadeTween = fadeVlak.DOFade(1, sceneFadeTime);
+        yield return fadeTween.WaitForCompletion();
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(sceneIndex);
+    }
+    
     public void ResetFuncties()
     {
         if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.LeftAlt))
@@ -81,19 +105,19 @@ public class GameManager : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                LoadScene(1);
+                VeranderScene(1);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                LoadScene(2);
+                VeranderScene(2);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                LoadScene(3);
+                VeranderScene(3);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha0))
             {
-                LoadScene(0);
+                VeranderScene(0);
             }
         }
         
