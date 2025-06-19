@@ -35,7 +35,7 @@ public class LandschapInitState : BaseState
         {
             owner.SwitchState(typeof(LandschapState));
         }
-        else
+        else if(!_landschapManagerRef.skipTutorial)
         {
             _landschapManagerRef.fadeVlak.gameObject.SetActive(true);
             owner.SwitchState(typeof(LandschapTutorialState));
