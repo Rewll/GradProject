@@ -24,13 +24,13 @@ public class LandMarkManager : MonoBehaviour
         {
             landMarkLayerRef.FadeOutSound(currentLandMarkIndex, landMarkFadeOutTime);
             landMarkLayerRef.FadeInSound(newLandMarkIndex, landMarkFadeInTime);
-            Debug.Log("LM " + newLandMarkIndex + " Activated --- " + "Lm " + currentLandMarkIndex + " deactivated");
+            //Debug.Log("LM " + newLandMarkIndex + " Activated --- " + "Lm " + currentLandMarkIndex + " deactivated");
         }
         else if (_firstLandMark)
         {
             landMarkLayerRef.FadeInSound(newLandMarkIndex, landMarkFadeInTime);
             _firstLandMark = false;
-            Debug.Log("LM " + newLandMarkIndex + "activated");
+            //Debug.Log("LM " + newLandMarkIndex + "activated");
         }
         currentLandMarkIndex = newLandMarkIndex;
     }

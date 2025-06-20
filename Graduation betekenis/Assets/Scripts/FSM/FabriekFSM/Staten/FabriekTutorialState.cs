@@ -111,19 +111,24 @@ public class FabriekTutorialState : BaseState
         yield return new WaitUntil(CheckForWalkInput);
         yield return new WaitForSeconds(1f);
         tutorialObjects[6].SetActive(false);
+        yield return new WaitForSeconds(1f);
+        tutorialObjects[7].SetActive(true);
+        yield return new WaitForSeconds(2f);
+        tutorialObjects[7].SetActive(false);
         
         yield return new WaitForSeconds(2f);
-        tutorialObjects[7].SetActive(true);
-        yield return new WaitForSeconds(1f);
         tutorialObjects[8].SetActive(true);
+        yield return new WaitForSeconds(2f);
+        tutorialObjects[9].SetActive(true);
+        yield return new WaitForSeconds(1f);
         _fabriekManagerRef.machineAnim.SetTrigger("TrEnter");
         yield return new WaitUntil(() => _spelerHeeftfotoGemaakt);
         
         yield return new WaitForSeconds(1f);
-        tutorialObjects[9].SetActive(true);
+        tutorialObjects[10].SetActive(true);
         yield return new WaitUntil(() => _spelerHeeftFotoOpgehangen);
         yield return new WaitForSeconds(1f);
-        tutorialObjects[10].SetActive(true);
+        tutorialObjects[11].SetActive(true);
         yield return new WaitForSeconds(1f);
         owner.SwitchState(typeof(FabriekWerkState));
     }

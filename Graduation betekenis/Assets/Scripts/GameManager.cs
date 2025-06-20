@@ -1,7 +1,10 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,14 +14,26 @@ public class GameManager : MonoBehaviour
     private float mouseSensSaved;
     public bool paused = false;
     private bool _cursorWasVisible;
-    
+    [SerializeField] private Image fadeVlak;
+    [SerializeField] private float sceneFadeTime = 2f;
+    private playerprefspoep playerPrepRef;
     public KeyCode pauseButton = KeyCode.Tab;
+    public List<GameObject> destroyObjects;
+    
     private void Awake()
     {
         pauseMenu.SetActive(paused);
-        if (playerRef)
+        if (FindAnyObjectByType<playerprefspoep>())
         {
+            playerPrepRef = FindAnyObjectByType<playerprefspoep>();
+            //Debug.Log("Slider wordt gezet");
+            playerPrepRef.LaadGetal();
             muisSlider.value = playerRef.mouseSensitivity;
+            destroyObjects.Add(playerPrepRef.gameObject);
+        }
+        else
+        {
+            Debug.Log("Er is geen playerPref poep");
         }
     }
 
@@ -66,11 +81,35 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    public void LoadScene(int sceneIndex)
+    public void VeranderScene(int sceneIndex)
     {
-        SceneManager.LoadScene(sceneIndex);
+
+        StartCoroutine(LaadSceneRoutine(sceneIndex));
     }
 
+    void ClearObjects(int sceneIndex )
+    {
+        if (sceneIndex == 0)
+        {
+            foreach (GameObject obj in destroyObjects)
+            {
+                Destroy(obj);
+            }
+        }
+    }
+    public IEnumerator LaadSceneRoutine(int sceneIndex)
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        fadeVlak.gameObject.SetActive(true);
+        Tween fadeTween = fadeVlak.DOFade(1, sceneFadeTime);
+        fadeTween.SetUpdate(true);
+        yield return fadeTween.WaitForCompletion();
+        yield return new WaitForSecondsRealtime(1f);
+        ClearObjects(sceneIndex);
+        Time.timeScale = 1;
+        SceneManager.LoadScene(sceneIndex);
+    }
+    
     public void ResetFuncties()
     {
         if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.LeftAlt))
@@ -81,19 +120,20 @@ public class GameManager : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                LoadScene(1);
+                VeranderScene(1);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                LoadScene(2);
+                VeranderScene(2);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                LoadScene(3);
+                VeranderScene(3);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha0))
             {
-                LoadScene(0);
+                VeranderScene(0);
+
             }
         }
         

@@ -22,7 +22,7 @@ public class LandschapInitState : BaseState
         }
         else
         {
-            Debug.Log("Er is geen playerPref poep");
+            //Debug.Log("Er is geen playerPref poep");
         }
     }
 
@@ -30,16 +30,12 @@ public class LandschapInitState : BaseState
     {
         //Debug.Log("LandschapState OnEnter");
         _landschapAgent.huidigeStaat = LandschapAgent.LandschapStaten.LandschapInitState;
-        if (playerPrepRef)
-        {
-            playerPrepRef.LaadGetal();
-        }
         
         if (_landschapManagerRef.skipTutorial)
         {
             owner.SwitchState(typeof(LandschapState));
         }
-        else
+        else if(!_landschapManagerRef.skipTutorial)
         {
             _landschapManagerRef.fadeVlak.gameObject.SetActive(true);
             owner.SwitchState(typeof(LandschapTutorialState));
