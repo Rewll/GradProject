@@ -85,11 +85,9 @@ public class FabriekTutorialState : BaseState
         yield return new WaitForSeconds(2f);
         tutorialObjects[1].SetActive(false);
         tutorialObjects[2].SetActive(true);
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
         
         tutorialObjects[2].SetActive(false);
-        yield return new WaitForSeconds(2f);
-
         tutorialObjects[3].SetActive(true);
         yield return new WaitUntil(() => CheckForLookInput() && Input.GetMouseButton(1));
         yield return new WaitForSeconds(2f);

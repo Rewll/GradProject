@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     
     private void Awake()
     {
+        
         pauseMenu.SetActive(paused);
         if (FindAnyObjectByType<playerprefspoep>() && !collage)
         {

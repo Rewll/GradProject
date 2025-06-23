@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using JetBrains.Annotations;
-using Unity.UI;
 
 public class LandschapState : BaseState
 {
@@ -115,5 +114,18 @@ public class LandschapState : BaseState
         Cursor.lockState = CursorLockMode.None;
         geenFotosEindeScherm.SetActive(true);
     }
-    
+
+    public void DeurOpen(bool state)
+    {
+        switch (state)
+        {
+            case true:
+                _landschapManagerRef.playerAgentRef.SetPlayerState(PlayerStates.SleepState);
+                break;
+            case false:
+                _landschapManagerRef.playerAgentRef.SetPlayerState(PlayerStates.WalkLookState);
+                break;
+        }
+        
+    }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using JetBrains.Annotations;
-using Unity.UI;
 
 public class LandschapTutorialState : BaseState
 {
