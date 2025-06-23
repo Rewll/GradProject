@@ -24,6 +24,8 @@ public class LandschapInitState : BaseState
         {
             //Debug.Log("Er is geen playerPref poep");
         }
+
+        AudioListener.pause = false;
     }
 
     public override void OnEnter()

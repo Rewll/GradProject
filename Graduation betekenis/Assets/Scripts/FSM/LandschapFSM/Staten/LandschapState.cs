@@ -14,6 +14,8 @@ public class LandschapState : BaseState
     public Transform startplek;
     public AudioLayer landMarkLayer;
     public LandMarkManager landMarkManagerRef;
+    public GameObject geenFotosScherm;
+    public GameObject geenFotosEindeScherm;
     [Space] 
     public bool spelerHeeftGekeken;
     private void Awake()
@@ -88,7 +90,30 @@ public class LandschapState : BaseState
 
     public void StartCollageFase()
     {
+
         owner.SwitchState(typeof(CollageState));
+    }
+
+    public void FotoCheck()
+    {
+        if (_landschapManagerRef.picDisRef.pictures.Count <= 0)
+        {
+            Debug.Log("0 foto's gemaakt");
+            geenFotosScherm.SetActive(true);
+        }
+        else
+        {
+            StartCollageFase();
+        }
+    }
+
+    public void GeenFotosEindeSpelLaden()
+    {
+        Time.timeScale = 0;
+        AudioListener.pause = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        geenFotosEindeScherm.SetActive(true);
     }
     
 }

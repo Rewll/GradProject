@@ -19,11 +19,13 @@ public class GameManager : MonoBehaviour
     private playerprefspoep playerPrepRef;
     public KeyCode pauseButton = KeyCode.Tab;
     public List<GameObject> destroyObjects;
+    [Space] 
+    public bool collage;
     
     private void Awake()
     {
         pauseMenu.SetActive(paused);
-        if (FindAnyObjectByType<playerprefspoep>())
+        if (FindAnyObjectByType<playerprefspoep>() && !collage)
         {
             playerPrepRef = FindAnyObjectByType<playerprefspoep>();
             //Debug.Log("Slider wordt gezet");
@@ -31,7 +33,7 @@ public class GameManager : MonoBehaviour
             muisSlider.value = playerRef.mouseSensitivity;
             destroyObjects.Add(playerPrepRef.gameObject);
         }
-        else
+        else if (!collage)
         {
             Debug.Log("Er is geen playerPref poep");
         }

@@ -12,7 +12,7 @@ public class AudioLayer : MonoBehaviour
     [SerializeField] AudioMixerGroup mixerGroup;
     public geluid[] soundsList;
     
-    public bool dontDestroy;
+    private bool dontDestroy;
 
     void AudioLayerInit()
     {
