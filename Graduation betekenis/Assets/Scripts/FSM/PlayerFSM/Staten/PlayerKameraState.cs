@@ -118,7 +118,8 @@ public class PlayerKameraState : BaseState
         RenderTexture.active = rendText;
         int width = rendText.width;
         int height = rendText.height;
-        _fotoTexture = new Texture2D(width, height, TextureFormat.RGB24, false);
+        //_fotoTexture = new Texture2D(width, height, TextureFormat.RGB24, false);
+        _fotoTexture = new Texture2D(width, height, TextureFormat.RGBA64, false);
         Rect rect = new Rect(0, 0, width, height);
         _fotoTexture.ReadPixels(rect, 0, 0);
         _fotoTexture.Apply();

@@ -9,6 +9,7 @@ public class FabriekInitState : BaseState
     
     public bool skipTutorial;
     public Transform fabriekStartPos;
+    public GameObject opHangUitLegObject;
     
     private void Awake()
     {
@@ -19,7 +20,6 @@ public class FabriekInitState : BaseState
     public override void OnEnter()
     {
         _fabriekAgentRef.huidigeStaat = FabriekAgent.FabriekStaten.FabriekInitState;
-        _fabriekManagerRef.SetDeur(false);
         _fabriekManagerRef.playerAgentRef.TeleportPlayer(fabriekStartPos.position);
         
         if (skipTutorial)
@@ -27,6 +27,10 @@ public class FabriekInitState : BaseState
             _fabriekManagerRef.fadeVlak.gameObject.SetActive(false);
             _fabriekManagerRef.machineAnim.SetTrigger("TrEnter");
             _fabriekManagerRef.fabriekAmbianceLayerRef.FadeInSound(0,5f);
+            foreach (GameObject obj in _fabriekManagerRef.ophangTutorialdingen)
+            {
+                obj.SetActive(true);
+            }
             owner.SwitchState(typeof(FabriekWerkState));
         }
         else
