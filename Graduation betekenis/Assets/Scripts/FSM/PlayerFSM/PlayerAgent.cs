@@ -25,6 +25,8 @@ public class PlayerAgent : MonoBehaviour
     [Space] 
     public Animator kameraAnimator;
     public Transform kamTransform;
+    [Space] 
+    public Transform playerStartPos;
     [Space]
     [Header("Player Wide Variables:")]
     public KeyCode CameraKnop;

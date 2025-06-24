@@ -16,6 +16,7 @@ public class PlayerMove : MonoBehaviour
     public Transform orientation;
     [Space] [Header("Gravity")] 
     public float gravityScale = 1.0f;
+    public Transform groundTransform;
     [SerializeField] private float underNeathGroundTreshold;
     private const float GlobalGravity = -9.81f;
 
@@ -23,7 +24,7 @@ public class PlayerMove : MonoBehaviour
     private float _verticalInput;
     private Vector3 _moveDirection;
     private Rigidbody _rb;
-    private PlayerAgent _playerAgentRef;
+    [SerializeField] private PlayerAgent _playerAgentRef;
     private Vector3 _lastGroundPos;
     
     void Awake()
@@ -96,9 +97,15 @@ public class PlayerMove : MonoBehaviour
     }
     public void KeepPlayerAfloat()
     {
-        if (transform.position.y < underNeathGroundTreshold && !grounded)
+        if (groundTransform)
         {
-            Teleport(_lastGroundPos);
+            if (transform.position.y < (groundTransform.position.y - underNeathGroundTreshold) && !grounded)
+            {
+                Debug.Log("Teleporteer speler terug");
+                //Teleport(_lastGroundPos);
+                Teleport(_playerAgentRef.playerStartPos.position);
+            }
         }
+
     }
 }

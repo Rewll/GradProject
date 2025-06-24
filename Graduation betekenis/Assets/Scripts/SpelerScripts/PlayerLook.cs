@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
@@ -8,6 +9,13 @@ public class PlayerLook : MonoBehaviour
 
     public float xRotation;
     public float yRotation;
+
+    private void Awake()
+    {
+        //xRotation = transform.rotation.x;
+        //yRotation = transform.rotation.y;
+        //transform.localRotation = Quaternion.Euler(startX, startY, 0f);
+    }
 
     public void MouseLook()
     {
