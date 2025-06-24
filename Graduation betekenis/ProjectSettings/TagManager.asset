@@ -16,8 +16,8 @@ TagManager:
   - Ground
   - OphangPlek
   - Post processing
-  - Deur
-  - DeurSpeciaal
+  - OnzichtbaarVoorKamera
+  - AlleenZichtbaarKamera
   - NoPost
   - 
   - 

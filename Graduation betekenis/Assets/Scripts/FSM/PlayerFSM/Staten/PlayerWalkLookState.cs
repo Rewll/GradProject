@@ -13,6 +13,10 @@ public class PlayerWalkLookState : BaseState
     void Awake()
     {
         _playerAgentRef = GetComponent<PlayerAgent>();
+        if (_playerAgentRef.playerStartPos)
+        {
+            _playerAgentRef.playerStartPos.position = transform.position;
+        }
     }
     
     public override void OnEnter()
@@ -38,6 +42,7 @@ public class PlayerWalkLookState : BaseState
             _playerAgentRef.playerMoveRef.MyInput();
             _playerAgentRef.playerMoveRef.GroundCheck();
             _playerAgentRef.playerMoveRef.SpeedControl();
+            _playerAgentRef.playerMoveRef.KeepPlayerAfloat();
         }
         if (spelerMagKijken)
         {
