@@ -120,8 +120,10 @@ public class FabriekTutorialState : BaseState
         tutorialObjects[9].SetActive(true);
         yield return new WaitForSeconds(1f);
         _fabriekManagerRef.machineAnim.SetTrigger("TrEnter");
+        Debug.Log("Wachten op fotomaken");
         yield return new WaitUntil(() => _spelerHeeftfotoGemaakt);
-        
+        Debug.Log("foto gemaakt");
+
         yield return new WaitForSeconds(1f);
         tutorialObjects[10].SetActive(true);
         yield return new WaitUntil(() => _spelerHeeftFotoOpgehangen);

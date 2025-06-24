@@ -102,7 +102,6 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator LaadSceneRoutine(int sceneIndex)
     {
-        yield return new WaitForSecondsRealtime(1f);
         fadeVlak.gameObject.SetActive(true);
         Tween fadeTween = fadeVlak.DOFade(1, sceneFadeTime);
         fadeTween.SetUpdate(true);

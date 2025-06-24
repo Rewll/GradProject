@@ -134,12 +134,12 @@ public class PlayerKameraState : BaseState
             _playerAgentRef.heeftFoto = true;
             if (CheckIfObjectIsInPicture())
             {
-                //Debug.Log("Foto gemaakt met object");
+                Debug.Log("Object wel op de foto");
                 _playerAgentRef.heeftFotoMetObject = true;
             }
             else
             {
-                //Debug.Log("Foto gemaakt");
+                Debug.Log("Geen object op de foto");
                 _playerAgentRef.heeftFotoMetObject = false;
             }
             _playerAgentRef.fabriekFoto = _fotoTexture;
