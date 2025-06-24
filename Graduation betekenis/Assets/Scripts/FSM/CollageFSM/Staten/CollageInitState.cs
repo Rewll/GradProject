@@ -10,6 +10,9 @@ public class CollageInitState : BaseState
     public PictureStorage picStorageRef;
     [Space]
     public List<GameObject> Screens = new List<GameObject>();
+
+    [Space] 
+    public AudioLayer muziekLayer;
     
     private void Awake()
     {
@@ -25,7 +28,7 @@ public class CollageInitState : BaseState
         }
         _collageAgentRef.huidigeStaat = CollageAgent.Collagestaten.CollageInitState;
         picStorageRef = FindFirstObjectByType(typeof(PictureStorage)) as PictureStorage;
-        
+        muziekLayer.FadeInSound(0,2f);
         if (picStorageRef)
         {
             foreach (Texture pictureTexture in picStorageRef.picturesStored)

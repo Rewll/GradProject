@@ -13,24 +13,26 @@ public class LandMarkManager : MonoBehaviour
     [Space] 
     [SerializeField] private float landMarkFadeInTime;
     [SerializeField] private float landMarkFadeOutTime;
-    private bool _firstLandMark = true;
     
     public void ActivateLandMark(int newLandMarkIndex)
     {
-        if (!_firstLandMark && newLandMarkIndex == currentLandMarkIndex)
-            return; 
-        
-        if (!_firstLandMark)
+        if (landMarkLayerRef.Isplaying())
         {
-            landMarkLayerRef.FadeOutSound(currentLandMarkIndex, landMarkFadeOutTime);
-            landMarkLayerRef.FadeInSound(newLandMarkIndex, landMarkFadeInTime);
-            //Debug.Log("LM " + newLandMarkIndex + " Activated --- " + "Lm " + currentLandMarkIndex + " deactivated");
+            if (newLandMarkIndex == currentLandMarkIndex)
+            {
+                Debug.Log("LM " + newLandMarkIndex + " was activated, but is already playing");
+            }
+            else
+            {
+                landMarkLayerRef.FadeOutSound(currentLandMarkIndex, landMarkFadeOutTime);
+                landMarkLayerRef.FadeInSound(newLandMarkIndex, landMarkFadeInTime);
+                Debug.Log("LM " + newLandMarkIndex + " Activated --- " + "Lm " + currentLandMarkIndex + " deactivated");
+            }
         }
-        else if (_firstLandMark)
+        else
         {
             landMarkLayerRef.FadeInSound(newLandMarkIndex, landMarkFadeInTime);
-            _firstLandMark = false;
-            //Debug.Log("LM " + newLandMarkIndex + "activated");
+            Debug.Log("LM " + newLandMarkIndex + " Activated");
         }
         currentLandMarkIndex = newLandMarkIndex;
     }

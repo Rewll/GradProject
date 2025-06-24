@@ -9,7 +9,7 @@ using TMPro;
 public class KameraPictureDisplay : MonoBehaviour
 {
     public GameObject displayPicturePrefab;
-    public PictureStorage picStorageRef;
+    public GameObject PicstoragePrefab;
     [Space]
     public GameObject picturesViewScreen;
     public GameObject picturesDisplayParent;
@@ -136,10 +136,13 @@ public class KameraPictureDisplay : MonoBehaviour
 
     public void SavePictures()
     {
+        GameObject newPicStorage = Instantiate(PicstoragePrefab);
+        PictureStorage picStoreRef = newPicStorage.GetComponent<PictureStorage>();
+        
         foreach (GameObject pictureObject in pictures)
         {
             Texture texture = pictureObject.GetComponent<RawImage>().texture;
-            picStorageRef.picturesStored.Add(texture);
+            picStoreRef.picturesStored.Add(texture);
         }
     }
 }

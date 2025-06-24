@@ -12,7 +12,7 @@ public class AudioLayer : MonoBehaviour
     [SerializeField] AudioMixerGroup mixerGroup;
     public geluid[] soundsList;
     
-    public bool dontDestroy;
+    private bool dontDestroy;
 
     void AudioLayerInit()
     {
@@ -66,6 +66,18 @@ public class AudioLayer : MonoBehaviour
         }
     }
 
+    public bool Isplaying()
+    {
+        foreach (geluid g in soundsList)
+        {
+            if (g.source.isPlaying)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
     public void PlaySound(int geluidsIndex)
     {
         geluid g = FindSound(geluidsIndex);
