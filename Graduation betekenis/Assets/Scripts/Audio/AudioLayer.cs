@@ -66,6 +66,18 @@ public class AudioLayer : MonoBehaviour
         }
     }
 
+    public bool Isplaying()
+    {
+        foreach (geluid g in soundsList)
+        {
+            if (g.source.isPlaying)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
     public void PlaySound(int geluidsIndex)
     {
         geluid g = FindSound(geluidsIndex);

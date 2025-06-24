@@ -8,7 +8,7 @@ public class PlayerTrigger : MonoBehaviour
     public UnityEvent onExit;
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && this.enabled)
         {
             onEnter.Invoke();
         }
@@ -16,7 +16,7 @@ public class PlayerTrigger : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && this.enabled)
         {
             onExit.Invoke();
         }
