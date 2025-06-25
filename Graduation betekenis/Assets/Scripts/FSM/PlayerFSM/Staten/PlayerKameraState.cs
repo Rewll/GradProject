@@ -63,6 +63,7 @@ public class PlayerKameraState : BaseState
         {
             Debug.DrawRay(_playerAgentRef.kamTransform.position, _playerAgentRef.kamTransform.TransformDirection(Vector3.forward) * raycastLength, Color.red);
         }
+        
         if (Input.GetMouseButton(1))
         {
             if (Cursor.lockState == CursorLockMode.None)
@@ -70,6 +71,7 @@ public class PlayerKameraState : BaseState
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
             }
+            _playerAgentRef.playerLookRef.MouseInput();
             _playerAgentRef.playerLookRef.MouseLook();
         }
         else if (Cursor.lockState == CursorLockMode.Locked)
@@ -134,12 +136,12 @@ public class PlayerKameraState : BaseState
             _playerAgentRef.heeftFoto = true;
             if (CheckIfObjectIsInPicture())
             {
-                Debug.Log("Object wel op de foto");
+                //Debug.Log("Object wel op de foto");
                 _playerAgentRef.heeftFotoMetObject = true;
             }
             else
             {
-                Debug.Log("Geen object op de foto");
+                //Debug.Log("Geen object op de foto");
                 _playerAgentRef.heeftFotoMetObject = false;
             }
             _playerAgentRef.fabriekFoto = _fotoTexture;

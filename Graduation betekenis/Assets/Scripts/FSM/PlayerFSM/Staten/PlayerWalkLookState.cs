@@ -93,6 +93,10 @@ public class PlayerWalkLookState : BaseState
    
                 }
             }
+            else
+            {
+                ophangManagerRef.selectieActief = false;
+            }
         }
         else
         {

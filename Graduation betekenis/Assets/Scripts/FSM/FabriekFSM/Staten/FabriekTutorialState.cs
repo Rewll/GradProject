@@ -101,7 +101,8 @@ public class FabriekTutorialState : BaseState
         yield return new WaitForSeconds(1f);
         tutorialObjects[5].SetActive(true);
         yield return new WaitUntil(() => Input.GetKeyDown(_fabriekManagerRef.playerAgentRef.CameraKnop));
-        
+        _fabriekManagerRef.playerAgentRef.heeftFoto = false;
+        _fabriekManagerRef.playerAgentRef.fabriekFoto = null;
         tutorialObjects[5].SetActive(false);
         yield return new WaitForSeconds(1f);
         tutorialObjects[6].SetActive(true);
@@ -120,9 +121,7 @@ public class FabriekTutorialState : BaseState
         tutorialObjects[9].SetActive(true);
         yield return new WaitForSeconds(1f);
         _fabriekManagerRef.machineAnim.SetTrigger("TrEnter");
-        Debug.Log("Wachten op fotomaken");
         yield return new WaitUntil(() => _spelerHeeftfotoGemaakt);
-        Debug.Log("foto gemaakt");
 
         yield return new WaitForSeconds(1f);
         tutorialObjects[10].SetActive(true);
