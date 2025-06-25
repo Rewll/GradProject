@@ -1969,7 +1969,7 @@ MonoBehaviour:
   cameraTutorial1: {fileID: 1798414471}
   cameraTutorial2: {fileID: 638963546}
   fotoKijkKnop: {fileID: 1965155516}
-  skipTutorial: 0
+  skipTutorial: 1
 --- !u!4 &702569688
 Transform:
   m_ObjectHideFlags: 0
@@ -2284,9 +2284,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5088988007459013230, guid: 3bab4a26f21a1e447b3168a7b977cbe1, type: 3}
+      propertyPath: deltaTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5088988007459013230, guid: 3bab4a26f21a1e447b3168a7b977cbe1, type: 3}
       propertyPath: orientaton
       value: 
       objectReference: {fileID: 416083563}
+    - target: {fileID: 5088988007459013230, guid: 3bab4a26f21a1e447b3168a7b977cbe1, type: 3}
+      propertyPath: mouseSensitivity
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4492,6 +4500,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1914739213}
   m_SourcePrefab: {fileID: 100100000, guid: d506cec53f059d04e9e285f87a0f3974, type: 3}
+--- !u!4 &1538374885 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3194816613810991718, guid: d506cec53f059d04e9e285f87a0f3974, type: 3}
+  m_PrefabInstance: {fileID: 1538374884}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1543534412 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 456871078288824258, guid: 017f341c0cffde240862c7a30fd6c893, type: 3}
@@ -7010,6 +7023,26 @@ PrefabInstance:
       propertyPath: playerStartPos
       value: 
       objectReference: {fileID: 1696133939}
+    - target: {fileID: 3804112565360625998, guid: 017f341c0cffde240862c7a30fd6c893, type: 3}
+      propertyPath: gravityScale
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3804112565360625998, guid: 017f341c0cffde240862c7a30fd6c893, type: 3}
+      propertyPath: _playerAgentRef
+      value: 
+      objectReference: {fileID: 1587780716}
+    - target: {fileID: 3804112565360625998, guid: 017f341c0cffde240862c7a30fd6c893, type: 3}
+      propertyPath: debugRunEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3804112565360625998, guid: 017f341c0cffde240862c7a30fd6c893, type: 3}
+      propertyPath: groundTransform
+      value: 
+      objectReference: {fileID: 1538374885}
+    - target: {fileID: 3804112565360625998, guid: 017f341c0cffde240862c7a30fd6c893, type: 3}
+      propertyPath: underNeathGroundTreshold
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 6973409566870059789, guid: 017f341c0cffde240862c7a30fd6c893, type: 3}
       propertyPath: m_LocalPosition.x
       value: -233.85928

@@ -11,12 +11,22 @@ public class PlayerLook : MonoBehaviour
     public float yRotation;
     private float mouseX;
     private float mouseY;
+    public bool deltaTime;
 
 
     public void MouseInput()
     {
-        mouseX = Input.GetAxis("Mouse X") * (mouseSensitivity * 0.1f);
-        mouseY = Input.GetAxis("Mouse Y") * (mouseSensitivity * 0.1f);
+        if (deltaTime)
+        {
+            mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * (mouseSensitivity);
+            mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * (mouseSensitivity);
+        }
+        else
+        {
+            mouseX = Input.GetAxis("Mouse X") * (mouseSensitivity * 0.1f);
+            mouseY = Input.GetAxis("Mouse Y") * (mouseSensitivity * 0.1f);
+        }
+
     }
     public void MouseLook()
     {
