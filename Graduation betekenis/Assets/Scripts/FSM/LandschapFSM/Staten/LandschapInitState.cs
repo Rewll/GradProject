@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class LandschapInitState : BaseState
 {
-    private LandschapAgent _landschapAgent;
-    private LandschapManager _landschapManagerRef;
+    [SerializeField] private LandschapAgent _landschapAgent;
+    [SerializeField] private LandschapManager _landschapManagerRef;
     private playerprefspoep playerPrepRef;
     private void Awake()
     {
-        _landschapAgent = GetComponent<LandschapAgent>();
-        _landschapManagerRef = GetComponent<LandschapManager>();
+        //_landschapAgent = GetComponent<LandschapAgent>();
+        //_landschapManagerRef = GetComponent<LandschapManager>();
+        
         _landschapManagerRef.cameraTutorial1.SetActive(false);
         _landschapManagerRef.cameraTutorial2.SetActive(false);
         if (FindAnyObjectByType<playerprefspoep>())

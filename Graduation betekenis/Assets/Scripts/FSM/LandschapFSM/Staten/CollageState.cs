@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class CollageState : BaseState
 {
-    private LandschapAgent _landschapAgent;
-    private LandschapManager _landschapManagerRef;
+    [SerializeField] private LandschapAgent _landschapAgent;
+    [SerializeField] private LandschapManager _landschapManagerRef;
     
     public int collageSceneIndex;
 
@@ -15,8 +15,8 @@ public class CollageState : BaseState
 
     private void Awake()
     {
-        _landschapAgent = GetComponent<LandschapAgent>();
-        _landschapManagerRef = GetComponent<LandschapManager>();
+        //_landschapAgent = GetComponent<LandschapAgent>();
+        //_landschapManagerRef = GetComponent<LandschapManager>();
     }
 
     public override void OnEnter()

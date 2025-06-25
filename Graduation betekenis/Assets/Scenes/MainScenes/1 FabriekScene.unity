@@ -12445,6 +12445,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 507500689223422735, guid: 017f341c0cffde240862c7a30fd6c893, type: 3}
+      propertyPath: _playerAgentRef
+      value: 
+      objectReference: {fileID: 3197382577415888753}
+    - target: {fileID: 507500689223422735, guid: 017f341c0cffde240862c7a30fd6c893, type: 3}
       propertyPath: ophangManagerRef
       value: 
       objectReference: {fileID: 1388056016}
@@ -12524,6 +12528,10 @@ PrefabInstance:
       propertyPath: redObject
       value: 
       objectReference: {fileID: 4744221982454334532}
+    - target: {fileID: 8392867914714592485, guid: 017f341c0cffde240862c7a30fd6c893, type: 3}
+      propertyPath: _playerAgentRef
+      value: 
+      objectReference: {fileID: 3197382577415888753}
     - target: {fileID: 8392867914714592485, guid: 017f341c0cffde240862c7a30fd6c893, type: 3}
       propertyPath: latestPictureShowImage
       value: 

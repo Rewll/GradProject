@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class PlayerWalkLookState : BaseState
 {
-    private PlayerAgent _playerAgentRef;
+    [SerializeField] private PlayerAgent _playerAgentRef;
+    [Space]
     public bool spelerMagKijken;
     public bool spelerMagLopen;
     [Header("Fabriek Variables:")]
@@ -12,7 +13,7 @@ public class PlayerWalkLookState : BaseState
     
     void Awake()
     {
-        _playerAgentRef = GetComponent<PlayerAgent>();
+        //_playerAgentRef = GetComponent<PlayerAgent>();
         if (_playerAgentRef.playerStartPos)
         {
             _playerAgentRef.playerStartPos.position = transform.position;

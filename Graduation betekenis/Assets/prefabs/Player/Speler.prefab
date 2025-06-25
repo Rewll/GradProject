@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aacd4474006ff84b987fa84a1ba7683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerAgentRef: {fileID: 2602548177582234278}
   spelerMagKijken: 1
   spelerMagLopen: 1
   fabriekLayer:
@@ -183,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f90cc3e0dc8e9b24ea5ffa4ab8d93d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerAgentRef: {fileID: 2602548177582234278}
   picDisplayRef: {fileID: 0}
   kamera: {fileID: 0}
   rendText: {fileID: 8400000, guid: 8c6aea0e2e1353d478d840e4313ce989, type: 2}
@@ -206,6 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91536f599c671e844b4ff39d13a691c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerAgentRef: {fileID: 2602548177582234278}
 --- !u!1 &3489856849376978038
 GameObject:
   m_ObjectHideFlags: 0

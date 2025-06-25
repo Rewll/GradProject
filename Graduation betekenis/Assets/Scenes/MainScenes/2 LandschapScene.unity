@@ -2011,6 +2011,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4560f0522c3c4ec8a50e4248797c5c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _landschapAgent: {fileID: 702569690}
+  _landschapManagerRef: {fileID: 702569687}
   collageSceneIndex: 3
   onCollageEnter:
     m_PersistentCalls:
@@ -2039,6 +2041,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 200f30d30a1946f9bf7ac76fb940e561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _landschapAgent: {fileID: 702569690}
+  _landschapManagerRef: {fileID: 702569687}
   screenFadeTime: 2
   landMarkLayer: {fileID: 1962673243}
   landMarkManagerRef: {fileID: 1686297727}
@@ -2057,6 +2061,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50c857de2a1421e95cb69c9bbb8d779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _landschapAgent: {fileID: 702569690}
+  _landschapManagerRef: {fileID: 702569687}
   screenFadeTime: 2
   tutorialScherm1: {fileID: 1358196577}
 --- !u!114 &702569698
@@ -2071,7 +2077,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 147da843abad2af449b12045a17db370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startplek: {fileID: 0}
+  _landschapAgent: {fileID: 702569690}
+  _landschapManagerRef: {fileID: 702569687}
 --- !u!114 &702569699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7107,6 +7114,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 507500689223422735, guid: 017f341c0cffde240862c7a30fd6c893, type: 3}
+      propertyPath: _playerAgentRef
+      value: 
+      objectReference: {fileID: 1587780716}
     - target: {fileID: 1921520185045529903, guid: 017f341c0cffde240862c7a30fd6c893, type: 3}
       propertyPath: m_Name
       value: Speler
@@ -7195,6 +7206,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8073725697085055579, guid: 017f341c0cffde240862c7a30fd6c893, type: 3}
+      propertyPath: _playerAgentRef
+      value: 
+      objectReference: {fileID: 1587780716}
     - target: {fileID: 8392867914714592485, guid: 017f341c0cffde240862c7a30fd6c893, type: 3}
       propertyPath: kamera
       value: 
@@ -7211,6 +7226,10 @@ PrefabInstance:
       propertyPath: raycastLength
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8392867914714592485, guid: 017f341c0cffde240862c7a30fd6c893, type: 3}
+      propertyPath: _playerAgentRef
+      value: 
+      objectReference: {fileID: 1587780716}
     - target: {fileID: 8392867914714592485, guid: 017f341c0cffde240862c7a30fd6c893, type: 3}
       propertyPath: zoomSensitivity
       value: 1

@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class PlayerKameraState : BaseState
 {
-    private PlayerAgent _playerAgentRef;
+    [SerializeField] private PlayerAgent _playerAgentRef;
+    [Space]
     public KameraPictureDisplay picDisplayRef;
     
     [Space] [Header("Kamera variables")] 
@@ -30,7 +31,7 @@ public class PlayerKameraState : BaseState
     
     private void Awake()
     {
-        _playerAgentRef = GetComponent<PlayerAgent>();
+        //_playerAgentRef = GetComponent<PlayerAgent>();
         //SetGameObjects(false);  
     }
 
