@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using Cursor = UnityEngine.Cursor;
 
 public class PlayerWalkLookState : BaseState
 {
@@ -10,6 +12,7 @@ public class PlayerWalkLookState : BaseState
     [SerializeField] private LayerMask fabriekLayer;
     [SerializeField] private float raycastLength;
     public FotoOphangManager ophangManagerRef;
+    public RawImage lastPictureImage;
     
     void Awake()
     {
@@ -81,17 +84,17 @@ public class PlayerWalkLookState : BaseState
                     {
                         hit.transform.gameObject.GetComponent<FotoOphangManager>().fotoTexture = _playerAgentRef.fabriekFoto;
                         hit.transform.gameObject.GetComponent<FotoOphangManager>().onOphang.Invoke();
-                        _playerAgentRef.heeftFoto = false;
-                        _playerAgentRef.fabriekFoto = null;
-                        ophangManagerRef.selectieActief = false;
+                        
                         ophangManagerRef.HerrinerDeSpeler(false);
-
                     }
                     else
                     {
                         ophangManagerRef.HerrinerDeSpeler(true);
                     }
-   
+                    lastPictureImage.texture = null;
+                    _playerAgentRef.heeftFoto = false;
+                    _playerAgentRef.fabriekFoto = null;
+                    ophangManagerRef.selectieActief = false;
                 }
             }
             else

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using TMPro;
 
@@ -7,7 +8,7 @@ public class fp : MonoBehaviour
     [SerializeField] private float _hudRefreshRate = 1f;
 
     private float _timer;
-
+    
     private void Update()
     {
         if (Time.unscaledTime > _timer)
