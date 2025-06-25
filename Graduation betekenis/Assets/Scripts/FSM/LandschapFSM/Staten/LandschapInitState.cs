@@ -6,9 +6,6 @@ public class LandschapInitState : BaseState
 {
     private LandschapAgent _landschapAgent;
     private LandschapManager _landschapManagerRef;
-    [Header("References: ")]
-    public Transform startplek;
-
     private playerprefspoep playerPrepRef;
     private void Awake()
     {
