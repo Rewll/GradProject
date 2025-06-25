@@ -1785,7 +1785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 218bbcb58f922b44c8708662762220d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipTutorial: 0
+  skipTutorial: 1
   fabriekStartPos: {fileID: 3742350545113534028}
   opHangUitLegObject: {fileID: 0}
 --- !u!114 &457740426
@@ -12307,6 +12307,10 @@ PrefabInstance:
       propertyPath: 'm_Cameras.Array.data[1]'
       value: 
       objectReference: {fileID: 7078354117561428251}
+    - target: {fileID: 5088988007459013230, guid: 3bab4a26f21a1e447b3168a7b977cbe1, type: 3}
+      propertyPath: deltaTime
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5088988007459013230, guid: 3bab4a26f21a1e447b3168a7b977cbe1, type: 3}
       propertyPath: orientaton
       value: 
