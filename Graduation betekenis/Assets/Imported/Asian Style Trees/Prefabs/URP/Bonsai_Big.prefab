@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6954757686636023224
 Transform:
@@ -32,7 +32,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2752166456840590642}
+  - {fileID: 8202847782691757299}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &5740431963633797728
@@ -4874,13 +4874,45 @@ LODGroup:
     - renderer: {fileID: 3993958456200877861}
     - renderer: {fileID: 85256604117083744}
   m_Enabled: 1
+--- !u!1 &2754980472782269300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8202847782691757299}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &8202847782691757299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2754980472782269300}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2752166456840590642}
+  m_Father: {fileID: 6954757686636023224}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2430555883991200473
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6954757686636023224}
+    m_TransformParent: {fileID: 8202847782691757299}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 8d3c421ebb7fcae43bc04164ad41bf93, type: 3}
       propertyPath: m_RootOrder
@@ -4904,15 +4936,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8d3c421ebb7fcae43bc04164ad41bf93, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8d3c421ebb7fcae43bc04164ad41bf93, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8d3c421ebb7fcae43bc04164ad41bf93, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8d3c421ebb7fcae43bc04164ad41bf93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4930,14 +4962,26 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 846bc967cc431b044a87d153f616d580, type: 2}
+    - target: {fileID: 375517915199365746, guid: 8d3c421ebb7fcae43bc04164ad41bf93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8d3c421ebb7fcae43bc04164ad41bf93, type: 3}
       propertyPath: m_Name
       value: Bonsai_Big
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8d3c421ebb7fcae43bc04164ad41bf93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 2348053109929956537, guid: 8d3c421ebb7fcae43bc04164ad41bf93, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 47273043c54c1e74c8df3b688eb5ce59, type: 2}
+    - target: {fileID: 7032823420476312315, guid: 8d3c421ebb7fcae43bc04164ad41bf93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
