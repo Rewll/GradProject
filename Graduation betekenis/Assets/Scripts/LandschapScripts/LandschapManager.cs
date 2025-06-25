@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class LandschapManager : MonoBehaviour
 {
-    public GameObject playerObjectRef;
     public PlayerAgent playerAgentRef;
     [Space] 
     public Image fadeVlak;
