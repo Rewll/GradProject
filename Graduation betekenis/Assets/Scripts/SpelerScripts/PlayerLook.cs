@@ -9,22 +9,20 @@ public class PlayerLook : MonoBehaviour
 
     public float xRotation;
     public float yRotation;
+    private float mouseX;
+    private float mouseY;
 
-    private void Awake()
+
+    public void MouseInput()
     {
-        //xRotation = transform.rotation.x;
-        //yRotation = transform.rotation.y;
-        //transform.localRotation = Quaternion.Euler(startX, startY, 0f);
+        mouseX = Input.GetAxis("Mouse X") * (mouseSensitivity * 0.1f);
+        mouseY = Input.GetAxis("Mouse Y") * (mouseSensitivity * 0.1f);
     }
-
     public void MouseLook()
     {
-        float mouseX = Input.GetAxis("Mouse X") * (mouseSensitivity * 0.1f);
-        float mouseY = Input.GetAxis("Mouse Y") * (mouseSensitivity * 0.1f);
-        
         yRotation += mouseX;
-        xRotation -= mouseY;
         
+        xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);

@@ -40,14 +40,17 @@ public class PlayerWalkLookState : BaseState
         if (spelerMagLopen)
         {
             _playerAgentRef.playerMoveRef.MyInput();
-            _playerAgentRef.playerMoveRef.GroundCheck();
-            _playerAgentRef.playerMoveRef.SpeedControl();
-            _playerAgentRef.playerMoveRef.KeepPlayerAfloat();
         }
+        _playerAgentRef.playerMoveRef.GroundCheck();
+        _playerAgentRef.playerMoveRef.SpeedControl();
+        _playerAgentRef.playerMoveRef.KeepPlayerAfloat();
+        
         if (spelerMagKijken)
         {
-            _playerAgentRef.playerLookRef.MouseLook();
+            _playerAgentRef.playerLookRef.MouseInput();
         }
+        _playerAgentRef.playerLookRef.MouseLook();
+        
         if (Input.GetKeyDown(_playerAgentRef.CameraKnop))
         {
             _playerAgentRef.kameraAnimator.SetTrigger("TrEnable");
@@ -101,9 +104,10 @@ public class PlayerWalkLookState : BaseState
     {
         if (spelerMagLopen)
         {
-            _playerAgentRef.playerMoveRef.MovePlayer();
-            _playerAgentRef.playerMoveRef.Gravity();
+
         }
+        _playerAgentRef.playerMoveRef.MovePlayer();
+        _playerAgentRef.playerMoveRef.Gravity();
     }
     
     public override void OnExit()

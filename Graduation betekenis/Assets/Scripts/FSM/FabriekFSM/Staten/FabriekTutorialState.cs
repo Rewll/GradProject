@@ -53,6 +53,7 @@ public class FabriekTutorialState : BaseState
     
 
         SetTutorialEventsListeners(true);
+        
         _fabriekManagerRef.fadeVlak.gameObject.SetActive(true);
         _fabriekManagerRef.fadeVlak.DOFade(1, 0.001f);
         _fabriekManagerRef.playerAgentRef.SetPlayerState(PlayerStates.SleepState);
@@ -64,14 +65,13 @@ public class FabriekTutorialState : BaseState
     
     IEnumerator TutorialRoutine()
     {
-
-        yield return new WaitForSeconds(4f);
+        _fabriekManagerRef.playerAgentRef.SetPlayerState(PlayerStates.WalkLookState);
         _fabriekManagerRef.playerAgentRef.SetPlayerLookDirection(0,90);
+        yield return new WaitForSeconds(3f);
         _fabriekManagerRef.fabriekAmbianceLayerRef.FadeInSound(0,5f);
         Tween fadeTween = _fabriekManagerRef.fadeVlak.DOFade(0, 3f);
         yield return fadeTween.WaitForCompletion();
         _fabriekManagerRef.fadeVlak.gameObject.SetActive(false);
-        _fabriekManagerRef.playerAgentRef.SetPlayerState(PlayerStates.WalkLookState);
 
         _walkLookRef.spelerMagKijken = true;
         tutorialObjects[0].SetActive(true);
