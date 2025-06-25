@@ -1913,7 +1913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 218bbcb58f922b44c8708662762220d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipTutorial: 0
+  skipTutorial: 1
   fabriekStartPos: {fileID: 3742350545113534028}
   opHangUitLegObject: {fileID: 0}
 --- !u!114 &457740426
