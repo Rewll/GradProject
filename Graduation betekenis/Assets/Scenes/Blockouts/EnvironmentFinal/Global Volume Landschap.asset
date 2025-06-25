@@ -148,7 +148,7 @@ MonoBehaviour:
   active: 1
   distance:
     m_OverrideState: 1
-    m_Value: 128
+    m_Value: 52
   baseHeight:
     m_OverrideState: 0
     m_Value: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
     m_Value: 0.2
   contrast:
     m_OverrideState: 1
-    m_Value: 27
+    m_Value: 32.9
   colorFilter:
     m_OverrideState: 1
     m_Value: {r: 1, g: 0.9764151, b: 0.9764151, a: 1}
