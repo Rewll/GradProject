@@ -12,6 +12,9 @@ public class CollageKlaarRegelaar : MonoBehaviour
     public GameObject deelIcoon;
     public GameObject deelTekst;
     public GameObject ampersandTekst;
+    public bool itchio;
+    public GameObject itchSCherm;
+    public GameObject eindeScherm1;
 
     private void Awake()
     {
@@ -23,6 +26,16 @@ public class CollageKlaarRegelaar : MonoBehaviour
         deelTekst.SetActive(false);
         textAlgemeen.SetActive(false);
         ampersandTekst.SetActive(false);
+        if (itchio)
+        {
+            itchSCherm.SetActive(true);
+            eindeScherm1.SetActive(false);
+        }
+        else
+        {
+            eindeScherm1.SetActive(true);
+            itchSCherm.SetActive(false);
+        }
     }
 
     public void PrintenInschakel()

@@ -47,6 +47,7 @@ public class CollageCreateState : BaseState
     public GameObject selectedPicture;
     [Space] 
     public TMP_Text pathTekst;
+    public TMP_Text pathTekst2;
 
     
     
@@ -283,5 +284,6 @@ public class CollageCreateState : BaseState
         Debug.Log("Saved Collage at: " + path3);
         pathTekst.gameObject.SetActive(true);
         pathTekst.text = "Collage Opgeslagen in: " + path3;
+        pathTekst2.text = "Collage Opgeslagen in: " + path3;
     }
 }
