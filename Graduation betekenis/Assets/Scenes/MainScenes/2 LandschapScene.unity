@@ -5879,7 +5879,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c20f19a713c177a4ea6e1653a3741fc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObjectRef: {fileID: 1636725059}
   playerAgentRef: {fileID: 5890244111541571154}
   fadeVlak: {fileID: 1784130495}
   audioManRef: {fileID: 1348619950495048087}
@@ -5929,6 +5928,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4560f0522c3c4ec8a50e4248797c5c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _landschapAgent: {fileID: 702569690}
+  _landschapManagerRef: {fileID: 702569687}
   collageSceneIndex: 3
   onCollageEnter:
     m_PersistentCalls:
@@ -5957,6 +5958,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 200f30d30a1946f9bf7ac76fb940e561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _landschapAgent: {fileID: 702569690}
+  _landschapManagerRef: {fileID: 702569687}
   screenFadeTime: 2
   landMarkLayer: {fileID: 1962673243}
   landMarkManagerRef: {fileID: 1686297727}
@@ -5975,6 +5978,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50c857de2a1421e95cb69c9bbb8d779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _landschapAgent: {fileID: 702569690}
+  _landschapManagerRef: {fileID: 702569687}
   screenFadeTime: 2
   tutorialScherm1: {fileID: 1358196577}
 --- !u!114 &702569698
@@ -5989,7 +5994,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 147da843abad2af449b12045a17db370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startplek: {fileID: 0}
+  _landschapAgent: {fileID: 702569690}
+  _landschapManagerRef: {fileID: 702569687}
 --- !u!114 &702569699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16995,11 +17001,6 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
---- !u!1 &1636725059 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 288977799357588334, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
-  m_PrefabInstance: {fileID: 5890244111541571153}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1653332949
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17468,6 +17469,7 @@ MonoBehaviour:
   currentLandMarkIndex: 0
   landMarkFadeInTime: 2
   landMarkFadeOutTime: 2
+  debug: 0
 --- !u!4 &1686297728
 Transform:
   m_ObjectHideFlags: 0
@@ -22748,6 +22750,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3637850234567061806}
     - target: {fileID: 244336978272902508, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
+      propertyPath: _playerAgentRef
+      value: 
+      objectReference: {fileID: 5890244111541571154}
+    - target: {fileID: 244336978272902508, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
       propertyPath: zoomSensitivity
       value: 1
       objectReference: {fileID: 0}
@@ -23005,7 +23011,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3197382577623612983, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
   m_PrefabInstance: {fileID: 5890244111541571153}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1636725059}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 286bb5ded31655a4b9cd05a93fb90b22, type: 3}
@@ -23026,7 +23032,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 244336978272902508, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
   m_PrefabInstance: {fileID: 5890244111541571153}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1636725059}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f90cc3e0dc8e9b24ea5ffa4ab8d93d70, type: 3}
