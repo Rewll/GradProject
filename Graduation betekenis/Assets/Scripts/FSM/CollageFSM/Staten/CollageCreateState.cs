@@ -45,6 +45,8 @@ public class CollageCreateState : BaseState
     [Header("Picture stuff:")]
     public List<GameObject> picturesInCollage = new List<GameObject>();
     public GameObject selectedPicture;
+    [Space] 
+    public TMP_Text pathTekst;
 
     
     
@@ -274,7 +276,9 @@ public class CollageCreateState : BaseState
     {
         byte[] byteArray = _colManagerRef.collageTexture.EncodeToPNG();
         string dateAndTime = System.DateTime.Now.ToString("dd/MM/yyyy_HH-mm-ss");
-        string path = Application.dataPath + "Collage - " + dateAndTime + ".png";
+        string path = Application.persistentDataPath + "Collage - " + dateAndTime + ".png";
+        pathTekst.gameObject.SetActive(true);
+        pathTekst.text = "Collage Opgeslagen in: " + path;
         //System.IO.File.WriteAllBytes("Assets/Collages/Collage "+ dateAndTime +" .png", byteArray);
         //System.IO.File.WriteAllBytes(Application.dataPath + "/SavedLetters/LettersScreenshot " + DateTime.Now.ToString() + ".png", byteArray);
         System.IO.File.WriteAllBytes(path, byteArray);
