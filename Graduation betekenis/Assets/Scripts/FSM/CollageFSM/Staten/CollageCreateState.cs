@@ -276,24 +276,12 @@ public class CollageCreateState : BaseState
     {
         byte[] byteArray = _colManagerRef.collageTexture.EncodeToPNG();
         string dateAndTime = System.DateTime.Now.ToString("dd-MM_HH-mm");
-        string path = System.IO.Directory.GetCurrentDirectory() + "Collage" + dateAndTime + ".png";
-        string path2 = Application.persistentDataPath + "Collage - " + dateAndTime + ".png";
+        //string path = System.IO.Directory.GetCurrentDirectory() + "Collage" + dateAndTime + ".png";
+        //string path2 = Application.persistentDataPath + "Collage - " + dateAndTime + ".png";
         string path3 = Application.dataPath + "/SavedCollages/Collage " + dateAndTime + ".png";
         System.IO.File.WriteAllBytes(path3, byteArray);
         Debug.Log("Saved Collage at: " + path3);
+        pathTekst.gameObject.SetActive(true);
         pathTekst.text = "Collage Opgeslagen in: " + path3;
-    }
-    
-    private IEnumerator CoroutineScreenshot()
-    {
-        yield return new WaitForEndOfFrame();
-        _colManagerRef.collageTexture = new Texture2D(1920, 1080, TextureFormat.RGB24, false); //Creates texture for cutout with the rect size
-        //Rect rect = new Rect(0, 0, width, height);
-        //screenShotTexture.ReadPixels(rect, 0, 0); //print rectangle on the texture, 0, 0 post on the texture
-        //screenShotTexture.Apply();
-
-        //byte[] byteArray = screenShotTexture.EncodeToPNG();
-        //System.IO.File.WriteAllBytes("Assets/Resources/Gezichten/Emoji" + plekNummer + ".png", byteArray);
-        //Sprite tempSprite = Sprite.Create(screenShotTexture, rect, new Vector2(0.5f, 0.5f));
     }
 }
