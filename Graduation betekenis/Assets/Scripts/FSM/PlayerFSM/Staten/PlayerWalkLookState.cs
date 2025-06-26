@@ -1,18 +1,22 @@
 using UnityEngine;
+using UnityEngine.UI;
+using Cursor = UnityEngine.Cursor;
 
 public class PlayerWalkLookState : BaseState
 {
-    private PlayerAgent _playerAgentRef;
+    [SerializeField] private PlayerAgent _playerAgentRef;
+    [Space]
     public bool spelerMagKijken;
     public bool spelerMagLopen;
     [Header("Fabriek Variables:")]
     [SerializeField] private LayerMask fabriekLayer;
     [SerializeField] private float raycastLength;
     public FotoOphangManager ophangManagerRef;
+    public RawImage lastPictureImage;
     
     void Awake()
     {
-        _playerAgentRef = GetComponent<PlayerAgent>();
+        //_playerAgentRef = GetComponent<PlayerAgent>();
         if (_playerAgentRef.playerStartPos)
         {
             _playerAgentRef.playerStartPos.position = transform.position;
@@ -40,14 +44,17 @@ public class PlayerWalkLookState : BaseState
         if (spelerMagLopen)
         {
             _playerAgentRef.playerMoveRef.MyInput();
-            _playerAgentRef.playerMoveRef.GroundCheck();
-            _playerAgentRef.playerMoveRef.SpeedControl();
-            _playerAgentRef.playerMoveRef.KeepPlayerAfloat();
         }
+        _playerAgentRef.playerMoveRef.GroundCheck();
+        _playerAgentRef.playerMoveRef.SpeedControl();
+        _playerAgentRef.playerMoveRef.KeepPlayerAfloat();
+        
         if (spelerMagKijken)
         {
-            _playerAgentRef.playerLookRef.MouseLook();
+            _playerAgentRef.playerLookRef.MouseInput();
         }
+        _playerAgentRef.playerLookRef.MouseLook();
+        
         if (Input.GetKeyDown(_playerAgentRef.CameraKnop))
         {
             _playerAgentRef.kameraAnimator.SetTrigger("TrEnable");
@@ -77,18 +84,22 @@ public class PlayerWalkLookState : BaseState
                     {
                         hit.transform.gameObject.GetComponent<FotoOphangManager>().fotoTexture = _playerAgentRef.fabriekFoto;
                         hit.transform.gameObject.GetComponent<FotoOphangManager>().onOphang.Invoke();
-                        _playerAgentRef.heeftFoto = false;
-                        _playerAgentRef.fabriekFoto = null;
-                        ophangManagerRef.selectieActief = false;
+                        
                         ophangManagerRef.HerrinerDeSpeler(false);
-
                     }
                     else
                     {
                         ophangManagerRef.HerrinerDeSpeler(true);
                     }
-   
+                    lastPictureImage.texture = null;
+                    _playerAgentRef.heeftFoto = false;
+                    _playerAgentRef.fabriekFoto = null;
+                    ophangManagerRef.selectieActief = false;
                 }
+            }
+            else
+            {
+                ophangManagerRef.selectieActief = false;
             }
         }
         else
@@ -101,9 +112,10 @@ public class PlayerWalkLookState : BaseState
     {
         if (spelerMagLopen)
         {
-            _playerAgentRef.playerMoveRef.MovePlayer();
-            _playerAgentRef.playerMoveRef.Gravity();
+
         }
+        _playerAgentRef.playerMoveRef.MovePlayer();
+        _playerAgentRef.playerMoveRef.Gravity();
     }
     
     public override void OnExit()

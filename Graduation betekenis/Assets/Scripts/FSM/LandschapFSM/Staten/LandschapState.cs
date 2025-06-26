@@ -6,8 +6,8 @@ using JetBrains.Annotations;
 
 public class LandschapState : BaseState
 {
-    private LandschapAgent _landschapAgent;
-    private LandschapManager _landschapManagerRef;
+    [SerializeField] private LandschapAgent _landschapAgent;
+    [SerializeField] private LandschapManager _landschapManagerRef;
     public float screenFadeTime = 2f;
     [Header("References: ")]
     public AudioLayer landMarkLayer;
@@ -18,8 +18,8 @@ public class LandschapState : BaseState
     public bool spelerHeeftGekeken;
     private void Awake()
     {
-        _landschapAgent = GetComponent<LandschapAgent>();
-        _landschapManagerRef = GetComponent<LandschapManager>();
+        //_landschapAgent = GetComponent<LandschapAgent>();
+        //_landschapManagerRef = GetComponent<LandschapManager>();
         if (!_landschapManagerRef.skipTutorial)
         {
             _landschapManagerRef.fotoKijkKnop.onClick.AddListener(ZetSpelerHeeftGekeken);

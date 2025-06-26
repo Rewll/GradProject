@@ -6,8 +6,8 @@ using JetBrains.Annotations;
 
 public class LandschapTutorialState : BaseState
 {
-    private LandschapAgent _landschapAgent;
-    private LandschapManager _landschapManagerRef;
+    [SerializeField] private LandschapAgent _landschapAgent;
+    [SerializeField] private LandschapManager _landschapManagerRef;
 
     public float screenFadeTime = 2f;
 
@@ -16,8 +16,8 @@ public class LandschapTutorialState : BaseState
  
     private void Awake()
     {
-        _landschapAgent = GetComponent<LandschapAgent>();
-        _landschapManagerRef = GetComponent<LandschapManager>();
+        //_landschapAgent = GetComponent<LandschapAgent>();
+        //_landschapManagerRef = GetComponent<LandschapManager>();
         
         tutorialScherm1.SetActive(false);
     }

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerSleepState : BaseState
 {
-    private PlayerAgent _playerAgentRef;
+    [SerializeField] private PlayerAgent _playerAgentRef;
 
     void Awake()
     {
-        _playerAgentRef = GetComponent<PlayerAgent>();
+       //_playerAgentRef = GetComponent<PlayerAgent>();
     }
 
     public override void OnEnter()

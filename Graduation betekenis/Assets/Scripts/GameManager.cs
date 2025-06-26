@@ -17,14 +17,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Image fadeVlak;
     [SerializeField] private float sceneFadeTime = 2f;
     private playerprefspoep playerPrepRef;
-    public KeyCode pauseButton = KeyCode.Tab;
+    public KeyCode pauseButton = KeyCode.Escape;
     public List<GameObject> destroyObjects;
     [Space] 
     public bool collage;
     
     private void Awake()
     {
-        
         pauseMenu.SetActive(paused);
         if (FindAnyObjectByType<playerprefspoep>() && !collage)
         {
@@ -42,7 +41,15 @@ public class GameManager : MonoBehaviour
 
     //audiolistener.pause bestaat
     //hier is ook een ignore voor
-    
+    private void Start()
+    {
+#if UNITY_EDITOR
+
+        Debug.Log("Unity Editor");
+        pauseButton = KeyCode.Tab;
+#endif
+    }
+
     private void Update()
     {
         ResetFuncties();
@@ -102,7 +109,6 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator LaadSceneRoutine(int sceneIndex)
     {
-        yield return new WaitForSecondsRealtime(1f);
         fadeVlak.gameObject.SetActive(true);
         Tween fadeTween = fadeVlak.DOFade(1, sceneFadeTime);
         fadeTween.SetUpdate(true);

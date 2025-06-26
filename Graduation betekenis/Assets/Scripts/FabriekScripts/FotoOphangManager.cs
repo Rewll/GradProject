@@ -66,6 +66,17 @@ public class FotoOphangManager : MonoBehaviour
     public void HerrinerDeSpeler(bool state)
     {
         herinnertekst.SetActive(state);
+        if (state)
+        {
+            StartCoroutine(VerdwijnRoutine());
+        }
+        Debug.Log("Herinnering");
+    }
+
+    IEnumerator VerdwijnRoutine()
+    {
+        yield return new WaitForSeconds(6f);
+        herinnertekst.SetActive(false);
     }
     
     private void Update()

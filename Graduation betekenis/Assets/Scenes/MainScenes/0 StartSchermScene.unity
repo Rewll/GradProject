@@ -2183,7 +2183,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 307, y: -539.22437}
+  m_AnchoredPosition: {x: 307, y: -539.91235}
   m_SizeDelta: {x: 614, y: 172}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &763826483
@@ -3284,7 +3284,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 307, y: -179.74146}
+  m_AnchoredPosition: {x: 307, y: -179.9708}
   m_SizeDelta: {x: 614, y: 172}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &984467966
@@ -3950,25 +3950,41 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Lorem ipsum dolor sit amet. Qui repellat cupiditate eos voluptas dolor
-    est quod alias et nemo laudantium et sunt voluptas? Qui nesciunt internos hic
-    accusantium beatae aut dolor eligendi vel internos illum aut quasi asperiores
-    aut itaque saepe.
+  m_text: 'Main Credits:
+
+
+    Meta Scholtens - Game design/Game development/Narrative
+
+
+    Aden
+    Bosman - Game art/Narrative
+
+
+    Supporting crew:
+
+
+    Denis Dvorkovyy - Tech
+    art support
+
+
+    Stiefvader van Aden - Printer support
+
+
+    Attributions:
+
+    -
+
+    -
+
+    -
+
+    -
+
+    -
 
 
 
-    Et rerum velit qui consectetur eveniet quo saepe quia
-    et galisum odio ut aliquid vitae qui reprehenderit doloribus. Eum excepturi error
-    rem voluptatem saepe nam omnis ipsum aut officiis nesciunt. Non dicta enim aut
-    neque repudiandae et velit laborum.
-
-
-
-    Et modi dolorem hic distinctio odio
-    sed delectus eaque aut officia magni aut quod totam? Non quisquam pariatur non
-    esse explicabo sed tempora laboriosam. Et molestiae laudantium qui nihil rerum
-    rem eligendi voluptatum. Rem atque modi At maiores debitis et sapiente quae est
-    voluptas nemo.'
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e124f1d736e749d4aa0fd895a7321410, type: 2}
   m_sharedMaterial: {fileID: -5347099658263938734, guid: e124f1d736e749d4aa0fd895a7321410, type: 2}
@@ -4660,7 +4676,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 307, y: -898.7073}
+  m_AnchoredPosition: {x: 307, y: -899.854}
   m_SizeDelta: {x: 614, y: 172}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1553487820
