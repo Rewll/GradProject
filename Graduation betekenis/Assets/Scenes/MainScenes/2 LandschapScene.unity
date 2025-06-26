@@ -6082,7 +6082,7 @@ MonoBehaviour:
   paused: 0
   fadeVlak: {fileID: 1784130495}
   sceneFadeTime: 2
-  pauseButton: 9
+  pauseButton: 27
   destroyObjects: []
   collage: 0
 --- !u!1 &719693535
@@ -17462,7 +17462,7 @@ MonoBehaviour:
   currentLandMarkIndex: 0
   landMarkFadeInTime: 2
   landMarkFadeOutTime: 2
-  debug: 1
+  debug: 0
 --- !u!4 &1686297728
 Transform:
   m_ObjectHideFlags: 0

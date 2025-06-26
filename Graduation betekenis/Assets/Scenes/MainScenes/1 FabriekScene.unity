@@ -1820,7 +1820,7 @@ MonoBehaviour:
   paused: 0
   fadeVlak: {fileID: 1014710845}
   sceneFadeTime: 2
-  pauseButton: 9
+  pauseButton: 27
   destroyObjects: []
   collage: 0
 --- !u!1 &470577561
