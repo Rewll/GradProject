@@ -4676,7 +4676,7 @@ MonoBehaviour:
   deelIcoon: {fileID: 1918267533}
   deelTekst: {fileID: 628684006}
   ampersandTekst: {fileID: 1460552016}
-  itchio: 1
+  itchio: 0
   itchSCherm: {fileID: 1116549704}
   eindeScherm1: {fileID: 2064087714}
 --- !u!1 &410087039
