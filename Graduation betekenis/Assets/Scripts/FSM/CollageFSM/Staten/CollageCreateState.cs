@@ -275,13 +275,13 @@ public class CollageCreateState : BaseState
     public void SaveCollage()
     {
         byte[] byteArray = _colManagerRef.collageTexture.EncodeToPNG();
-        string dateAndTime = System.DateTime.Now.ToString("dd/MM/yyyy_HH-mm-ss");
-        //string path = Application.persistentDataPath + "Collage - " + dateAndTime + ".png";
-        string path = System.IO.Directory.GetCurrentDirectory() + "Collage - " + dateAndTime + ".png";
-        pathTekst.gameObject.SetActive(true);
-        pathTekst.text = "Collage Opgeslagen in: " + path;
-        System.IO.File.WriteAllBytes(path, byteArray);
-        Debug.Log("Saved Collage at: " + path);
+        string dateAndTime = System.DateTime.Now.ToString("dd-MM_HH-mm");
+        string path = System.IO.Directory.GetCurrentDirectory() + "Collage" + dateAndTime + ".png";
+        string path2 = Application.persistentDataPath + "Collage - " + dateAndTime + ".png";
+        string path3 = Application.dataPath + "/SavedCollages/Collage " + dateAndTime + ".png";
+        System.IO.File.WriteAllBytes(path3, byteArray);
+        Debug.Log("Saved Collage at: " + path3);
+        pathTekst.text = "Collage Opgeslagen in: " + path3;
     }
     
     private IEnumerator CoroutineScreenshot()
