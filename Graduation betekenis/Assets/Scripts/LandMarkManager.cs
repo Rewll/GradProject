@@ -40,26 +40,30 @@ public class LandMarkManager : MonoBehaviour
 
     public void audioDebug()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha0))
+        if (Input.GetKey(KeyCode.RightAlt))
         {
-            ActivateLandMark(0);
+            if (Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                ActivateLandMark(0);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                ActivateLandMark(1);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                ActivateLandMark(2);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                ActivateLandMark(3);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                ActivateLandMark(4);
+            }
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            ActivateLandMark(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            ActivateLandMark(2);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            ActivateLandMark(3);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            ActivateLandMark(4);
-        }
+
     }
 
     private void Update()
