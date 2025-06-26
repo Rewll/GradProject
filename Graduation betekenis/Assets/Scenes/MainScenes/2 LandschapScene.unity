@@ -5956,7 +5956,7 @@ MonoBehaviour:
   cameraTutorial1: {fileID: 1798414471}
   cameraTutorial2: {fileID: 638963546}
   fotoKijkKnop: {fileID: 1965155516}
-  skipTutorial: 0
+  skipTutorial: 1
 --- !u!4 &702569688
 Transform:
   m_ObjectHideFlags: 0
@@ -6084,7 +6084,7 @@ MonoBehaviour:
   paused: 0
   fadeVlak: {fileID: 1784130495}
   sceneFadeTime: 2
-  pauseButton: 9
+  pauseButton: 27
   destroyObjects: []
   collage: 0
 --- !u!1 &719693535
@@ -20618,23 +20618,23 @@ MonoBehaviour:
   mixerGroup: {fileID: -6108954217141079583, guid: d22fb85508f89734c8fa84628263ff2d, type: 2}
   soundsList:
   - NaamClip: Landmark1 - Bed
-    geluidsClip: {fileID: 8300000, guid: ebc697e0867d9094e9d6f6d41e8fa693, type: 3}
-    volume: 0.8
+    geluidsClip: {fileID: 8300000, guid: 75ab54929f28f7e4fbbe251d880e2c0c, type: 3}
+    volume: 1
     loop: 0
     source: {fileID: 0}
   - NaamClip: Landmark2 - Informatie
     geluidsClip: {fileID: 8300000, guid: a041aa71edf32734d804a9817dac7376, type: 3}
-    volume: 0.8
+    volume: 1
     loop: 0
     source: {fileID: 0}
   - NaamClip: Landmark3 - Snelheid
     geluidsClip: {fileID: 8300000, guid: a407ef555754a404f9945a2d5caa83f3, type: 3}
-    volume: 0.8
+    volume: 1
     loop: 0
     source: {fileID: 0}
   - NaamClip: Landmark4 Spiraliteit
     geluidsClip: {fileID: 8300000, guid: e23ce7abdfb3ace428064c61c5416ff2, type: 3}
-    volume: 0.5
+    volume: 1
     loop: 0
     source: {fileID: 0}
   - NaamClip: LandMark5 - De vierde dood
@@ -22875,7 +22875,7 @@ PrefabInstance:
       objectReference: {fileID: 5890244111541571154}
     - target: {fileID: 1420534758139966838, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
       propertyPath: debugRunEnabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1420534758139966838, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
       propertyPath: groundTransform
