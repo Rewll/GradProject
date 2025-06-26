@@ -22841,7 +22841,7 @@ PrefabInstance:
       objectReference: {fileID: 5890244111541571154}
     - target: {fileID: 1420534758139966838, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
       propertyPath: debugRunEnabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1420534758139966838, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
       propertyPath: groundTransform

@@ -274,7 +274,7 @@ public class CollageCreateState : BaseState
     {
         byte[] byteArray = _colManagerRef.collageTexture.EncodeToPNG();
         string dateAndTime = System.DateTime.Now.ToString("dd/MM/yyyy_HH-mm-ss");
-        string path = Application.dataPath + "/Collage - " + dateAndTime + ".png";
+        string path = Application.dataPath + "Collage - " + dateAndTime + ".png";
         //System.IO.File.WriteAllBytes("Assets/Collages/Collage "+ dateAndTime +" .png", byteArray);
         //System.IO.File.WriteAllBytes(Application.dataPath + "/SavedLetters/LettersScreenshot " + DateTime.Now.ToString() + ".png", byteArray);
         System.IO.File.WriteAllBytes(path, byteArray);
