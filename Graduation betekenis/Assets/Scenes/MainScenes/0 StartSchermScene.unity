@@ -907,7 +907,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 556487291}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.40079874}
+  m_AnchorMin: {x: 0, y: 0.54596186}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 20}
@@ -1278,7 +1278,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 274857716}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.59920126
+  m_Size: 0.45403814
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2476,7 +2476,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 307, y: -539.91235}
+  m_AnchoredPosition: {x: 307, y: -540.20337}
   m_SizeDelta: {x: 614, y: 172}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &763826483
@@ -3577,7 +3577,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 307, y: -179.9708}
+  m_AnchoredPosition: {x: 307, y: -180.06778}
   m_SizeDelta: {x: 614, y: 172}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &984467966
@@ -4296,8 +4296,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -12.5}
-  m_SizeDelta: {x: -50, y: -25}
+  m_AnchoredPosition: {x: 0, y: 0.00024414062}
+  m_SizeDelta: {x: -50, y: 0.00048828}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1334594319
 MonoBehaviour:
@@ -4319,41 +4319,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Main Credits:
-
-
-    Meta Scholtens - Game design/Game development/Narrative
-
-
-    Aden
-    Bosman - Game art/Narrative
-
-
-    Supporting crew:
-
-
-    Denis Dvorkovyy - Tech
-    art support
-
-
-    Stiefvader van Aden - Printer support
-
-
-    Attributions:
-
-    -
-
-    -
-
-    -
-
-    -
-
-    -
-
-
-
-'
+  m_text: "Main Credits:\n\nMeta Scholtens - Game design/Game development/Narrative\n\nAden
+    Bosman - Game art/Narrative\n\nSupporting crew:\n\nDenis Dvorkovyy - Tech art
+    support\n\nRichard Snijder - Printer support (lol)\n\r\nMana Kouwenberg - tech
+    support\n\nAttributions:\n\rTextureFabrik.com - Textures en paper scraps\r\n\r\nAlle
+    andere plaatjes en graphics vallen onder Creative Commons CC0, Public Domain.
+    provided by Public Work, Old Book Images, National Gallery of Art\r\n\r\nhttps://public.work/%7C\r\nhttps://www.oldbookillustrations.com/\r\nhttps://www.nga.gov/
+    \r\n\nFactory machine 008.wav by AudioPapkin -- https://freesound.org/s/512699/
+    -- License: Creative Commons 0\r\n\r\nAmbient, Meditation - In Eternity by Andrewkn
+    -- https://freesound.org/s/531506/ -- License: Attribution NonCommercial 4.0\r\n\r\nElectronic
+    Minute 428 - Soft Simple Ambient Music by gis_sweden -- https://freesound.org/s/674782/
+    -- License: Creative Commons 0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e124f1d736e749d4aa0fd895a7321410, type: 2}
   m_sharedMaterial: {fileID: -5347099658263938734, guid: e124f1d736e749d4aa0fd895a7321410, type: 2}
@@ -4466,7 +4442,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 1129.6272}
+  m_SizeDelta: {x: 0, y: 1550.2}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1386784634
 GameObject:
@@ -5045,7 +5021,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 307, y: -899.854}
+  m_AnchoredPosition: {x: 307, y: -900.33887}
   m_SizeDelta: {x: 614, y: 172}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1553487820
@@ -5279,8 +5255,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 446.01318, y: 10.6087}
-  m_SizeDelta: {x: 544.1176, y: 676.874}
+  m_AnchoredPosition: {x: 446.01318, y: -2.879}
+  m_SizeDelta: {x: 544.118, y: 703.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1919287939
 MonoBehaviour:
