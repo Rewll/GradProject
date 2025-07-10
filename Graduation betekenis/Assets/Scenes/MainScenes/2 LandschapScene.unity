@@ -5956,7 +5956,7 @@ MonoBehaviour:
   cameraTutorial1: {fileID: 1798414471}
   cameraTutorial2: {fileID: 638963546}
   fotoKijkKnop: {fileID: 1965155516}
-  skipTutorial: 0
+  skipTutorial: 1
 --- !u!4 &702569688
 Transform:
   m_ObjectHideFlags: 0
@@ -22887,7 +22887,7 @@ PrefabInstance:
       objectReference: {fileID: 5890244111541571154}
     - target: {fileID: 1420534758139966838, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
       propertyPath: debugRunEnabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1420534758139966838, guid: 5b7966b53c6c70542870b32fd6664321, type: 3}
       propertyPath: groundTransform
