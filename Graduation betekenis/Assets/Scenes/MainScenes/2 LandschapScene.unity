@@ -2575,7 +2575,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -12037,7 +12037,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1530986783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12059,7 +12059,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "In het landschap zul je verschillende dingen vinden. Probeer hier foto's
-    te maken van dingen die jij betekenisvol of zingevend vindt. Wat je hieronder
+    te maken van dingen die jij betekenisvol en/of zingevend vindt. Wat je hieronder
     verstaat is aan jou, maar denk aan dingen die je belangrijk vindt of dingen die
     voor jou een reden zijn om uit bed te komen. \n\nNadat je de foto's hebt gemaakt
     ga je met deze foto's een collage maken."
@@ -12157,7 +12157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -154.9}
+  m_AnchoredPosition: {x: 0, y: -181}
   m_SizeDelta: {x: 720, y: 200}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &1537645654
@@ -17739,7 +17739,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -195, y: 46.300003}
+  m_AnchoredPosition: {x: -195, y: 2}
   m_SizeDelta: {x: 270, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1709013830
@@ -18126,7 +18126,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 195, y: 46.3}
+  m_AnchoredPosition: {x: 195, y: 2}
   m_SizeDelta: {x: 270, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1722809206
@@ -18757,13 +18757,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Zo meteen bevind je je in een landschap waar je van alles tegenkomt. Jij
-    gaat hier doorheen lopen met dezelfde camera.
+  m_text: 'Nu je weet hoe de camera werkt ga je naar een landschap. Hier kom je van
+    alles tegen. Jij gaat hier doorheen lopen met jouw camera
 
 
-    Het is jouw opdracht om met
-    de camera datgene vast te leggen wat jij betekenisvol en/of zingevend vindt.
-    Maak zoveel foto''s als je wilt.'
+    Het is jouw opdracht
+    om met de camera datgene vast te leggen wat jij betekenisvol en/of zingevend
+    vindt. Maak zoveel foto''s als je wilt.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e124f1d736e749d4aa0fd895a7321410, type: 2}
   m_sharedMaterial: {fileID: -5347099658263938734, guid: e124f1d736e749d4aa0fd895a7321410, type: 2}
@@ -19720,7 +19720,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
