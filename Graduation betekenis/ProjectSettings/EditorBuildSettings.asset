@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MainScenes/0 StartSchermScene.unity
     guid: d726bbcb8c64f6043a63b03a454b3834
   - enabled: 1
-    path: Assets/Scenes/MainScenes/1 FabriekScene.unity
-    guid: a898e204822488943a896075aecbd895
+    path: Assets/Scenes/MainScenes/1.5 PaperTutorialScene.unity
+    guid: 5fafcddd30485f6439f4f181bb0c040d
   - enabled: 1
     path: Assets/Scenes/MainScenes/2 LandschapScene.unity
     guid: 4fcf96fc47933474bbd48e638f8bd2db
